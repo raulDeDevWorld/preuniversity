@@ -431,6 +431,5 @@ function manageSimulacro (materia, university, setUserSimulacro) {
 //       const uid = auth.currentUser.uid
 //       db.ref(`teachers/${uid}`).update({reset : mode})
 // }
-
 // export { manageSimulacro, userDataUpdate, getFac, query, progressResetTeacher, newStudent, playDificult, userDelete, auth, onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getIds, getProgress, getCode, avatarUpdate, progressReset, setProgress, setErrors }
 export { manageSimulacro, userDataUpdate, getFac,  onAuth, withFacebook, withGoogle, handleSignOut, dataUser }
