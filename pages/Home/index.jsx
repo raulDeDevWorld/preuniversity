@@ -17,16 +17,7 @@ function Home() {
     const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
     const router = useRouter()
 
-    function avatarClick(a) {
-        setUserAvatar(a)
-    }
-    function nextClick() {
-        avatar !== null ? router.push('/Welcome') : setUserSuccess(false)
-        console.log('click')
-    }
-    function backOut() {
-        handleSignOut()
-    }
+
     function practica() {
         userDB.premium !== true ? router.push('https://drive.google.com/drive/folders/1WEakUFwv8boTWwPfwvvXmp1UpfcJ9qpa?usp=sharing'):
         router.push('https://drive.google.com/file/d/1YbG3O2cjmmw732X-XvPDwUqCkJpX9Ifp/view?usp=sharing')     
@@ -42,7 +33,7 @@ function Home() {
     }
     console.log(userDB)
     useEffect(() => {
-        userDB === null ? router.push('/Register'): ''
+        userDB === null? router.push('/Register'): ''
     }, [userDB]);
     return (
         <>

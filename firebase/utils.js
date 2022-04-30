@@ -105,7 +105,8 @@ function onAuth(setUserProfile, setUserData) {
 
 function getData (user, setUserData){
       get(data).then((snapshot) => {
-            if (snapshot.exists()) {
+            var b = snapshot.child(user.uid).exists();               
+            if (b == true) {
                   let obj = snapshot.val() 
                   setUserData(obj[user.uid])
             } else {
