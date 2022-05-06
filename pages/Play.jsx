@@ -6,6 +6,8 @@ import { WithAuth } from '../HOCs/WithAuth'
 import { useUser } from '../context/Context.js'
 import { manageSimulacro } from '../firebase/utils'
 import Subtitle from '../components/Subtitle'
+import BlackFont from '../components/BlackFont'
+
 import style from '../styles/Home.module.css'
 
 
@@ -39,13 +41,17 @@ function Play() {
                     <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Bienvenido': 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
                     
                     
-                    
-                    
+                    <BlackFont> 
+                    <div className={style.buttonContainer}>
                     {Object.keys(userDB.materias).map((m, i)=>
 
-                        <Button key={i} style='buttonPrimary' click={()=>next(m)}>{m}</Button>
+                        <Button key={i} style='buttonBlackFont' click={()=>next(m)}>{m}</Button>
                     )}
                     <Button style='buttonSecondary'click={back}>Atras</Button>
+                    </div>
+                    
+                    </BlackFont> 
+                    
                     <PremiumC></PremiumC>
                 </div>
             }
