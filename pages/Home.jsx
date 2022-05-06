@@ -1,15 +1,15 @@
-import Button from '../../components/Button'
-import PremiumC from '../../components/PremiumC'
+import Button from '../components/Button'
+import PremiumC from '../components/PremiumC'
 import { useRouter } from 'next/router'
-import PageLayout from '../../layouts/PageLayout'
-import { WithAuth } from '../../HOCs/WithAuth'
-import { useUser } from '../../context/Context.js'
-import { handleSignOut } from '../../firebase/utils.js'
-import Subtitle from '../../components/Subtitle'
-import Error from '../../components/Error'
-import BlackFont from '../../components/BlackFont'
-import style from '../../styles/Home.module.css'
-import styleP from '../../styles/Progress.module.css'
+import PageLayout from '../layouts/PageLayout'
+import { WithAuth } from '../HOCs/WithAuth'
+import { useUser } from '../context/Context.js'
+import { handleSignOut } from '../firebase/utils.js'
+import Subtitle from '../components/Subtitle'
+import Error from '../components/Error'
+import BlackFont from '../components/BlackFont'
+import style from '../styles/Home.module.css'
+import styleP from '../styles/Progress.module.css'
 import { useState, useEffect } from 'react'
 
 
@@ -53,10 +53,10 @@ function Home() {
                             <Button style='buttonBlackFont' click={practica}>Banco de P... <span className={style.pdf}>PDF</span></Button>
                             <Button style='buttonBlackFont'click={robot}>Test De O.V</Button>
                         </div>
-                        
                     </BlackFont>
-   
+                  
                     <PremiumC></PremiumC>
+           
                 </div>
             }  
         </PageLayout>

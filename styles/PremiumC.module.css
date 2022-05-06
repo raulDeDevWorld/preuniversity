@@ -3,7 +3,8 @@
 .box {
     background-color: black;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
+    min-width: 300px;
     padding: 5px;
     margin-top: 20px;
     cursor: pointer;
@@ -44,4 +45,26 @@
         33% {z-index: 60;}
         67% {z-index: 1;}
         100% {z-index: 60;} 
+}
+
+
+.icon {
+  height: 17px;
+  width: 100%;
+  display: flex;
+}
+.icon :nth-child(n) {
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  margin-right: 5px;
+}
+.icon :nth-child(1) {
+  background-color: red;
+}
+.icon :nth-child(2) {
+  background-color: yellow;
+}
+.icon :nth-child(3) {
+  background-color: rgb(153, 255, 0);
 }

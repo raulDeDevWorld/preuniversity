@@ -52,8 +52,12 @@
   border-radius: 5px;
   margin: 2px 20px 2px 20px;
 }
-.buttonsContainer {
-  margin-top: 15px;
+.buttonContainer {
+  height: 200px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .form {
   margin-top: 10px;
