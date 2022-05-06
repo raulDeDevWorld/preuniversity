@@ -3,7 +3,7 @@
     height: 100vh;
     min-height: 550px;
     width: 100vw;
-    background: linear-gradient(135deg, #ffffff, #4F84B5); 
+    background: linear-gradient(to bottom, #ffffff, #4F84B5);  
     /* background-image: url(../public/bg.svg); */
     background-repeat: no-repeat;
     background-size: cover;
