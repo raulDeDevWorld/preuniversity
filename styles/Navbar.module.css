@@ -46,7 +46,7 @@
 
   .nav {
     position: fixed;
-    top: 75px;
+    top: 88px;
     left: -270px;
     width: 90%;
     min-width: 200px;
@@ -57,7 +57,7 @@
     flex-direction: column;
     align-items: flex-start;
     transition:left .1s;
-    background-image: linear-gradient(#015380ce,#4393BE, #B1D9F0);
+    background-image: linear-gradient(#0F1624, #6083a4, #A4C0D9);
     color: white;
     border-radius: 0 30px 0 0px;
     z-index: 1000000000000000;
@@ -95,7 +95,7 @@
 }
 
 .directAcces {
-  position: absolute;
+  position: fixed;
   background-color: black;
   top: 65px;
   width: 100vw;
