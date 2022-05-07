@@ -54,8 +54,8 @@ function Play () {
         }
         setObjet({...objet, ...o,})
         setTimeout(obj, 1500)
-        n == objet.nFour ? setProgress(s+1, userDB.profesor, 's') : setErrors(e+1, userDB.profesor, 's')
-        n == objet.nFour ? setCountR(countR+1) : setCountE(countE+1)
+        // n == objet.nFour ? setProgress(s+1, userDB.profesor, 's') : setErrors(e+1, userDB.profesor, 's')
+        // n == objet.nFour ? setCountR(countR+1) : setCountE(countE+1)
     }
 
     function nextClick () {
