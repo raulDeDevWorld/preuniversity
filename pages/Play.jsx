@@ -30,7 +30,6 @@ function Play() {
         <>
         <PageLayout>
             {userDB === 'loading' && ''}
-         
            
             { userDB !== null && userDB !== 'loading' &&
                 <div className={style.containerTwo}>

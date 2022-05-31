@@ -43,3 +43,23 @@
     background-color: #486bad3c;
     border: 2px solid #486bad3c;
 }
+.buttonBlackFontColorWhite {
+    color: #ffffff;
+    background-color: #486bad3c;
+    border: 2px solid #486bad3c;
+}
+.buttonBlackFontColorWhite:hover {
+    color: #003450;
+    background-color: #00F0FF;
+    border: 2px solid #000000;
+}
+.successButton {
+    color: #ffffff;
+    background-color: #52FF00;
+    border: 2px solid #52FF00;
+}
+.successButton:active {
+    color: #52FF00;
+    background-color: #000000;
+    border: 2px solid #52FF00;
+}

@@ -4,14 +4,16 @@ import { useUser } from '../context/Context.js'
 import { setProgress, setErrors } from '../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../components/Error'
+import Button from '../components/Button'
+import BlackFont from '../components/BlackFont'
 import PageEspecial from '../layouts/PageEspecial'
 import { WithAuth } from '../HOCs/WithAuth'
-import style from '../styles/Play.module.css'
+import style from '../styles/Simulacro.module.css'
 
 
 
 
-function Play () {
+function Simulacro () {
     const { userDB,  setUserSuccess, success, simulacro } = useUser()
     const [objet, setObjet] = useState(null)
     const [countR, setCountR] = useState(0)
@@ -71,7 +73,7 @@ function Play () {
         {userDB !== 'loading' &&
             <>
             <div className={style.container}>
-                <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                <img src={`/robot.png`} className={style.perfil} alt="user photo" />
                 <div className={style.textCont}>
                     <span className={style.white}>N: {`${userDB.aName.split(' ')[0].toUpperCase()}`}</span>
                     <div className={style.contRE}>
@@ -81,16 +83,19 @@ function Play () {
                 </div>
                 {objet !== null &&
                 <>
-                <div className={style.boxMain}>
-                    <span>{objet.nOne}</span>
-                    <span>+</span>
-                    <span>{objet.nTwo}</span> 
-                </div>
-                <div className={`${style.box} ${objet.selected == 1 && objet.selected !== objet.nFour? style.red: ''}  ${objet.selected !== null && 1 == objet.nFour? style.green: ''}`} onClick={(e)=>{select(1)}} >{objet.nFour == 1? objet.res: objet.res + 5} </div>
-                <div className={`${style.box} ${objet.selected == 2 && objet.selected !== objet.nFour? style.red: ''}  ${objet.selected !== null && 2 == objet.nFour? style.green: ''}`} onClick={(e)=>{select(2)}} >{objet.nFour == 2? objet.res: objet.res + 8} </div>
-                <div className={`${style.box} ${objet.selected == 3 && objet.selected !== objet.nFour? style.red: ''}  ${objet.selected !== null && 3 == objet.nFour? style.green: ''}`} onClick={(e)=>{select(3)}} >{objet.nFour == 3? objet.res: objet.res - 8} </div>
-                <div className={`${style.box} ${objet.selected == 4 && objet.selected !== objet.nFour? style.red: ''}  ${objet.selected !== null && 4 == objet.nFour? style.green: ''}`} onClick={(e)=>{select(4)}} >{objet.nFour == 4? objet.res: objet.res - 5} </div>
-                <button className={style.button} onClick={nextClick}>Finalizar</button> 
+                    <BlackFont>
+                        
+                            </BlackFont>
+                            <BlackFont>
+                                <div className={style.answersContainer}>
+                                    <div className={`${style.box} ${objet.selected == 1 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 1 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(1) }} >{objet.nFour == 1 ? objet.res : objet.res + 5} </div>
+                                    <div className={`${style.box} ${objet.selected == 2 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 2 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(2) }} >{objet.nFour == 2 ? objet.res : objet.res + 8} </div>
+                                    <div className={`${style.box} ${objet.selected == 3 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 3 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(3) }} >{objet.nFour == 3 ? objet.res : objet.res - 8} </div>
+                                    <div className={`${style.box} ${objet.selected == 4 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 4 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(4) }} >{objet.nFour == 4 ? objet.res : objet.res - 5} </div>
+                                    <button className={style.button} onClick={nextClick}>Finalizar</button>
+                                </div>
+                            </BlackFont>
+
                 </>}
            </div>
            </>}
@@ -101,4 +106,4 @@ function Play () {
 
 
 }
-export default WithAuth(Play)
+export default WithAuth(Simulacro)

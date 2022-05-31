@@ -101,7 +101,7 @@ function onAuth(setUserProfile, setUserData) {
       });
 }
 
-
+  
 
 function getData (user, setUserData){
       get(data).then((snapshot) => {

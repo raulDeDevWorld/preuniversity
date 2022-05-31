@@ -45,10 +45,10 @@ function Config () {
         x()
     }
     function playConfig () {
-        if (userDB.premium === false){
-            setUserSuccess(false)
-            return
-        }
+        // if (userDB.premium === false){
+        //     setUserSuccess(false)
+        //     return
+        // }
         router.push('/PlayConfig')
     }
     function back () {

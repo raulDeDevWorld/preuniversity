@@ -10,6 +10,8 @@ import Error from '../components/Error'
 import Success from '../components/Success'
 import style from '../styles/PlayConfig.module.css'
 import {rob} from '../utils/robot'
+import BlackFont from '../components/BlackFont'
+import PremiumC from '../components/PremiumC'
 
 
 
@@ -76,58 +78,60 @@ function PlayConfig() {
     }, [userDB.sumaConfig, userDB.restaConfig, userDB.multiplicacionConfig, userDB.divisionConfig]);
     return (
         <PageEspecial>
-        <div className={style.main}>
-            {userDB !== 'loading' &&
-                <>
-                    <div className={style.container}>
-
-                        <img src="/robot.png" className={style.perfil} alt="user photo" />
-                        <p className={style.greeting}> Hola, {`${userDB.aName.split(' ')[0].toUpperCase()}`} configura el Play de tus estudiantes desde aqui...</p>
-
-
-                        <div className={style.box}>
-                            <button className={`${style.button} ${ mode== 'suma' ? style.right : ''}`} onClick={suma}>Suma</button>
-                            <button className={`${style.button} ${ mode == 'resta' ? style.right : ''}`} onClick={resta}>Resta</button>
-                        </div>
-                        <p className={style.greeting}>Selecciona una cifra...</p>
-                        <div className={`${style.boxSelect}`}>
-                            <span className={`${sumaConfig >= 9 && mode == 'suma'? style.green : ''} ${restaConfig >= 9 && mode == 'resta'? style.green : ''}`} onClick={() => cHandler(9)}>1 Cifra</span>
-                            <span className={`${sumaConfig >= 99 && mode == 'suma'? style.green : ''} ${restaConfig >= 99 && mode == 'resta'? style.green : ''}`} onClick={() => cHandler(99)}>2 Cifras</span>
-                            <span className={`${sumaConfig >= 999 && mode == 'suma'? style.green : ''} ${restaConfig >= 999 && mode == 'resta'? style.green : ''}`} onClick={() => cHandler(999)}>3 Cifras</span>
-                        </div>
-                         
-                        <div className={style.box}>
-                            <button className={`${style.button} ${modeTwo == 'multiplicacion' ? style.right : ''}`} onClick={multiplicacion}>Multiplicación</button>
-                            <button className={`${style.button} ${modeTwo == 'division' ? style.right : ''}`} onClick={division}>División</button>
-                        </div>
-                        <p className={style.greeting}>Selecciona una o mas tablas...</p>
-                        <div className={`${style.boxSelect}`}>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 0 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 0 ? style.green : ''}`} onClick={() => clickHandler(0)} >0</span> 
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 1 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 1 ? style.green : ''}`} onClick={() => clickHandler(1)} >1</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 2 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 2 ? style.green : ''}`} onClick={() => clickHandler(2)} >2</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 3 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 3 ? style.green : ''}`} onClick={() => clickHandler(3)} >3</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 4 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 4 ? style.green : ''}`} onClick={() => clickHandler(4)} >4</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 5 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 5 ? style.green : ''}`} onClick={() => clickHandler(5)} >5</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 6 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 6 ? style.green : ''}`} onClick={() => clickHandler(6)} >6</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 7 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 7 ? style.green : ''}`} onClick={() => clickHandler(7)} >7</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 8 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 8 ? style.green : ''}`} onClick={() => clickHandler(8)} >8</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 9 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 9 ? style.green : ''}`} onClick={() => clickHandler(9)} >9</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 10 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 10 ? style.green : ''}`} onClick={() => clickHandler(10)} >10</span>
-                            <span className={`${modeTwo == 'multiplicacion' && multiplicacionConfig >= 11 ? style.green : ''} ${modeTwo == 'division' && divisionConfig >= 11 ? style.green : ''}`} onClick={() => clickHandler(11)} >11</span>
-                        </div>
-
-                        <div className={style.buttonContainer}>         
-                            <button className={style.buttonGreen} onClick={back}>Atras</button>
-                            <button className={style.buttonGreen} onClick={save}>Guardar</button>
-                        </div>
-
+            { userDB !== null && userDB !== 'loading' &&
+                <div className={style.containerTwo}>
+          
                
-                    </div>
+                 
+                    <img src={`/robot.png`} className={style.robot} alt="user photo" />
+                    {/* <span >Config mode</span> */}
+      
+                    <BlackFont> 
+                        <span className={style.blueText}>Hola {userDB.aName.toUpperCase()} personaliza tu simulacro</span>
+                    </BlackFont> <br />
+                    <BlackFont>
+                        <div className={style.mainContainerBox}>
+                            <div className={style.blueText}>Tiempo</div>
+                            <div className={style.containerBoxSelect}>
+                                <div className={style.boxSelect}>5</div>
+                                <div className={style.boxSelect}>10</div>
+                                <div className={style.boxSelect}>15</div>
+                                <div className={style.boxSelect}>30</div>
+                                <div className={style.boxSelect}>60</div>
+                            </div>
+                            <div className={style.blueText}>Cantidad de preguntas</div>
+                            <div className={style.containerBoxSelect}>
+                                <div className={style.boxSelect}>5</div>
+                                <div className={style.boxSelect}>10</div>
+                                <div className={style.boxSelect}>15</div>
+                                <div className={style.boxSelect}>30</div>
+                                <div className={style.boxSelect}>60</div>
+                            </div>
+                            <div className={style.blueText}>dificultad</div>
+                            <div className={style.buttonsContainer}>
+                                <Button style='buttonBlackFontColorWhite'>Facil</Button>
+                                <div className={style.boxSelect}>5</div>
+                            </div>
+                            <div className={style.buttonsContainer}>
+                                <Button style='buttonBlackFontColorWhite'>Regular</Button>
+                                <div className={style.boxSelect}>5</div>
+                            </div>
+                            <div className={style.buttonsContainer}>
+                                <Button style='buttonBlackFontColorWhite'>Dificil</Button>
+                                <div className={style.boxSelect}>5</div>
+                            </div>
+                            <div className={style.buttonsContainer}>
+                                <Button style='buttonBlackFontColorWhite'>Aleatorio</Button>
+                                <div className={style.boxSelect}>5</div>
+                            </div>
 
-                </>}
-                {success ==true && <Success>Correcto</Success>}
-                {success == false && <Error>Tu profe pre-configuro tu play</Error>}
-        </div>
+                        </div>
+
+                        <Button style='successButton'>Finalizar</Button>
+                    </BlackFont>
+                    <PremiumC></PremiumC>
+                </div>
+            }
         </PageEspecial>
     )
 }
