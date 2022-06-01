@@ -1,24 +1,42 @@
 .container {
     position: absolute;
-    min-height: 550px;
+    min-height: 100vh;
     width: 100vw;
     background-image: linear-gradient(to top, #6282a1, #b4cadf, #ffffff);  
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: left top; 
-    overflow-x: hidden;
     
 }
 .mainContainer {
-    position: relative;
+    /* position: absolute;
     top: 0;
+    bottom: 0;
+    margin: auto;
     text-align: center;
     
-    padding: 10px;
     min-height: 100%;
     width: 100%;
+    border-radius: 10px; */
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 10px;
+    min-height: 100vh;
+    width: 100vw;
+    min-width: 300px;
+    max-width: 320px;
     border-radius: 10px;
+  
 }
 
 
