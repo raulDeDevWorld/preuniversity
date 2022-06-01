@@ -8,6 +8,8 @@ import { useRouter } from 'next/router'
 import { WithAuth } from '../HOCs/WithAuth'
 import style from '../styles/Home.module.css'
 import Error from '../components/Error'
+import BlackFont from '../components/BlackFont'
+
 
 
 function Welcome () {
@@ -45,8 +47,10 @@ function Welcome () {
         
         {avatar !== null &&
             <div className={style.containerTwo}>
+ 
                 <img src={`/${avatar}.png`} className={style.perfil} alt="avatar" />
                 <Subtitle> Ya casi terminas! <br /> llena el siguiente formulario </Subtitle>
+           
                 <form className={style.form}>
                     <label>
                         Nombre y apellido:
@@ -65,6 +69,7 @@ function Welcome () {
                         <Button style='buttonPrimary' click={nextClick}>Continuar</Button>
                     </div>
                 </form>
+        
             </div>
             }
     </PageLayout>

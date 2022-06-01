@@ -79,12 +79,11 @@ function PlayConfig() {
     return (
         <PageEspecial>
             { userDB !== null && userDB !== 'loading' &&
-                <div className={style.containerTwo}>
+                <div className={style.container}>
           
                
-                 
+                    <span className={style.config}>Config mode</span>
                     <img src={`/robot.png`} className={style.robot} alt="user photo" />
-                    {/* <span >Config mode</span> */}
       
                     <BlackFont> 
                         <span className={style.blueText}>Hola {userDB.aName.toUpperCase()} personaliza tu simulacro</span>

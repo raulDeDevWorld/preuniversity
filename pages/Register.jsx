@@ -8,6 +8,8 @@ import { handleSignOut } from '../firebase/utils.js'
 import Subtitle from '../components/Subtitle'
 import Error from '../components/Error'
 import Paragraph from '../components/Paragraph'
+import BlackFont from '../components/BlackFont'
+
 import style from '../styles/Home.module.css'
 import styleP from '../styles/Progress.module.css'
 import { useState } from 'react'
@@ -33,9 +35,11 @@ function Register() {
             {userDB === 'loading' && ''}
             {userDB === null &&
                 <div className={style.containerTwo}>
+                    
                     <img src={user.photoURL} className={style.perfil} alt="user photo" />
                     <Subtitle> Bienvenido (a): <br /> {`${user.displayName.toUpperCase()}`}</Subtitle>
                     <Paragraph>Elige tu avatar</Paragraph>
+               
                     <div className={style.avatarsContainer}>
                         <img src="/ab1.png" alt="avatar" className={`${style.avatarb1} ${avatar == 'ab1' ? style.right: ''}`} onClick={(e)=>{avatarClick('ab1')}}/>
                         <img src="/ab2.png" alt="avatar" className={`${style.avatarb2} ${avatar == 'ab2' ? style.right: ''}`} onClick={(e)=>{avatarClick('ab2')}}/>
@@ -45,6 +49,7 @@ function Register() {
                     <div className={style.buttonsContainer}>
                     <Button style='buttonSecondary' click={backOut}>Atras</Button><Button style='buttonPrimary' click={nextClick}>Continuar</Button>
                     </div>
+             
                 </div>
             }
         </PageLayout>

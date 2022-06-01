@@ -6,9 +6,8 @@ import { WithAuth } from '../HOCs/WithAuth'
 import {  userDataUpdate } from '../firebase/utils'
 import Subtitle from '../components/Subtitle'
 import Button from '../components/Button'
-import style from '../styles/Facultad.module.css'
-import styleH from '../styles/Home.module.css'
-
+import style from '../styles/Edu.module.css'
+import BlackFont from '../components/BlackFont'
 
 function Edu () {
     const {userDB} = useUser()
@@ -31,13 +30,15 @@ function Edu () {
 
 
     return (
-    <PageLayout className={style.container}>
+    <PageLayout>
         <div className={style.container}>
         {userDB && userDB.avatar && <>
-        <img src={`/${userDB.avatar}.png`} className={styleH.perfil} alt="avatar" />
+        <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="avatar" />
+            <BlackFont>
             <div>
-              <Subtitle>Muy bien {(`${userDB.name}`).split(' ')[0].toUpperCase()}</Subtitle>
-            <Subtitle>Donde te postularas</Subtitle>  
+                
+              <div className={style.subtitle}>Muy bien {(`${userDB.name}`).split(' ')[0].toUpperCase()}</div>
+            <div className={style.subtitle}>Donde te postularas</div>  
             </div>
             
             <div className={style.edu}>
@@ -45,6 +46,7 @@ function Edu () {
                 <Button style={'buttonPrimary'} click={()=>click('USFX')}>USFX</Button>
                 <Button style={'buttonSecondary'} click={back}>atras</Button>      
             </div> 
+            </BlackFont>
         </>}
         </div>
     </PageLayout>

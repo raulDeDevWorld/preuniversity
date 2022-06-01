@@ -41,6 +41,7 @@ function Carrera () {
     
 	}
 
+    console.log(uniData)
 
     useEffect(() => {
         userDB.university ? getFac(userDB.university, setUniversityData): ''
@@ -52,7 +53,7 @@ function Carrera () {
             {uniData && userDB? 
                 <BlackFont> 
                     <ul className={style.list}>
-                        {uniData.fac[userDB.facDB].carreras.map((c, i) => <li className={`${style.li} ${c == career ? style.active : ''}`} key={i} onClick={() => setCareerData(c)}>{c}</li>)}
+                        { uniData.fac[userDB.facDB].carreras.map((c, i) => <li className={`${style.li} ${c == career ? style.active : ''}`} key={i} onClick={() => setCareerData(c)}>{c}</li>) }
                     </ul>
                 </BlackFont>
             : ''}
