@@ -59,7 +59,42 @@
   justify-content: space-between;
   align-items: center;
 }
+.button {
+  cursor: pointer;
+  font-size: 12px;
 
+  width: 200px;
+  margin: 2px;
+  padding: 5px 1px; 
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #486bad3c;
+  border: 2px solid #486bad3c;    
+
+  transition-duration: .5s;
+}
+.boxSelectNow {
+  color: #000000;
+  background-color: #00F0FF;
+}
+.button:hover {
+  color: #ffffff;
+    background-color: #52FF00;
+    border: 2px solid #486bad3c; 
+
+}
+.boxSelect:hover {
+  color: #ffffff;
+    background-color: #52FF00;
+    border: 2px solid #486bad3c; 
+
+}
+.green {
+  color: #ffffff;
+    background-color: #52FF00;
+    border: 2px solid #486bad3c; 
+
+}
 
 @media (min-width: 900px) { 
   .container {

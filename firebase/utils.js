@@ -94,7 +94,7 @@ function onAuth(setUserProfile, setUserData) {
       return onAuthStateChanged(auth, (user) => {
             if (user) {
                   setUserProfile(user)
-                  getData(user, setUserData)
+                  getData(user.uid, setUserData)
             } else {
                   setUserProfile(user)
             }
@@ -103,12 +103,12 @@ function onAuth(setUserProfile, setUserData) {
 
   
 
-function getData (user, setUserData){
+function getData (uid, setUserData){
       get(data).then((snapshot) => {
-            var b = snapshot.child(user.uid).exists();               
+            var b = snapshot.child(uid).exists();               
             if (b == true) {
                   let obj = snapshot.val() 
-                  setUserData(obj[user.uid])
+                  setUserData(obj[uid])
             } else {
                   setUserData(null)
             }
@@ -130,6 +130,11 @@ function dataUser (aName, school, cell, avatar) {
             avatar,
             premium: false,
             uid,
+            config: {
+                  time: 15,
+                  questions: 10,
+                  difficulty: 'aleatorio',
+            }
           })
           .then(() => {
             // Data saved successfully!
@@ -139,10 +144,11 @@ function dataUser (aName, school, cell, avatar) {
           });
 }
 
-function userDataUpdate (object) {
+function userDataUpdate (object, setUserData) {
       const uid = auth.currentUser.uid
 
       update(ref(db, `users/${uid}`), object)
+      getData(uid, setUserData)
 }
 
 function getFac (university, setUniversityData) {

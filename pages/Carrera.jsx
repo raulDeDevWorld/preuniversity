@@ -14,20 +14,20 @@ import { firebaseConfig } from '../firebase/config.js'
 function Carrera () {
 
     const router = useRouter()
-    const {userDB, uniData, setUniversityData} = useUser()
+    const {userDB, uniData, setUniversityData, setUserData} = useUser()
     const [career, setCareer] = useState(null)
 
     function continuar () {
         if(career !== null){
             const materiasDB = uniData.fac[userDB.facDB].materias
             const obj = materiasDB.reduce(function(target, key, index) {
-                target[key] = 0
+                target[key] = false
                 return target;
               }, {})
-              console.log(obj)
+
             userDataUpdate({
-                materias: obj
-            })  
+                subjects: obj
+            }, setUserData)  
             router.push('/Home')
         } 
     }
@@ -42,13 +42,14 @@ function Carrera () {
 	}
 
     console.log(uniData)
+    console.log(userDB.facDB)
 
     useEffect(() => {
         userDB.university ? getFac(userDB.university, setUniversityData): ''
     }, [userDB, career]);
     return (
     <PageLayout>
-        <div className={style.container}>
+        {userDB.facDB && <div className={style.container}>
             <Subtitle>Elije tu facultad</Subtitle>
             {uniData && userDB? 
                 <BlackFont> 
@@ -61,7 +62,7 @@ function Carrera () {
                 <Button style={'buttonSecondary'} click={back}>atras</Button> 
                 <Button style={'buttonPrimary'} click={continuar}>continuar</Button>    
             </div>
-        </div>
+        </div>}
     </PageLayout>
     )
 }

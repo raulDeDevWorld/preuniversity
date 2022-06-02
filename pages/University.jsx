@@ -12,7 +12,7 @@ import style from '../styles/Facultad.module.css'
 
 function Facultad (props) {
     const router = useRouter()
-    const {userDB, uniData, setUniversityData} = useUser()
+    const {userDB, uniData, setUniversityData, setUserData} = useUser()
 
     const [fac, setFac] = useState(null)
     const [facDB, setFacDB] = useState(null)
@@ -24,7 +24,7 @@ function Facultad (props) {
                 fac,
                 facDB,
             }
-            userDataUpdate(object)  
+            userDataUpdate(object, setUserData)  
             router.push('/Carrera')
         } 
     }
@@ -36,7 +36,8 @@ function Facultad (props) {
         setFac(fac)
         setFacDB(facDB)
 	}
-
+    console.log(uniData)
+    console.log(userDB)
 
     useEffect(() => {
         userDB.university ? getFac(userDB.university, setUniversityData): ''

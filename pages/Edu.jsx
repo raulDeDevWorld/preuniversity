@@ -10,13 +10,13 @@ import style from '../styles/Edu.module.css'
 import BlackFont from '../components/BlackFont'
 
 function Edu () {
-    const {userDB} = useUser()
+    const {userDB, uniData, setUserData} = useUser()
     const router = useRouter()
 
   
     function click (university) {
         const object = {university,}
-        userDataUpdate(object)
+        userDataUpdate(object, setUserData)
         router.push(`/University`)
     }
 
@@ -27,7 +27,7 @@ function Edu () {
     // useEffect(() => {
     //     userDB === null ? router.push('/Register'): ''
     // }, [userDB]);
-
+console.log(uniData)
 
     return (
     <PageLayout>
