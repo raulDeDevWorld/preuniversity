@@ -59,9 +59,9 @@ function PlayConfig() {
     function save () {
         const object = {
             config: {
-                time,
-                questions,
-                difficulty,
+                time: time == null ? userDB.config.time : time,
+                questions:  questions == null ? userDB.config.questions : questions,
+                difficulty: difficulty == null ? userDB.config.difficulty : difficulty, 
           }
         }
         userDataUpdate(object, setUserData)
