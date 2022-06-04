@@ -1,17 +1,19 @@
-import Button from '../components/Button'
-import Subtitle from '../components/Subtitle'
+import Button from '../../components/Button'
+import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
-import PageEspecial from '../layouts/PageEspecial'
-import { useUser } from '../context/Context.js'
-import {  userDataUpdate, getData } from '../firebase/utils'
+import PageEspecial from '../../layouts/PageEspecial'
+import { useUser } from '../../context/Context.js'
+import {  userDataUpdate, getData } from '../../firebase/utils'
 import { useRouter } from 'next/router'
-import { WithAuth } from '../HOCs/WithAuth'
-import Error from '../components/Error'
-import Success from '../components/Success'
-import style from '../styles/PlayConfig.module.css'
-import {rob} from '../utils/robot'
-import BlackFont from '../components/BlackFont'
-import PremiumC from '../components/PremiumC'
+import { WithAuth } from '../../HOCs/WithAuth'
+import Error from '../../components/Error'
+import Success from '../../components/Success'
+import style from '../../styles/PlayConfig.module.css'
+import {rob} from '../../utils/robot'
+import BlackFont from '../../components/BlackFont'
+import PremiumC from '../../components/PremiumC'
+
+
 
 
 
@@ -21,37 +23,17 @@ function PlayConfig() {
     const [time, setTime] = useState(null)
     const [questions, setQuestions] = useState(null)
     const [difficulty, setDifficulty] = useState(null)
-    
-
-
-
 
     const router = useRouter()
 
 
-
-    // function suma () {
-    //     setMode('suma')
-    // }
-    // function resta () {
-    //     setMode('resta')
-    // }
-    // function multiplicacion() {
-    //     setModeTwo('multiplicacion')
-    // }
-    // function division() {
-    //     setModeTwo('division')
-    // }
-
-
-  
-    function cHandler (n) {
-        
+    function changeManager () {
+        const query = router.query.User
     }
-    function clickHandler (n) {
-        
-      
-    }
+
+
+
+
 
     function back () {
         router.back()
@@ -69,10 +51,10 @@ function PlayConfig() {
         setQuestions(null)
         setDifficulty(null)
     }
-    console.log(userDB)
+ 
 
     useEffect( () => {
-
+      
     });
     return (
         <PageEspecial>
@@ -84,7 +66,7 @@ function PlayConfig() {
                     <img src={`/robot.png`} className={style.robot} alt="user photo" />
       
                     <BlackFont> 
-                        <span className={style.blueText}>Hola {userDB.aName.toUpperCase()} personaliza tu simulacro</span>
+                        <span className={style.blueText}>{router.query.Config}</span>
                     </BlackFont> <br />
                     <BlackFont>
                         <div className={style.mainContainerBox}>
@@ -104,7 +86,7 @@ function PlayConfig() {
                                 <div className={`${style.boxSelect} ${userDB.config.questions == 30 ? style.boxSelectNow :''} ${questions == 30 ? style.green :''}`} onClick={()=>setQuestions(30)}>30</div>
                                 <div className={`${style.boxSelect} ${userDB.config.questions == 60 ? style.boxSelectNow :''} ${questions == 60 ? style.green :''}`} onClick={()=>setQuestions(60)}>60</div>
                             </div>
-                            <div className={style.blueText}>dificultad</div>
+                            <div className={style.blueText}>Dificultad</div>
                             <div className={style.buttonsContainer}>
                                 <button className={`${style.button} ${userDB.config.difficulty == 'facil' ? style.boxSelectNow :''} ${difficulty == 'facil' ? style.green :''}`} onClick={()=>setDifficulty('facil')}>Facil</button>
                                 <div className={style.boxSelect}>5p</div>

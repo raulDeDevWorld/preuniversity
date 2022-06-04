@@ -42,7 +42,7 @@ function Play() {
                     
                     <BlackFont> 
                     <div className={style.buttonContainer}>
-                    {Object.keys(userDB.materias).map((m, i)=>
+                    {Object.keys(userDB.subjects).map((m, i)=>
 
                         <Button key={i} style='buttonBlackFont' click={()=>next(m)}>{m}</Button>
                     )}

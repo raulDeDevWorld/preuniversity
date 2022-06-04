@@ -12,7 +12,7 @@ export function UserProvider ({ children }) {
 	const [success, setSuccess] = useState(null)
 	const [uniData, setUniData] = useState(null)
 	const [simulacro, setSimulacro] = useState(null)
-
+	console.log(simulacro)
 	function setUniversityData (data) {
 		setUniData(data)
 	}

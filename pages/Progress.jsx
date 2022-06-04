@@ -63,8 +63,8 @@ function Progress() {
                     {userDB.id ? <span className={`${style.subtitle} ${style.left} `}>Prof. Id: <span className={style.orange}>{userDB.id}</span></span> : <span className={style.subtitle}>Comparte tus progresos con tu profe.</span>}<br/>
                     <div className={style.grid}>
                         
-                        {Object.keys(userDB.materias).map((m, i)=>
-                            <ProgressC key={i} progress={userDB.materias[m]} errors={userDB.materias[m]} text={m}></ProgressC>
+                        {Object.keys(userDB.subjects).map((m, i)=>
+                            <ProgressC key={i} progress={userDB.subjects[m]} errors={userDB.subjects[m]} text={m}></ProgressC>
                         )}
                    
                     

@@ -1,14 +1,14 @@
 
 import { useState, useEffect } from 'react'
-import { useUser } from '../context/Context.js'
-import { setProgress, setErrors } from '../firebase/utils'
+import { useUser } from '../../context/Context.js'
+import { setProgress, setErrors } from '../../firebase/utils'
 import { useRouter } from 'next/router'
-import Error from '../components/Error'
-import Button from '../components/Button'
-import BlackFont from '../components/BlackFont'
-import PageEspecial from '../layouts/PageEspecial'
-import { WithAuth } from '../HOCs/WithAuth'
-import style from '../styles/Simulacro.module.css'
+import Error from '../../components/Error'
+import Button from '../../components/Button'
+import BlackFont from '../../components/BlackFont'
+import PageEspecial from '../../layouts/PageEspecial'
+import { WithAuth } from '../../HOCs/WithAuth'
+import style from '../../styles/Simulacro.module.css'
 
 
 

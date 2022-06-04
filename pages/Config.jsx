@@ -7,10 +7,9 @@ import { useState, useEffect } from 'react'
 import { progressReset } from '../firebase/utils'
 import Error from '../components/Error'
 import Success from '../components/Success'
+import BlackFont from '../components/BlackFont'
+
 import Modal from '../components/Modal'
-
-
-
 
 import style from '../styles/Config.module.css'
 import router from 'next/router'
@@ -44,12 +43,12 @@ function Config () {
         }
         x()
     }
-    function playConfig () {
+    function configSimulacro () {
         // if (userDB.premium === false){
         //     setUserSuccess(false)
         //     return
         // }
-        router.push('/PlayConfig')
+        router.push('/ConfigSimulacro')
     }
     function back () {
         router.back()
@@ -89,14 +88,18 @@ function Config () {
         <div className={style.container}>
             <span className={style.orange}>Config Mode</span>
             <img src="/robot.png" className={style.robot} alt="user photo" />
-            <span className={style.title}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`}<br /> {userDB.profesor == true? 'Personaliza tu cuenta desde aqui': 'Modifica tu perfil desde aqui' }</span>
+            <BlackFont>
+            <span className={style.title}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
+            </BlackFont><br />
+            <BlackFont>
             <div className={style.box}>
-            <Button style='buttonPrimary' click={avatar}>Avatar</Button>
-            <Button style='buttonPrimary'click={data}>Datos de perfil</Button>
-            <Button style='buttonPrimary' click={reset}>Resetear progreso </Button>
-            <Button style='buttonPrimary' click={playConfig}>Play Config</Button>
+            <Button style='buttonBlackFont' click={avatar}>Avatar</Button>
+            <Button style='buttonBlackFont'click={data}>Datos de perfil</Button>
+            <Button style='buttonBlackFont' click={reset}>Resetear progreso </Button>
+            <Button style='buttonBlackFont' click={configSimulacro}>Play Config</Button>
             <Button style='buttonSecondary' click={back}>Atras</Button>
             </div>
+            </BlackFont>
             <PremiumC></PremiumC>
          </div> 
         }
