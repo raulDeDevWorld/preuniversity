@@ -120,7 +120,6 @@ function getData (uid, setUserData){
 function dataUser (aName, school, cell, avatar) {
       const name = auth.currentUser.displayName
       const uid = auth.currentUser.uid
-     
 
       set(ref(db, `users/${uid}`), {
             name,
@@ -130,11 +129,6 @@ function dataUser (aName, school, cell, avatar) {
             avatar,
             premium: false,
             uid,
-            config: {
-                  time: 15,
-                  questions: 10,
-                  difficulty: 'aleatorio',
-            }
           })
           .then(() => {
             // Data saved successfully!
@@ -144,9 +138,14 @@ function dataUser (aName, school, cell, avatar) {
           });
 }
 
-function userDataUpdate (object, setUserData) {
+function userDataUpdate (object, setUserData, query) {
       const uid = auth.currentUser.uid
 
+      if(query){
+            update(ref(db, `users/${uid}/subjects/${query.toLowerCase()}`), object)
+            getData(uid, setUserData)
+            return
+      }
       update(ref(db, `users/${uid}`), object)
       getData(uid, setUserData)
 }
@@ -184,7 +183,253 @@ function manageSimulacro (materia, university, setUserSimulacro) {
           });
       }
 
+function getEspecificData (university, materia, userDifFicult, setUserSimulacro){
+      get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
 
+                  let obj = snapshot.val() 
+                  console.log(obj)
+
+                  obj.reduce((array, item)=>{
+                        item.id 
+                  }, [])
+                  setUserSimulacro(obj)
+         
+            }).catch((error) => {
+            console.error(error);
+            });
+}
+
+
+
+
+
+function spam () {
+      for (let index = 0; index < 1; index++) {
+            update(ref(db, `usfx/Banco/lenguaje/`),{
+                  0:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:1
+                  },
+                  1:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:2
+                  },
+                  2:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:3
+                  },
+                  3:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:4
+                  },
+                  4:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:5
+                  },
+                  5:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:6
+                  },
+                  6:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:7
+                  },
+                  7:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:8
+                  },
+                  8:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:9
+                  },
+                  9:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:10
+                  },
+                  10:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:11
+                  },
+                  11:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:12
+                  },
+                  12:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:13
+                  },
+                  13:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:14
+                  },
+                  14:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:15
+                  },
+                  15:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:16
+                  },
+                  16:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:17
+                  },
+                  17:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:18
+                  },
+                  18:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:19
+                  },
+                  19:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:20
+                  },
+                  20:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:21
+                  },
+                  21:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:22
+                  },
+                  22:{
+                        pregunta: 'Cual de las siguientes opciones es un verbo?',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id:23
+                  },
+                  23:{
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id:24
+                  },
+      })
+      }
+}
+
+
+
+
+export { manageSimulacro, userDataUpdate, getFac,  onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getEspecificData }
 
 // function query(id, setTeacherId, userUid, name, setUserSuccess, setAlert ){
 //       ids.on('value', function(snapshot){  
@@ -439,4 +684,3 @@ function manageSimulacro (materia, university, setUserSimulacro) {
 //       db.ref(`teachers/${uid}`).update({reset : mode})
 // }
 // export { manageSimulacro, userDataUpdate, getFac, query, progressResetTeacher, newStudent, playDificult, userDelete, auth, onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getIds, getProgress, getCode, avatarUpdate, progressReset, setProgress, setErrors }
-export { manageSimulacro, userDataUpdate, getFac,  onAuth, withFacebook, withGoogle, handleSignOut, dataUser }

@@ -27,26 +27,18 @@ function PlayConfig() {
     const router = useRouter()
 
 
-    function changeManager () {
-        const query = router.query.User
-    }
-
-
-
-
-
     function back () {
         router.back()
     }
     function save () {
         const object = {
             config: {
-                time: time == null ? userDB.config.time : time,
-                questions:  questions == null ? userDB.config.questions : questions,
-                difficulty: difficulty == null ? userDB.config.difficulty : difficulty, 
+                time: time == null ? userDB.subjects[router.query.Config.toLowerCase()].config.time : time,
+                questions:  questions == null ? userDB.subjects[router.query.Config.toLowerCase()].config.questions : questions,
+                difficulty: difficulty == null ? userDB.subjects[router.query.Config.toLowerCase()].config.difficulty : difficulty, 
           }
         }
-        userDataUpdate(object, setUserData)
+        userDataUpdate(object, setUserData, router.query.Config)
         setTime(null)
         setQuestions(null)
         setDifficulty(null)
@@ -72,36 +64,36 @@ function PlayConfig() {
                         <div className={style.mainContainerBox}>
                             <div className={style.blueText}>Tiempo</div>
                             <div className={style.containerBoxSelect}>
-                                <div className={`${style.boxSelect} ${userDB.config.time == 5 ? style.boxSelectNow :''} ${time == 5 ? style.green :''}`} onClick={()=>setTime(5)}>5</div>
-                                <div className={`${style.boxSelect} ${userDB.config.time == 10 ? style.boxSelectNow :''} ${time == 10 ? style.green :''}`} onClick={()=>setTime(10)}>10</div>
-                                <div className={`${style.boxSelect} ${userDB.config.time == 15 ? style.boxSelectNow :''} ${time == 15 ? style.green :''}`} onClick={()=>setTime(15)}>15</div>
-                                <div className={`${style.boxSelect} ${userDB.config.time == 30 ? style.boxSelectNow :''} ${time == 30 ? style.green :''}`} onClick={()=>setTime(30)}>30</div>
-                                <div className={`${style.boxSelect} ${userDB.config.time == 60 ? style.boxSelectNow :''} ${time == 60 ? style.green :''}`} onClick={()=>setTime(60)}>60</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 5 ? style.boxSelectNow :''} ${time == 5 ? style.green :''}`} onClick={()=>setTime(5)}>5</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 10 ? style.boxSelectNow :''} ${time == 10 ? style.green :''}`} onClick={()=>setTime(10)}>10</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 15 ? style.boxSelectNow :''} ${time == 15 ? style.green :''}`} onClick={()=>setTime(15)}>15</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 30 ? style.boxSelectNow :''} ${time == 30 ? style.green :''}`} onClick={()=>setTime(30)}>30</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 60 ? style.boxSelectNow :''} ${time == 60 ? style.green :''}`} onClick={()=>setTime(60)}>60</div>
                             </div>
                             <div className={style.blueText}>Cantidad de preguntas</div>
                             <div className={style.containerBoxSelect}>
-                                <div className={`${style.boxSelect} ${userDB.config.questions == 5 ? style.boxSelectNow :''} ${questions == 5 ? style.green :''}`} onClick={()=>setQuestions(5)}>5</div>
-                                <div className={`${style.boxSelect} ${userDB.config.questions == 10 ? style.boxSelectNow :''} ${questions == 10 ? style.green :''}`} onClick={()=>setQuestions(10)}>10</div>
-                                <div className={`${style.boxSelect} ${userDB.config.questions == 15 ? style.boxSelectNow :''} ${questions == 15 ? style.green :''}`} onClick={()=>setQuestions(15)}>15</div>
-                                <div className={`${style.boxSelect} ${userDB.config.questions == 30 ? style.boxSelectNow :''} ${questions == 30 ? style.green :''}`} onClick={()=>setQuestions(30)}>30</div>
-                                <div className={`${style.boxSelect} ${userDB.config.questions == 60 ? style.boxSelectNow :''} ${questions == 60 ? style.green :''}`} onClick={()=>setQuestions(60)}>60</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.questions == 5 ? style.boxSelectNow :''} ${questions == 5 ? style.green :''}`} onClick={()=>setQuestions(5)}>5</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.questions == 10 ? style.boxSelectNow :''} ${questions == 10 ? style.green :''}`} onClick={()=>setQuestions(10)}>10</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.questions == 15 ? style.boxSelectNow :''} ${questions == 15 ? style.green :''}`} onClick={()=>setQuestions(15)}>15</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.questions == 30 ? style.boxSelectNow :''} ${questions == 30 ? style.green :''}`} onClick={()=>setQuestions(30)}>30</div>
+                                <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.questions == 60 ? style.boxSelectNow :''} ${questions == 60 ? style.green :''}`} onClick={()=>setQuestions(60)}>60</div>
                             </div>
                             <div className={style.blueText}>Dificultad</div>
                             <div className={style.buttonsContainer}>
-                                <button className={`${style.button} ${userDB.config.difficulty == 'facil' ? style.boxSelectNow :''} ${difficulty == 'facil' ? style.green :''}`} onClick={()=>setDifficulty('facil')}>Facil</button>
+                                <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'facil' ? style.boxSelectNow :''} ${difficulty == 'facil' ? style.green :''}`} onClick={()=>setDifficulty('facil')}>Facil</button>
                                 <div className={style.boxSelect}>5p</div>
                             </div>
                             <div className={style.buttonsContainer}>
-                                <button className={`${style.button} ${userDB.config.difficulty == 'regular' ? style.boxSelectNow :''} ${difficulty == 'regular' ? style.green :''}`} onClick={()=>setDifficulty('regular')}>Regular</button>
+                                <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'regular' ? style.boxSelectNow :''} ${difficulty == 'regular' ? style.green :''}`} onClick={()=>setDifficulty('regular')}>Regular</button>
                                 <div className={style.boxSelect}>5p</div>
                             </div>
                             <div className={style.buttonsContainer}>
-                                <button className={`${style.button} ${userDB.config.difficulty == 'dificil' ? style.boxSelectNow :''} ${difficulty == 'dificil' ? style.green :''}`} onClick={()=>setDifficulty('dificil')}>Dificil</button>
+                                <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'dificil' ? style.boxSelectNow :''} ${difficulty == 'dificil' ? style.green :''}`} onClick={()=>setDifficulty('dificil')}>Dificil</button>
                                 <div className={style.boxSelect}>5p</div>
                             </div>
                             <div className={style.buttonsContainer}>
-                                <button className={`${style.button} ${userDB.config.difficulty == 'aleatorio' ? style.boxSelectNow :''} ${difficulty == 'aleatorio' ? style.green :''}`} onClick={()=>setDifficulty('aleatorio')}>Aleatorio</button>
-                                <div className={style.boxSelect}>5p</div>
+                                <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'aleatorio' ? style.boxSelectNow :''} ${difficulty == 'aleatorio' ? style.green :''}`} onClick={()=>setDifficulty('aleatorio')}>Aleatorio</button>
+                                <div className={style.boxSelect}>{'500'}p</div>
                             </div>
 
                         </div>

@@ -1,109 +1,68 @@
-
-import { useState, useEffect } from 'react'
-import { useUser } from '../../context/Context.js'
-import { setProgress, setErrors } from '../../firebase/utils'
-import { useRouter } from 'next/router'
-import Error from '../../components/Error'
 import Button from '../../components/Button'
-import BlackFont from '../../components/BlackFont'
-import PageEspecial from '../../layouts/PageEspecial'
+import PremiumC from '../../components/PremiumC'
+import { useRouter } from 'next/router'
+import PageLayout from '../../layouts/PageLayout'
 import { WithAuth } from '../../HOCs/WithAuth'
-import style from '../../styles/Simulacro.module.css'
+import { useUser } from '../../context/Context.js'
+import { manageSimulacro } from '../../firebase/utils'
+import Subtitle from '../../components/Subtitle'
+import BlackFont from '../../components/BlackFont'
+import Link from 'next/link'
+import style from '../../styles/Home.module.css'
 
 
 
+function Play() { 
+    const { userDB, setUserSimulacro } = useUser()
 
-function Simulacro () {
-    const { userDB,  setUserSuccess, success, simulacro } = useUser()
-    const [objet, setObjet] = useState(null)
-    const [countR, setCountR] = useState(0)
-    const [countE, setCountE] = useState(0)
-    
     const router = useRouter()
-    function obj (){
-        const dificult = 10
-        const nOne = Math.floor(Math.random()*(dificult-1))+1
-        const nTwo = Math.floor(Math.random()*(dificult-0))+0
-        const ale = () => Math.floor(Math.random()*(11-1))+1
-        const nFour = Math.floor(Math.random()*(5-1))+1
-        const res = nOne+nTwo
-        const errO = nOne == nTwo || nOne == 0 || nTwo == 0? ale(): nOne
-        const errT = nOne == nTwo || nOne == 0 || nTwo == 0? ale(): nTwo
 
-        setObjet({
-            nOne,
-            nTwo,
-            nFour,
-            res,
-            errO,
-            errT,
-            correct: null,
-            selected: null,
-        })
-      
-    }
-    console.log(simulacro)
-    function select (n) {
-
-        if (userDB.premium === false && userDB.s + userDB.es > 30) {
-            setUserSuccess(false) 
-        return}
-
-        const s = userDB.s
-        const e = userDB.es
-        const o ={
-            correct: true, selected: n,
-        }
-        setObjet({...objet, ...o,})
-        setTimeout(obj, 1500)
-        // n == objet.nFour ? setProgress(s+1, userDB.profesor, 's') : setErrors(e+1, userDB.profesor, 's')
-        // n == objet.nFour ? setCountR(countR+1) : setCountE(countE+1)
+    function next (materia) {
+        manageSimulacro(materia, userDB.university, setUserSimulacro)
+        router.push('/Simulacro')
     }
 
-    function nextClick () {
+    function back () {
         router.back()
     }
-
-    useEffect( () => {
-        obj() 
-    }, [userDB.sumaConfig]);
+ 
     return (
-<PageEspecial>
-        <div className={style.main}>
-        {userDB !== 'loading' &&
-            <>
-            <div className={style.container}>
-                <img src={`/robot.png`} className={style.perfil} alt="user photo" />
-                <div className={style.textCont}>
-                    <span className={style.white}>N: {`${userDB.aName.split(' ')[0].toUpperCase()}`}</span>
-                    <div className={style.contRE}>
-                        <span className={style.e}>{countE}</span>
-                        <span className={style.r}>{countR}</span>
+        <>
+        <PageLayout>
+            {userDB === 'loading' && ''}
+           
+            { userDB !== null && userDB !== 'loading' &&
+                <div className={style.containerTwo}>
+                    {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
+                    {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
+                 
+                    <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                    <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Bienvenido': 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
+                    
+                    
+                    <BlackFont> 
+                    <div className={style.buttonContainer}>
+                    {Object.keys(userDB.subjects).map((m, i)=>
+
+                        <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
+                            <a className={style.link}>
+                                <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                            </a>
+                        </Link>
+                    )}
+                    <Button style='buttonSecondary'click={back}>Atras</Button>
                     </div>
+                    
+                    </BlackFont> 
+                    
+                    <PremiumC></PremiumC>
                 </div>
-                {objet !== null &&
-                <>
-                    <BlackFont>
-                        
-                            </BlackFont>
-                            <BlackFont>
-                                <div className={style.answersContainer}>
-                                    <div className={`${style.box} ${objet.selected == 1 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 1 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(1) }} >{objet.nFour == 1 ? objet.res : objet.res + 5} </div>
-                                    <div className={`${style.box} ${objet.selected == 2 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 2 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(2) }} >{objet.nFour == 2 ? objet.res : objet.res + 8} </div>
-                                    <div className={`${style.box} ${objet.selected == 3 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 3 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(3) }} >{objet.nFour == 3 ? objet.res : objet.res - 8} </div>
-                                    <div className={`${style.box} ${objet.selected == 4 && objet.selected !== objet.nFour ? style.red : ''}  ${objet.selected !== null && 4 == objet.nFour ? style.green : ''}`} onClick={(e) => { select(4) }} >{objet.nFour == 4 ? objet.res : objet.res - 5} </div>
-                                    <button className={style.button} onClick={nextClick}>Finalizar</button>
-                                </div>
-                            </BlackFont>
-
-                </>}
-           </div>
-           </>}
-           {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
-        </div>
-</PageEspecial>
+            }
+    
+        </PageLayout>
+ 
+        </>
     )
-
-
 }
-export default WithAuth(Simulacro)
+
+export default WithAuth(Play)

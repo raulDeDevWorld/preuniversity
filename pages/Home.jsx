@@ -26,7 +26,7 @@ function Home() {
         userDB.profesor == true ? router.push('/Progreso'): router.push('/Progress')
     }
     function play () {
-        router.push('/Play')
+        router.push('/Simulacro')
     }
     function robot () {
         router.push('/Robot')

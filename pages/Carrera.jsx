@@ -21,7 +21,13 @@ function Carrera () {
         if(career !== null){
             const materiasDB = uniData.fac[userDB.facDB].materias
             const obj = materiasDB.reduce(function(target, key, index) {
-                target[key] = false
+                target[key] = {
+                    config: {
+                    time: 15,
+                    questions: 10,
+                    difficulty: 'aleatorio',
+                }          
+              }
                 return target;
               }, {})
 
