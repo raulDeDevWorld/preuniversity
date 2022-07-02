@@ -31,7 +31,7 @@ function Home() {
     function robot () {
         router.push('/Robot')
     }
-    console.log(userDB)
+
     useEffect(() => {
         userDB === null? router.push('/Register'): ''
     }, [userDB]);

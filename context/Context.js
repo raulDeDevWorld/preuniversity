@@ -11,8 +11,9 @@ export function UserProvider ({ children }) {
 	const [progress, setProgress] = useState([])
 	const [success, setSuccess] = useState(null)
 	const [uniData, setUniData] = useState(null)
+	const [bank, setBank] = useState(null)
 	const [simulacro, setSimulacro] = useState(null)
-	console.log(simulacro)
+
 	function setUniversityData (data) {
 		setUniData(data)
 	}
@@ -35,8 +36,16 @@ export function UserProvider ({ children }) {
 		setSuccess(mode)
 		setTimeout(()=>{ setSuccess(null)}, 4000)
 	}
-	function setUserSimulacro (obj) {
-		setSimulacro(obj)
+	function setUserBank (obj) {
+		setBank(obj)
+	}
+	function setUserSimulacro (arr, cantidad) {
+		for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1)); //random index
+            [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
+        }
+        return setSimulacro(arr.slice([0-cantidad]))
+		
 	}
 	const value = useMemo(()=>{
 		return ({
@@ -47,6 +56,7 @@ export function UserProvider ({ children }) {
 			id,
 			progress,
 			success,
+			bank,
 			simulacro,
 			setUniversityData,
 			setUserProfile,
@@ -55,9 +65,10 @@ export function UserProvider ({ children }) {
 			setTeacherId,
 			setStudentsProgress,
 			setUserSuccess,
+			setUserBank,
 			setUserSimulacro
 		})
-	}, [simulacro, uniData, avatar, user, userDB, id, success, progress])
+	}, [bank, simulacro, uniData, avatar, user, userDB, id, success, progress])
 
 	return (
 		<UserContext.Provider value={value} >

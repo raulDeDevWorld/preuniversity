@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, get , set, update, onValue, child, } from "firebase/database";
+import { getDatabase, ref, get, set, update, onValue, child, } from "firebase/database";
 import { firebaseConfig } from './config'
 
 
@@ -101,23 +101,23 @@ function onAuth(setUserProfile, setUserData) {
       });
 }
 
-  
 
-function getData (uid, setUserData){
+
+function getData(uid, setUserData) {
       get(data).then((snapshot) => {
-            var b = snapshot.child(uid).exists();               
+            var b = snapshot.child(uid).exists();
             if (b == true) {
-                  let obj = snapshot.val() 
+                  let obj = snapshot.val()
                   setUserData(obj[uid])
             } else {
                   setUserData(null)
             }
-          }).catch((error) => {
+      }).catch((error) => {
             console.error(error);
-          });
+      });
 }
 
-function dataUser (aName, school, cell, avatar) {
+function dataUser(aName, school, cell, avatar) {
       const name = auth.currentUser.displayName
       const uid = auth.currentUser.uid
 
@@ -129,19 +129,19 @@ function dataUser (aName, school, cell, avatar) {
             avatar,
             premium: false,
             uid,
-          })
-          .then(() => {
-            // Data saved successfully!
-          })
-          .catch((error) => {
-            // The write failed...
-          });
+      })
+            .then(() => {
+                  // Data saved successfully!
+            })
+            .catch((error) => {
+                  // The write failed...
+            });
 }
 
-function userDataUpdate (object, setUserData, query) {
+function userDataUpdate(object, setUserData, query) {
       const uid = auth.currentUser.uid
 
-      if(query){
+      if (query) {
             update(ref(db, `users/${uid}/subjects/${query.toLowerCase()}`), object)
             getData(uid, setUserData)
             return
@@ -150,286 +150,293 @@ function userDataUpdate (object, setUserData, query) {
       getData(uid, setUserData)
 }
 
-function getFac (university, setUniversityData) {
+function getFac(university, setUniversityData) {
 
       get(ref(db, `/${university.toLowerCase()}`)).then((snapshot) => {
             if (snapshot.exists()) {
-                  let obj = snapshot.val() 
+                  let obj = snapshot.val()
                   console.log(obj)
                   setUniversityData(obj)
             } else {
                   setUniversityData(null)
             }
-          }).catch((error) => {
+      }).catch((error) => {
             console.error(error);
-          });
+      });
 }
 
 
 
-function manageSimulacro (materia, university, setUserSimulacro) {
+function manageSimulacro(materia, university, setUserSimulacro) {
       const uid = auth.currentUser.uid
 
       get(ref(db, `/${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
             if (snapshot.exists()) {
-                  let object = snapshot.val() 
+                  let object = snapshot.val()
                   // setUserData(obj[user.uid])
                   setUserSimulacro(object)
             } else {
                   setUserData(null)
             }
-          }).catch((error) => {
+      }).catch((error) => {
             console.error(error);
-          });
-      }
+      });
+}
 
-function getEspecificData (university, materia, userDifFicult, setUserSimulacro){
+
+function UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
       get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
+            console.log('se esta ejecutando')
+            let data = snapshot.val()
+            const obj = {}
+            obj[materia.toLowerCase()] = data
+            setUserBank({ ...bank, ...obj })
 
-                  let obj = snapshot.val() 
-                  console.log(obj)
-
-                  obj.reduce((array, item)=>{
-                        item.id 
-                  }, [])
-                  setUserSimulacro(obj)
-         
-            }).catch((error) => {
+      }).catch((error) => {
             console.error(error);
-            });
+      });
 }
 
-
-
-
-
-function spam () {
-      for (let index = 0; index < 1; index++) {
-            update(ref(db, `usfx/Banco/lenguaje/`),{
-                  0:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:1
-                  },
-                  1:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:2
-                  },
-                  2:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:3
-                  },
-                  3:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:4
-                  },
-                  4:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:5
-                  },
-                  5:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:6
-                  },
-                  6:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:7
-                  },
-                  7:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:8
-                  },
-                  8:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:9
-                  },
-                  9:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:10
-                  },
-                  10:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:11
-                  },
-                  11:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:12
-                  },
-                  12:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:13
-                  },
-                  13:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:14
-                  },
-                  14:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:15
-                  },
-                  15:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:16
-                  },
-                  16:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:17
-                  },
-                  17:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:18
-                  },
-                  18:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:19
-                  },
-                  19:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:20
-                  },
-                  20:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:21
-                  },
-                  21:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:22
-                  },
-                  22:{
-                        pregunta: 'Cual de las siguientes opciones es un verbo?',
-                        respuesta: 'c',
-                        a: 'niño',
-                        b: 'ada',
-                        c: 'correr',
-                        d: 'hambre',
-                        id:23
-                  },
-                  23:{
-                        pregunta: 'Cual de las siguientes opciones es un sustantivo',
-                        respuesta: 'b',
-                        a: 'Feliz',
-                        b: 'Hoja',
-                        c: 'Ver',
-                        d: 'Lejos',
-                        id:24
-                  },
-      })
+function getEspecificData(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+      console.log(cantidad)
+      if (bank) {
+            bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
+      } else {
+            UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
       }
 }
 
 
 
 
-export { manageSimulacro, userDataUpdate, getFac,  onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getEspecificData }
+
+function spam() {
+      for (let index = 0; index < 1; index++) {
+            update(ref(db, `usfx/Banco/matematicas/`), {
+                  0: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 1
+                  },
+                  1: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 2
+                  },
+                  2: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 3
+                  },
+                  3: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 4
+                  },
+                  4: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 5
+                  },
+                  5: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 6
+                  },
+                  6: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 7
+                  },
+                  7: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 8
+                  },
+                  8: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 9
+                  },
+                  9: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 10
+                  },
+                  10: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 11
+                  },
+                  11: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 12
+                  },
+                  12: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 13
+                  },
+                  13: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 14
+                  },
+                  14: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 15
+                  },
+                  15: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 16
+                  },
+                  16: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 17
+                  },
+                  17: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 18
+                  },
+                  18: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 19
+                  },
+                  19: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 20
+                  },
+                  20: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 21
+                  },
+                  21: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 22
+                  },
+                  22: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 23
+                  },
+                  23: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 24
+                  },
+            })
+      }
+}
+
+
+
+
+export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getEspecificData }
 
 // function query(id, setTeacherId, userUid, name, setUserSuccess, setAlert ){
 //       ids.on('value', function(snapshot){  

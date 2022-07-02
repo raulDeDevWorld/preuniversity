@@ -14,7 +14,7 @@ import style from '../../../styles/Simulacro.module.css'
 
 
 function Simulacro() {
-    const { userDB, setUserSuccess, success, simulacro, setUserSimulacro } = useUser()
+    const { userDB, setUserSuccess, success, simulacro, setUserSimulacro, bank, setUserBank, } = useUser()
     const [select, setSelect] = useState(null)
     const [countR, setCountR] = useState(0)
     const [countE, setCountE] = useState(0)
@@ -64,13 +64,14 @@ function Simulacro() {
     function userDifficult() {
         router.back()
     }
-    simulacro ? console.log(simulacro[router.query.Index - 1][`${array[3]}`]) : ''
+    console.log(simulacro)
+    // simulacro ? console.log(simulacro[router.query.Index - 1][`${array[3]}`]) : ''
     useEffect(() => {
         fisherYatesShuffle(array)
         userDB.university !== null && userDB.university !== undefined
-            ? getEspecificData(userDB.university, router.query.Simulacro, userDifficult, setUserSimulacro)
+            ? getEspecificData(userDB.university, router.query.Simulacro, userDB.subjects[router.query.Simulacro.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
             : ''
-    }, [userDB.university]);
+    }, [userDB.university, bank]);
     return (
         <PageEspecial>
                 {userDB !== 'loading' &&
