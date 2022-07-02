@@ -1,7 +1,7 @@
 .container {
     position: absolute;
     height: 100vh;
-    min-height: 750px;
+    min-height: 550px;
     width: 100vw;
     background: linear-gradient(to bottom, #ffffff, #b4cadf, #6282a1);  
     /* background-image: url(../public/bg.svg); */
@@ -25,8 +25,7 @@
     align-items: center;
     
     padding: 10px;
-    height: 80vh;
-    min-height: 750px;
+    min-height: 640px;
     width: 100vw;
     min-width: 300px;
     max-width: 320px;
@@ -104,7 +103,7 @@
     text-align: center;
     z-index: 10000;
   }
-@media (max-height: 550px) { 
+/* @media (max-height: 550px) { 
     .vector {
         position: absolute;
         z-index: 0;
@@ -124,4 +123,4 @@
         min-height: 800px;
     }
 }
-
+ */
