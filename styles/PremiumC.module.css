@@ -1,11 +1,11 @@
 
-
 .box {
     background-color: black;
     border-radius: 10px;
+    justify-content: space-around;
     width: 100%;
     min-width: 300px;
-    max-width: 320px;
+    max-width: 360px;
     padding: 10px;
     margin-top: 20px;
     cursor: pointer;

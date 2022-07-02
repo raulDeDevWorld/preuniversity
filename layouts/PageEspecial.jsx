@@ -2,9 +2,7 @@ import Head from 'next/head'
 import NavbarEspecial from '../components/NavbarEspecial'
 import style from '../styles/PageEspecial.module.css'
 
-
-
-export default function PageEspecial ({ children }) {
+export default function PageEspecial({ children }) {
   return (
     <>
       <Head>
@@ -17,6 +15,7 @@ export default function PageEspecial ({ children }) {
         <meta name="keywords" content="Swoou, Swoou preuniversity, banco de preguntas, cursos preuniversitarios, simulacro examen de admision" />
         <meta name="author" content="Raul Choque Romero" />
       </Head>
+
       <div className={style.container}>
         <NavbarEspecial />
         <main className={style.mainContainer}> {children} </main>
