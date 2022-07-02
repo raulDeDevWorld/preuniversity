@@ -10,7 +10,8 @@
     transition-duration: .5s;
 }
 .buttonPrimary {
-    width: 140px;
+    width: 90%;
+    min-width: 140px;
     color: white;
     background-color: #003450;
     border: 2px solid #003450;
@@ -21,7 +22,8 @@
     border: 2px solid #d6d6d6;
 }
 .buttonSecondary {
-    width: 140px;
+    width: 90%;
+    min-width: 140px;
     color: #003450;
     background-color: white;
     border: 2px solid #d6d6d6;
@@ -41,11 +43,15 @@
     background-size: 18px; 
 }
 .buttonBlackFont {
+    width: 90%;
+    min-width: 140px;
     color: #00F0FF;
     background-color: #486bad3c;
     border: 2px solid #486bad3c;
 }
 .buttonBlackFontColorWhite {
+    width: 90%;
+    min-width: 140px;
     color: #ffffff;
     background-color: #486bad3c;
     border: 2px solid #486bad3c;
@@ -56,6 +62,8 @@
     border: 2px solid #000000;
 }
 .successButton {
+    width: 90%;
+    min-width: 140px;
     color: #ffffff;
     background-color: #52FF00;
     border: 2px solid #52FF00;

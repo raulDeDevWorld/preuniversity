@@ -73,7 +73,6 @@ function Simulacro() {
     }, [userDB.university]);
     return (
         <PageEspecial>
-         
                 {userDB !== 'loading' &&
                     <div className={style.container}>
                         <div>
@@ -85,13 +84,7 @@ function Simulacro() {
                                     <span className={style.r}>{countR}</span>
                                 </div>
                             </div>
-                        </div>
-
-
-
-
-
-                            
+                        </div>   
                             {simulacro !== null &&
                                 <>
                                     <BlackFont>
@@ -109,17 +102,9 @@ function Simulacro() {
                                     </BlackFont>
 
                                 </>}
-
-
-
-
-
-
-
                         </div>
                     }
                 {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
-         
         </PageEspecial>
     )
 }

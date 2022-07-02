@@ -14,6 +14,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  width: 100vw;
+  min-width: 300px;
+  max-width: 360px;
 }
 .perfil {
   margin: 10px;
@@ -53,6 +56,9 @@
 }
 .buttonContainer {
   height: 200px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 360px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -106,6 +112,12 @@ border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.link {
+  display: block;
+  width: 100vw;
+  min-width: 300px;
+  max-width: 360px;
 }
 @keyframes rotar{
   0% {transform: rotate(0deg);}
