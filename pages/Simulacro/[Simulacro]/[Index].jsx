@@ -27,12 +27,7 @@ function Simulacro() {
         }
         return setArray(arr)
     }
-
-
-    function next() {
-        router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(router.query.Index) + 1}`)
-        setSelect(null)
-    }
+    
 
     function selectAnswer(answer) {
         // if (userDB.premium === false && userDB.s + userDB.es > 30) {
@@ -95,16 +90,26 @@ function Simulacro() {
         }
         setTimeout(next, 1500)
     }
-
-
+    function back() {
+        router.query.Index > 1
+        ? router.back()
+        : ''
+        setSelect(null)
+    }
+    function next() {
+        router.query.Index < simulacro.length
+        ? router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(router.query.Index) + 1}`)
+        : ''
+        setSelect(null)
+    }
     function finish() {
-        router.push('/Home')
+        router.push('/Simulacro')
     }
     function userDifficult() {
         router.back()
     }
-    simulacro ? console.log(simulacro[router.query.Index].id) : ''
-    simulacro ? console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress) : ''
+    simulacro ? console.log() : ''
+    // simulacro ? console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress) : ''
     // simulacro ? console.log(simulacro[router.query.Index - 1][`${array[3]}`]) : ''
     useEffect(() => {
         fisherYatesShuffle(array)
@@ -129,8 +134,9 @@ function Simulacro() {
                     {simulacro !== null &&
                         <>
                             <BlackFont>
-                                <p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p>
-
+                                <div className={style.boxAsk}>
+                                <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
+                                </div>
                             </BlackFont>
                             <BlackFont>
                                 <div className={style.answersContainer}>

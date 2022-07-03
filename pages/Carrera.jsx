@@ -26,7 +26,8 @@ function Carrera () {
                     time: 15,
                     questions: 10,
                     difficulty: 'aleatorio',
-                }          
+                    },
+                    progress: false       
               }
                 return target;
               }, {})
