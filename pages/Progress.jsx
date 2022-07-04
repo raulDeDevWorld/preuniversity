@@ -11,6 +11,16 @@ import ProgressC from '../components/ProgressC'
 import Modal from '../components/Modal'
 import { useState, useEffect } from 'react'
 
+import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css'
+import RadialSeparators from '../components/RadialSeparators'
+import ChangingProgressProvider from "../components/ChangingProgressProvider";
+
+
+
+
+
+
 
 
 function Progress() {
@@ -60,12 +70,49 @@ function Progress() {
                 </div>
             
                     <div className={style.gridContainer}>
-                    {userDB.id ? <span className={`${style.subtitle} ${style.left} `}>Prof. Id: <span className={style.orange}>{userDB.id}</span></span> : <span className={style.subtitle}>Comparte tus progresos con tu profe.</span>}<br/>
+                    {/* {userDB.id ? <span className={`${style.subtitle} ${style.left} `}>Prof. Id: <span className={style.orange}>{userDB.id}</span></span> : <span className={style.subtitle}>Comparte tus progresos con tu profe.</span>}<br/> */}
                     <div className={style.grid}>
                         
-                        {Object.keys(userDB.subjects).map((m, i)=>
-                            <ProgressC key={i} progress={userDB.subjects[m]} errors={userDB.subjects[m]} text={m}></ProgressC>
-                        )}
+                            {Object.keys(userDB.subjects).map((m, i) =>
+
+                                <>
+                          
+                     
+                                    <CircularProgressbarWithChildren
+                                        value={80}
+                                        text={`${80}%`}
+                                        strokeWidth={10}
+                                        styles={buildStyles({
+                                            strokeLinecap: "butt"
+                                        })}
+                                    >
+                                        <RadialSeparators
+                                            count={12}
+                                            style={{
+                                                background: "white",
+                                                width: "2px",
+                                                // This needs to be equal to props.strokeWidth
+                                                height: `${10}%`
+                                            }}
+                                        />
+                                    </CircularProgressbarWithChildren>
+                                    <ChangingProgressProvider values={[0, 80]}>
+                                        {(percentage) => (
+                                            <CircularProgressbar
+                                                value={percentage}
+                                                text={`${percentage}%`}
+                                                styles={buildStyles({
+                                                    pathTransition:
+                                                        percentage === 0 ? "none" : "stroke-dashoffset 0.5s ease 0s"
+                                                })}
+                                            />
+                                        )}
+                                    </ChangingProgressProvider>
+                                </>
+                       
+
+
+                            )}
                    
                     
                         </div>
