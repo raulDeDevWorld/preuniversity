@@ -75,7 +75,7 @@ function Progress() {
                         
                             {Object.keys(userDB.subjects).map((m, i) =>
 
-                                <>
+                                <div key={i}>
                           
                      
                                     <CircularProgressbarWithChildren
@@ -108,7 +108,7 @@ function Progress() {
                                             />
                                         )}
                                     </ChangingProgressProvider>
-                                </>
+                                </div>
                        
 
 
