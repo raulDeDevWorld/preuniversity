@@ -13,6 +13,7 @@ export function UserProvider ({ children }) {
 	const [uniData, setUniData] = useState(null)
 	const [bank, setBank] = useState(null)
 	const [simulacro, setSimulacro] = useState(null)
+	const [time, setTime] = useState(true)
 
 	function setUniversityData (data) {
 		setUniData(data)
@@ -47,6 +48,9 @@ export function UserProvider ({ children }) {
         return setSimulacro(arr.slice([0-cantidad]))
 		
 	}
+	function setUserTimeDB (timeDB) {
+		setTime(timeDB)
+	}
 	const value = useMemo(()=>{
 		return ({
 			uniData,
@@ -58,6 +62,7 @@ export function UserProvider ({ children }) {
 			success,
 			bank,
 			simulacro,
+			time,
 			setUniversityData,
 			setUserProfile,
 			setUserData,
@@ -66,9 +71,10 @@ export function UserProvider ({ children }) {
 			setStudentsProgress,
 			setUserSuccess,
 			setUserBank,
-			setUserSimulacro
+			setUserSimulacro,
+			setUserTimeDB
 		})
-	}, [bank, simulacro, uniData, avatar, user, userDB, id, success, progress])
+	}, [time, bank, simulacro, uniData, avatar, user, userDB, id, success, progress])
 
 	return (
 		<UserContext.Provider value={value} >

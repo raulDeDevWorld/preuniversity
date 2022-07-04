@@ -4,7 +4,7 @@ import { useUser } from '../../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../../components/Error'
-import Button from '../../../components/Button'
+import Timer from '../../../components/Timer'
 import BlackFont from '../../../components/BlackFont'
 import PageEspecial from '../../../layouts/PageEspecial'
 import { WithAuth } from '../../../HOCs/WithAuth'
@@ -41,15 +41,17 @@ function Simulacro() {
             //Consulta: si el progress existe
             if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress) {
                 //Consulta: si un item existe dentro del progress
-                if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index].id]) {
-                    console.log('existe')
+                if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index -1].id]) {
+                    console.log('Consulta: si un item existe dentro del progress')
                     const dataDB = userDB.subjects[router.query.Simulacro.toLowerCase()].progress
-                    const dataDBid = userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index].id]
+                    const dataDBid = userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index -1].id]
                     const object = {}
                     object[simulacro[router.query.Index - 1].id] = { points: dataDBid.points + 1, errors: dataDBid.errors, difficulty: dataDBid.difficulty }
                     userDataUpdate({ ...dataDB, ...object }, setUserData, `${query}/progress`)
                     //Consulta: si un item no existe dentro del progress    
                 } else {
+                    console.log('Consulta: si un item no existe dentro del progress ')
+                    console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index -1].id])
                     const dataDB = userDB.subjects[router.query.Simulacro.toLowerCase()].progress
                     const object = {}
                     object[simulacro[router.query.Index - 1].id] = { points: 1, errors: 0, difficulty: false }
@@ -57,6 +59,7 @@ function Simulacro() {
                 }
                 //si el progreso no existe
             } else {
+                console.log('si el progreso no existe')
                 const object = { progress: {} }
                 object.progress[simulacro[router.query.Index - 1].id] = { points: 1, errors: 0, difficulty: false }
                 userDataUpdate(object, setUserData, query)
@@ -67,10 +70,10 @@ function Simulacro() {
             //Consulta: si el progress existe
             if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress) {
                 //Consulta: si un item existe dentro del progress
-                if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index].id]) {
+                if (userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index - 1].id]) {
                     console.log('existe')
                     const dataDB = userDB.subjects[router.query.Simulacro.toLowerCase()].progress
-                    const dataDBid = userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index].id]
+                    const dataDBid = userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index -1].id]
                     const object = {}
                     object[simulacro[router.query.Index - 1].id] = { points: dataDBid.points, errors: dataDBid.errors + 1, difficulty: dataDBid.difficulty }
                     userDataUpdate({ ...dataDB, ...object }, setUserData, `${query}/progress`)
@@ -103,14 +106,21 @@ function Simulacro() {
         setSelect(null)
     }
     function finish() {
-        router.push('/Simulacro')
+        router.push(`/Simulacro/${router.query.Simulacro}/Result`)
     }
     function userDifficult() {
         router.back()
     }
-    simulacro ? console.log() : ''
+
+    simulacro && router.query.Index? console.log(simulacro) : ''
+    // simulacro && router.query.Index? console.log(simulacro[router.query.Index-1]) : ''
+
+    // simulacro ? console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress) : ''
+    // simulacro ? console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress[simulacro[router.query.Index].id]) : ''
+    
     // simulacro ? console.log(userDB.subjects[router.query.Simulacro.toLowerCase()].progress) : ''
     // simulacro ? console.log(simulacro[router.query.Index - 1][`${array[3]}`]) : ''
+
     useEffect(() => {
         fisherYatesShuffle(array)
         userDB.university !== null && userDB.university !== undefined
@@ -124,16 +134,18 @@ function Simulacro() {
                     <div>
                         <img src={`/robot.png`} className={style.perfil} alt="user photo" />
                         <div className={style.textCont}>
-                            <span className={style.white}>N: {`${userDB.aName.split(' ')[0].toUpperCase()}`}</span>
+                            {simulacro? <span className={style.white}>Item: {router.query.Index}/{simulacro.length}</span> :''}
+                            {/* `${userDB.aName.split(' ')[0].toUpperCase()}` */}
                             <div className={style.contRE}>
-                                <span className={style.e}>{countE}</span>
-                                <span className={style.r}>{countR}</span>
+                                <span className={style.errors}>{countE}</span>
+                                <span className={style.rights}>{countR}</span>
                             </div>
                         </div>
                     </div>
                     {simulacro !== null &&
                         <>
                             <BlackFont>
+                                <Timer time={userDB.subjects[router.query.Simulacro.toLowerCase()].config.time}/>
                                 <div className={style.boxAsk}>
                                 <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
                                 </div>

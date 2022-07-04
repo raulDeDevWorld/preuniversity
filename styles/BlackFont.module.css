@@ -1,4 +1,5 @@
 .blackFont {
+  position: relative;
     background-color: black;
     padding: 10px;
     width: 100%;
