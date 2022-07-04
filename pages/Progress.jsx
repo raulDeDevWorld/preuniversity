@@ -73,9 +73,9 @@ function Progress() {
                     {/* {userDB.id ? <span className={`${style.subtitle} ${style.left} `}>Prof. Id: <span className={style.orange}>{userDB.id}</span></span> : <span className={style.subtitle}>Comparte tus progresos con tu profe.</span>}<br/> */}
                     <div className={style.grid}>
                         
-                            {Object.keys(userDB.subjects).map((m, i) =>
+                            {/* {Object.keys(userDB.subjects).map((m, i) =>)} */}
 
-                                <div key={i}>
+                               
                           
                      
                                     <CircularProgressbarWithChildren
@@ -108,11 +108,11 @@ function Progress() {
                                             />
                                         )}
                                     </ChangingProgressProvider>
-                                </div>
+                               
                        
 
 
-                            )}
+                            
                    
                     
                         </div>
