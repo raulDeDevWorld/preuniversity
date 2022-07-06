@@ -198,8 +198,9 @@ function UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, 
 }
 
 function getEspecificData(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
-      console.log(cantidad)
+//Consulta si banco existe
       if (bank) {
+      //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
             bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
       } else {
             UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
@@ -212,7 +213,7 @@ function getEspecificData(university, materia, cantidad, simulacro, setUserSimul
 
 function spam() {
       for (let index = 0; index < 1; index++) {
-            update(ref(db, `usfx/Banco/matematicas/`), {
+            update(ref(db, `usfx/Banco/lenguaje/`), {
                   0: {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
@@ -429,10 +430,369 @@ function spam() {
                         d: 'Lejos',
                         id: 24
                   },
+                  24: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 25
+                  },
+                  25: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 26
+                  },
+                  26: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 27
+                  },
+                  27: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 28
+                  },
+                  28: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 29
+                  },
+                  29: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 30
+                  },
+                  30: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 31
+                  },
+                  31: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 32
+                  },
+                  32: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 33
+                  },
+                  33: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 34
+                  },
+                  34: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 35
+                  },
+                  35: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 36
+                  },
+                  36: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 37
+                  },
+                  37: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 38
+                  },
+                  38: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 39
+                  },
+                  39: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 40
+                  },
+                  40: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 41
+                  },
+                  41: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 42
+                  },
+                  42: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 43
+                  },
+                  43: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 44
+                  },
+                  44: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 45
+                  },
+                  45: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 46
+                  },
+                  46: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 47
+                  },
+                  47: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 48
+                  },
+                  48: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 49
+                  },
+                  49: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 50
+                  },
+                  50: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 51
+                  },
+                  51: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 22
+                  },
+                  52: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 53
+                  },
+                  53: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 54
+                  },
+                  54: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 55
+                  },
+                  55: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 56
+                  },
+                  56: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 57
+                  },
+                  57: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 58
+                  },
+                  58: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 59
+                  },
+                  59: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 60
+                  },
+                  60: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 61
+                  },
+                  61: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 62
+                  },
+                  62: {
+                        pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
+                        respuesta: 'c',
+                        a: 'niño',
+                        b: 'ada',
+                        c: 'correr',
+                        d: 'hambre',
+                        id: 63
+                  },
+                  63: {
+                        pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
+                        respuesta: 'b',
+                        a: 'Feliz',
+                        b: 'Hoja',
+                        c: 'Ver',
+                        d: 'Lejos',
+                        id: 64
+                  },
             })
       }
 }
-
 
 
 

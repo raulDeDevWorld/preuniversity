@@ -13,7 +13,7 @@ import style from '../../styles/Home.module.css'
 
 
 function Play() { 
-    const { userDB, setUserSimulacro } = useUser()
+    const { userDB, setUserSimulacro, simulacro } = useUser()
 
     const router = useRouter()
 
@@ -26,6 +26,7 @@ function Play() {
         router.back()
     }
  
+    console.log(simulacro)
     return (
         <>
         <PageLayout>

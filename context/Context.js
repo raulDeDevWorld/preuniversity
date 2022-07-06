@@ -41,11 +41,16 @@ export function UserProvider ({ children }) {
 		setBank(obj)
 	}
 	function setUserSimulacro (arr, cantidad) {
-		for (var i = arr.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1)); //random index
-            [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
-        }
-        return setSimulacro(arr.slice([0-cantidad]))
+		if (cantidad !== null) {
+			for (var i = arr.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1)); //random index
+				[arr[i], arr[j]] = [arr[j], arr[i]]; // swap
+			}
+			return setSimulacro(arr.slice([0 - cantidad]))
+		} else {
+			return setSimulacro(arr)
+		}
+		
 		
 	}
 	function setUserTimeDB (timeDB) {
