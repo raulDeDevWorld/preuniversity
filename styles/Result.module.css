@@ -23,10 +23,42 @@
     object-fit:cover;
     object-position: center;
   }
+.review {
+    top: 19px;
+    position: absolute;
+    color: #000000;
+    text-align: center;
+    font-size: 14px;
+    animation-name: animationReview;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+}
 .blueText {
-    color: #00F0FF;
-    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
     text-align: left;
+    font-size: 12px;
+    animation-name: animationBlueText;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: 2.5s;
+}
+.materia {
+    animation-delay: 3.3s;
+}
+.errores {
+    animation-delay: 3.6s;
+}
+.aciertos {
+    animation-delay: 3.9s;
+}
+.noRes {
+    animation-delay: 4.2s;
+}
+.verRes {
+    animation-delay: 4.5s;
 }
 
 .paragraph {
@@ -74,7 +106,39 @@
     animation-duration: 2.5s;
     animation-delay: 3s;
 }
+.progressPorcent {
+    top: 0;
+    right: 45px;
+    width: 47%;
+    height: 10px;
+    background-color: #365b74;
+    border-radius: 10px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+}
+.porcent {
+    height: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+  
+}
+@keyframes animationReview {
+    0% {
+        color: black;
+    }
 
+    30% {
+        color: #00F0FF;
+    }
+    70% {
+        color: #00F0FF;
+    }
+    100% {
+        color: transparent;
+    }
+}
 @keyframes animationRed {
     0% {
         color: black;
@@ -161,4 +225,18 @@
         transform: rotate(0deg);
     }
 
+}
+
+@keyframes animationBlueText {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: #ffffff;
+    }
+
+    100% {
+        color: #00F0FF;
+    }
 }

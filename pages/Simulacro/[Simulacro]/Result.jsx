@@ -82,9 +82,13 @@ function Simulacro() {
                         <div>
                             <BlackFont>
                                 <div className={style.containerData}>
+                                    <p className={`${style.review}`}>
+                                        Revisando...
+                                    </p>
                                     <p className={`${style.paragraph} ${points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? style.green : style.red}`}>
                                         {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? 'Aprobaste 😄' : 'Reprobaste 😅'}
                                     </p>
+
                                     {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 51 
                                     ? <p className={style.message}>Animo, intentalo otra vez!!! <spam className={style.emogi}>😅</spam></p>
                                     : ''}
@@ -117,12 +121,18 @@ function Simulacro() {
                                     />
                                 </div>
                                 {points !== null && <div>
-                                    <p className={`${style.blueText}`}> Materia: {router.query.Simulacro}</p>
-                                    <p className={`${style.blueText}`}> Errores: {points.mistakes}</p>
-                                    <p className={`${style.blueText}`}> Aciertos: {points.success}</p>
-                                    <p className={`${style.blueText}`}> No respondidos: {points.undefined}</p>
+                                    <p className={`${style.blueText} ${style.materia}`}> Materia: {router.query.Simulacro}</p>
+                                    <p className={`${style.blueText} ${style.errores}`}> Errores: {points.mistakes} 
+                                    <div className={style.progressPorcent} onClick={()=>manageVisibility(i)}>
+                                     <div className={style.porcent} style={{ background: 'red', width: `${10}%`, height: '10px' }}> 
+                                    </div>
+
+                                </div>
+                                    </p>
+                                    <p className={`${style.blueText} ${style.aciertos}`}> Aciertos: {points.success}</p>
+                                    <p className={`${style.blueText} ${style.noRes}`}> No respondidos: {points.undefined}</p>
                                 </div>}
-                                <p className={`${style.blueText}`}>Ver respuestas</p>
+                                <p className={`${style.blueText} ${style.verRes}`}>Ver respuestas</p>
                             </BlackFont>
                         </div>
 
