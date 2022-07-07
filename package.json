@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tomik23/react-circular-progress-bar": "^1.1.1",
     "firebase": "^9.6.11",
     "lodash": "^4.17.21",
     "next": "12.1.5",
