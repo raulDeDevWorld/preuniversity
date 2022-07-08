@@ -25,6 +25,6 @@ export default function Timer(props) {
         };
     });
     return (
-        <span className={style.timer}>{minutes < 10? `0${minutes}` : minutes}:{seconds < 10? `0${seconds}`: seconds }</span>
+        <span className={props.style}>{minutes < 10? `0${minutes}` : minutes}:{seconds < 10? `0${seconds}`: seconds }</span>
     )
 }

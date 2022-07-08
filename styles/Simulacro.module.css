@@ -23,7 +23,71 @@
     min-height: 150px;
     max-height: 300px;
 }
-
+.timer {
+    top: 20px;
+    right: 20px;
+    position: absolute;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+.asksCount {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    left: 0;
+    margin: auto;
+    text-align: left;
+    color: white;
+    font-size: 14px;
+    background-color: #15202B;
+    padding: 10px;
+    width: 90px;
+    border-radius: 5px;
+    text-align: center;
+}
+.asksBar {
+    position: absolute;
+    margin: 20px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    margin: 20px;
+    background-color: #31477098;
+    color: white;
+    top: 40px;
+    border-right: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+}
+.asksBar :nth-child(n) {
+    cursor: pointer;
+    border-left: 1px solid rgb(255, 255, 255);
+    width: 100%;
+}
+.asksBar :nth-child(1) {
+    border-radius: 10px 0 0 10px ;
+}
+.asksBar :last-child {
+    border-radius: 0 10px 10px 0 ;
+}
+.asksContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.ask {
+    font-size: 14px;
+    text-align: center;
+}
+.move {
+    cursor: pointer;
+    letter-spacing: -6px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    transition-property: all;
+    transition-duration: .3s;
+}
 /* Container de respuestas  */
 .blackAnswersContainer {
     position: relative;
@@ -41,7 +105,7 @@
     font-size: 14px;
     background-color: #3FC500;
     padding: 10px;
-    min-width: 75px;
+    width: 90px;
     border-radius: 5px;
     text-align: center;
 }
@@ -159,24 +223,7 @@
     margin-left: 10px;
 }
 
-.bar {
-    position: absolute;
-    border-right: 1px solid white;
-    top: 14px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    display: flex;
-    width: 60%;
-    height: 5px;
-    background-color: #31477098;
-    color: white;
-}
-.bar :nth-child(n) {
-    cursor: pointer;
-    border-left: 1px solid rgb(255, 255, 255);
-    width: 100%;
-}
+
 
 .answered {
     border-left: 1px solid white;
@@ -193,19 +240,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.ask {
-    font-size: 12px;
-    text-align: center;
-}
 
-
-.move {
-    cursor: pointer;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    transition-property: all;
-    transition-duration: .3s;
-}
 .move:hover {
     color: rgba(255, 255, 255, 1);
 }
