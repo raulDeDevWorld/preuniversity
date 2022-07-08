@@ -1,29 +1,33 @@
 .blackFont {
   position: relative;
-    background-color: black;
-    padding: 10px;
-    width: 100%;
-    min-width: 300px;
-    max-width: 360px;
-    border-radius: 10px;
-  }
-  .icon {
-    height: 17px;
-    width: 100%;
-    display: flex;
-  }
-  .icon :nth-child(n) {
-    height: 12px;
-    width: 12px;
-    border-radius: 12px;
-    margin-right: 5px;
-  }
-  .icon :nth-child(1) {
-    background-color: red;
-  }
-  .icon :nth-child(2) {
-    background-color: yellow;
-  }
-  .icon :nth-child(3) {
-    background-color: rgb(153, 255, 0);
-  }
+  background-color: black;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.icon {
+  height: 17px;
+  width: 100%;
+  display: flex;
+}
+
+.icon :nth-child(n) {
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+
+.icon :nth-child(1) {
+  background-color: red;
+}
+
+.icon :nth-child(2) {
+  background-color: yellow;
+}
+
+.icon :nth-child(3) {
+  background-color: rgb(153, 255, 0);
+}

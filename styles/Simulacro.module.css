@@ -1,15 +1,12 @@
-.perfil {
-    margin: 10px;
-    width: 250px;
-    height: 110px;
-    object-fit:cover;
-    object-position: center;
-  }
 .container {
+    position: relative;
+    /* background-color: blue; */
+    padding-top: 70px;
+    padding-bottom: 50px;
+    height: 100%;
+    min-height: 640px;
     width: 100%;
-  min-width: 300px;
-  max-width: 360px;
-    min-height: 550px;
+    min-width: 360px;
     display: flex;
     flex-direction: column;
     align-items: space-around;
@@ -17,6 +14,83 @@
     color: white;
     font-size: 25px;
 }
+
+/* Container de preguntas  */
+.blackAsksContainer {
+    position: relative;
+    margin: 15px 15px;
+    height: 30%;
+    min-height: 150px;
+    max-height: 300px;
+}
+/* Container de respuestas  */
+.blackAnswersContainer {
+    position: relative;
+    margin: 15px 15px;
+    height: 55%;
+    min-height: 320px;
+    max-height: 500px;
+}
+.answersCount {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-align: left;
+    color: white;
+    font-size: 14px;
+    background-color: #3FC500;
+    padding: 10px;
+    min-width: 75px;
+    border-radius: 5px;
+    text-align: center;
+}
+.answersContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
+.answerButtons {
+    color: #00F0FF;
+    background-color: #15202B;
+    border: 2px solid #486bad3c;
+    font-size: 16px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 50px;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.buttonFinishAnswer {
+    color: #ffffff;
+    background-color: red;
+    border: 2px solid #486bad3c;
+    font-size: 16px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 50px;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.perfil {
+    margin: 10px;
+    width: 250px;
+    height: 110px;
+    object-fit:cover;
+    object-position: center;
+  }
+
 .boxMain {
     background-color: rgb(0, 0, 0);
     border: 1px solid #1eff00;
@@ -32,20 +106,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
-.box {
-    color: #00F0FF;
-    background-color: #486bad3c;
-    border: 2px solid #486bad3c;
-    font-size: 14px;
-    width: 90%;
-    max-width: 500px;
-    min-height: 30px;
-    border-radius: 10px;
-    
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
+
 .button {
     background-color: red;
     color: white;
@@ -78,19 +139,7 @@
     justify-content: space-between;
     font-size: 12px;
 }
-.white {
-    text-align: left;
-    color: rgb(255, 255, 255);
-    font-size: 12px;
-    background-color: #001b3f80;
-    padding: 5px;
-    min-width: 75px;
-    border-radius: 5px;
-    text-align: center;
 
-
-  
-}
 .contRE {
     position: absolute;
     right: 0;
@@ -137,13 +186,7 @@
 .focus {
     background-color: #00F0FF;
 }
-.answersContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 200px;
-}
+
 .boxAsk {
     display: flex;
     justify-content: space-between;
