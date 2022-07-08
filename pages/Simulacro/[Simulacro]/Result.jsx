@@ -89,29 +89,29 @@ function Simulacro() {
                                         {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? 'Aprobaste 😄' : 'Reprobaste 😅'}
                                     </p>
 
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 51 
-                                    ? <p className={style.message}>Animo, intentalo otra vez!!! <spam className={style.emogi}>😅</spam></p>
-                                    : ''}
+                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 51
+                                        ? <p className={style.message}>Animo, intentalo otra vez!!! <spam className={style.emogi}>😅</spam></p>
+                                        : ''}
                                     {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 70
-                                    ? <p className={style.message}>Bien, vamos x más!!! <spam className={style.emogi}>😅</spam></p>
-                                    : ''}
+                                        ? <p className={style.message}>Bien, vamos x más!!! <spam className={style.emogi}>😅</spam></p>
+                                        : ''}
                                     {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 69 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 85
-                                    ? <p className={style.message}>Muy Bien, buen progreso!!! <spam className={style.emogi}>😀</spam></p>
-                                    : ''}
+                                        ? <p className={style.message}>Muy Bien, buen progreso!!! <spam className={style.emogi}>😀</spam></p>
+                                        : ''}
                                     {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 84 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 100
-                                    ? <p className={style.message}>Exelente, vamos super!!! <spam className={style.emogi}>😃</spam></p>
-                                    : ''}
+                                        ? <p className={style.message}>Exelente, vamos super!!! <spam className={style.emogi}>😃</spam></p>
+                                        : ''}
                                     {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) == 100
-                                    ? <p className={style.perfect}>Perfectooo, felicidades!!! <spam className={style.emogi}>😍</spam></p>
-                                    : ''}
-                                    
-                                    
+                                        ? <p className={style.perfect}>Perfectooo, felicidades!!! <spam className={style.emogi}>😍</spam></p>
+                                        : ''}
+
+
                                     <CircularProgressBar
                                         colorCircle="#365b74"
                                         fontColor="#00F0FF"
                                         size="150"
-                                        fontSize= "24px"
-                                        unit= "%"
+                                        fontSize="20px"
+                                        unit="pts"
                                         linearGradient={[
                                             '#8ff8ff',
                                             '#00F0FF',
@@ -122,15 +122,25 @@ function Simulacro() {
                                 </div>
                                 {points !== null && <div>
                                     <p className={`${style.blueText} ${style.materia}`}> Materia: {router.query.Simulacro}</p>
-                                    <p className={`${style.blueText} ${style.errores}`}> Errores: {points.mistakes} 
-                                    <div className={style.progressPorcent} onClick={()=>manageVisibility(i)}>
-                                     <div className={style.porcent} style={{ background: 'red', width: `${10}%`, height: '10px' }}> 
-                                    </div>
+                                    <p className={`${style.blueText} ${style.errores}`}> Errores: {points.mistakes} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
+                                            <div className={style.porcent} style={{ background: 'red', width: `${Math.round(points.mistakes * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
+                                            </div>
 
-                                </div>
+                                        </div>
                                     </p>
-                                    <p className={`${style.blueText} ${style.aciertos}`}> Aciertos: {points.success}</p>
-                                    <p className={`${style.blueText} ${style.noRes}`}> No respondidos: {points.undefined}</p>
+                                    <p className={`${style.blueText} ${style.aciertos}`}> Aciertos: {points.success} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
+                                            <div className={style.porcent} style={{ background: 'rgb(0, 233, 0)', width: `${Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
+                                            </div>
+                                        </div>
+                                    </p>
+                                    <p className={`${style.blueText} ${style.noRes}`}> No respondidos: {points.undefined} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
+                                            <div className={style.porcent} style={{ background: 'rgba(255, 255, 255, 0.5)', width: `${Math.round(points.undefined * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
+                                            </div>
+                                        </div>
+                                    </p>
                                 </div>}
                                 <p className={`${style.blueText} ${style.verRes}`}>Ver respuestas</p>
                             </BlackFont>
