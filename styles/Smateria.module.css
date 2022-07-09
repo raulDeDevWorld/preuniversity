@@ -14,6 +14,7 @@
     /* centrado-horizontal */
     align-items: center;
     color: white;
+    font-size: 14px;
 }
 
 /* Container de preguntas  */
@@ -29,21 +30,21 @@
     top: 20px;
     right: 20px;
     position: absolute;
-    font-size: 14px;
+    font-size: 1em;
     color: rgba(255, 255, 255, 0.5);
 }
 .asksCount {
     position: absolute;
-    top: 8px;
-    right: 20px;
+    top: 14px;
+    right: 0px;
     left: 0;
     margin: auto;
     text-align: left;
     color: white;
-    font-size: 14px;
+    font-size: 1em;
     background-color: #15202B;
-    padding: 10px;
-    width: 95px;
+    padding: 5px;
+    width: 100px;
     border-radius: 5px;
     text-align: center;
 }
@@ -105,10 +106,10 @@
     right: 20px;
     text-align: left;
     color: white;
-    font-size: 14px;
+    font-size: 1em;
     background-color: #3FC500;
     padding: 10px;
-    width: 95px;
+    width: 100px;
     border-radius: 5px;
     text-align: center;
 }
@@ -123,9 +124,9 @@
 }
 .answerButtons {
     color: #00F0FF;
+    font-size: 1em;
     background-color: #15202B;
     border: 2px solid #486bad3c;
-    font-size: 16px;
     width: 100%;
     max-width: 500px;
     min-height: 50px;
@@ -139,7 +140,7 @@
     color: #ffffff;
     background-color: red;
     border: 2px solid #486bad3c;
-    font-size: 16px;
+    font-size: 1em;
     width: 100%;
     max-width: 500px;
     min-height: 50px;
@@ -149,6 +150,19 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
 
 
 .perfil {
@@ -249,4 +263,4 @@
 }
 .moveBlack {
     color: black;
-}
+} */
