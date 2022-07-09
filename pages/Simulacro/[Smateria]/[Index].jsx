@@ -85,20 +85,19 @@ function Simulacro() {
                     {simulacro !== null &&
                         <>
                             <div className={style.blackAsksContainer}>
-                            <BlackFont>
-                                <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
-                                <span className={style.asksCount}>Item: {router.query.Index}/{simulacro.length}</span>
-                                <div className={style.asksBar}>
-                                    {simulacro.map((item, index) =>
-                                        <div key={index} className={`${simulacro[index].userAnswer !== undefined ? style.answered : ''} ${router.query.Index == index + 1 ? style.focus : ''}`} onClick={() => nav(index)}></div>
-                                    )}
-                                </div>
-                                <div className={style.asksContainer}>
-                                    <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
-                                </div>
-
-                            </BlackFont>
-                            </div>
+                                <BlackFont>
+                                    <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
+                                    <span className={style.asksCount}>Item: {router.query.Index}/{simulacro.length}</span>
+                                    <div className={style.asksBar}>
+                                        {simulacro.map((item, index) =>
+                                            <div key={index} className={`${simulacro[index].userAnswer !== undefined ? style.answered : ''} ${router.query.Index == index + 1 ? style.focus : ''}`} onClick={() => nav(index)}></div>
+                                        )}
+                                    </div>
+                                    <div className={style.asksContainer}>
+                                        <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
+                                    </div>
+                                </BlackFont>
+                            </div><br />
                             <div className={style.blackAnswersContainer}>
                                 <BlackFont>
                                     <>

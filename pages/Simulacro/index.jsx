@@ -39,7 +39,7 @@ function Play() {
                             {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
                             <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
                             <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
-                        </div>
+                        </div><br />
                         <div className={style.blackButtonsContainer}>
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
@@ -55,15 +55,12 @@ function Play() {
                                 </div>
 
                             </BlackFont>
-                        </div>
-
-
+                        </div><br />
                         <PremiumC></PremiumC>
                     </div>
                 }
 
             </PageUserLayout>
-
         </>
     )
 }

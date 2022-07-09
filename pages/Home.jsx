@@ -9,60 +9,59 @@ import Subtitle from '../components/Subtitle'
 import Error from '../components/Error'
 import BlackFont from '../components/BlackFont'
 import style from '../styles/Simulacro.module.css'
-import styleP from '../styles/Progress.module.css'
 import { useState, useEffect } from 'react'
 
 
-function Home() { 
+function Home() {
     const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
     const router = useRouter()
 
 
     function practica() {
-        userDB.premium !== true ? router.push('https://drive.google.com/drive/folders/1WEakUFwv8boTWwPfwvvXmp1UpfcJ9qpa?usp=sharing'):
-        router.push('https://drive.google.com/file/d/1YbG3O2cjmmw732X-XvPDwUqCkJpX9Ifp/view?usp=sharing')     
+        userDB.premium !== true ? router.push('https://drive.google.com/drive/folders/1WEakUFwv8boTWwPfwvvXmp1UpfcJ9qpa?usp=sharing') :
+            router.push('https://drive.google.com/file/d/1YbG3O2cjmmw732X-XvPDwUqCkJpX9Ifp/view?usp=sharing')
     }
     function progress() {
-        userDB.profesor == true ? router.push('/Progreso'): router.push('/Progress')
+        userDB.profesor == true ? router.push('/Progreso') : router.push('/Progress')
     }
-    function play () {
+    function play() {
         router.push('/Simulacro')
     }
-    function robot () {
+    function robot() {
         router.push('/Robot')
     }
 
     useEffect(() => {
-        userDB === null? router.push('/Register'): ''
+        userDB === null ? router.push('/Register') : ''
     }, [userDB]);
     return (
         <>
-        <PageUserLayout>
-            {userDB === 'loading' && ''} 
-            { userDB !== null && userDB !== 'loading' &&
-                <div className={style.container}>
-                    <div className={style.userDataContainer}>
+            <PageUserLayout>
+                {userDB === 'loading' && ''}
+                {userDB !== null && userDB !== 'loading' &&
+                    <div className={style.container}>
+                        <div className={style.userDataContainer}>
                             {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
                             {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
                             <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
                             <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
-                        </div>
+                        </div><br />
                         <div className={style.blackButtonsContainer}>
-                        <BlackFont> 
-                        <div className={style.buttonsContainer}>
-                            <Button style='buttonBlackFont' click={play}>Simulacro</Button>
-                            <Button style='buttonBlackFont'click={progress}>Progreso</Button>
-                            <Button style='buttonBlackFont' click={practica}>Banco de P... <span className={style.pdf}>PDF</span></Button>
-                            <Button style='buttonBlackFont'click={robot}>Test De O.V</Button>
-                        </div>
-                    </BlackFont>
-                        </div>
-                    <PremiumC></PremiumC>
-           
-                </div>
-            }  
-        </PageUserLayout>
-        {success ==false && <Error>Elija un avatar</Error>}
+                            <BlackFont>
+                                <div className={style.buttonsContainer}>
+                                    <Button style='buttonBlackFont' click={play}>Simulacro</Button>
+                                    <Button style='buttonBlackFont' click={progress}>Progreso</Button>
+                                    <Button style='buttonBlackFont' click={practica}>Banco de P... <span className={style.pdf}>PDF</span></Button>
+                                    <Button style='buttonBlackFont' click={robot}>Test De O.V</Button>
+                                </div>
+                            </BlackFont>
+                        </div><br />
+                        <PremiumC></PremiumC>
+
+                    </div>
+                }
+            </PageUserLayout>
+            {success == false && <Error>Elija un avatar</Error>}
         </>
     )
 }

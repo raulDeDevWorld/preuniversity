@@ -33,30 +33,28 @@ function ConfigSimulacro() {
                 {userDB !== null && userDB !== 'loading' &&
                     <div className={style.container}>
                         <span className={style.orange}>Config Mode</span>
-                        <img src={`/robot.png`} className={style.robot} alt="user photo" />
-
+                        <img src={`/robot.png`} className={style.robot} alt="user photo" /><br />
                         <div className={style.messageBlackContainer}>
                             <BlackFont>
                                 <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
                             </BlackFont>
-                        </div>
+                        </div><br />
                         <div className={style.buttonsBlackContainer}>
-                        <BlackFont>
-                            <div className={style.buttonsContainer}>
-                                {Object.keys(userDB.subjects).map((m, i) =>
+                            <BlackFont>
+                                <div className={style.buttonsContainer}>
+                                    {Object.keys(userDB.subjects).map((m, i) =>
 
-                                    <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
-                                        <a className={style.link}>
-                                            <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                        </a>
+                                        <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
+                                            <a className={style.link}>
+                                                <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                            </a>
 
-                                    </Link>
-                                )}
-                                <Button style='buttonSecondary' click={back}>Atras</Button>
-                            </div>
-                        </BlackFont>
-                        </div>
-
+                                        </Link>
+                                    )}
+                                    <Button style='buttonSecondary' click={back}>Atras</Button>
+                                </div>
+                            </BlackFont>
+                        </div><br />
                         <PremiumC></PremiumC>
                     </div>
                 }
