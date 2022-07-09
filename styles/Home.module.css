@@ -1,21 +1,25 @@
-.id {
-  color: rgb(255, 255, 255);
+.container {
+  position: relative;
+  /* background-color: blue; */
+  padding-top: 90px;
+  padding-bottom: 50px;
+  height: 100%;
+  min-height: 640px;
+  width: 100%;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  /* centrado vertical */
+    justify-content: space-around;
+  /* centrado-horizontal */
+  align-items: center;
+  color: white;
 }
 .subtitle {
   display: inline-block;
   margin: 8px;
   color: orange;
 
-}
-
-.containerTwo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  min-width: 300px;
-  max-width: 360px;
 }
 .perfil {
   margin: 10px;

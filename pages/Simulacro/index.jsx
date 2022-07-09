@@ -8,60 +8,62 @@ import { manageSimulacro } from '../../firebase/utils'
 import Subtitle from '../../components/Subtitle'
 import BlackFont from '../../components/BlackFont'
 import Link from 'next/link'
-import style from '../../styles/Home.module.css'
+import style from '../../styles/Simulacro.module.css'
 
 
 
-function Play() { 
+function Play() {
     const { userDB, setUserSimulacro, simulacro } = useUser()
 
     const router = useRouter()
 
-    function next (materia) {
+    function next(materia) {
         manageSimulacro(materia, userDB.university, setUserSimulacro)
         router.push('/Simulacro')
     }
 
-    function back () {
+    function back() {
         router.back()
     }
- 
+
     console.log(simulacro)
     return (
         <>
-        <PageLayout>
-            {userDB === 'loading' && ''}
-           
-            { userDB !== null && userDB !== 'loading' &&
-                <div className={style.containerTwo}>
-                    {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
-                    {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
-                 
-                    <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
-                    <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Bienvenido': 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
-                    
-                    
-                    <BlackFont> 
-                    <div className={style.buttonContainer}>
-                    {Object.keys(userDB.subjects).map((m, i)=>
+            <PageLayout>
+                {userDB === 'loading' && ''}
 
-                        <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
-                            <a className={style.link}>
-                                <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                            </a>
-                        </Link>
-                    )}
-                    <Button style='buttonSecondary'click={back}>Atras</Button>
+                {userDB !== null && userDB !== 'loading' &&
+                    <div className={style.container}>
+                        {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
+                        {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
+
+                        <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                        <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
+
+
+                        <BlackFont>
+                            <div className={style.buttonContainer}>
+                                {Object.keys(userDB.subjects).map((m, i) =>
+
+                                    <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
+                                        <a className={style.link}>
+                                            <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                        </a>
+                                    </Link>
+                                )}
+                                <Button style='buttonSecondary' click={back}>Atras</Button>
+                            </div>
+
+                        </BlackFont>
+
+
+
+                        <PremiumC></PremiumC>
                     </div>
-                    
-                    </BlackFont> 
-                    
-                    <PremiumC></PremiumC>
-                </div>
-            }
-    
-        </PageLayout>
- 
+                }
+
+            </PageLayout>
+
         </>
     )
 }

@@ -40,7 +40,7 @@ function Home() {
         <PageLayout>
             {userDB === 'loading' && ''} 
             { userDB !== null && userDB !== 'loading' &&
-                <div className={style.containerTwo}>
+                <div className={style.container}>
                     {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
                     {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
                  

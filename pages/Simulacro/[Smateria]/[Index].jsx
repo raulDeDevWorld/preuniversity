@@ -8,7 +8,7 @@ import Timer from '../../../components/Timer'
 import BlackFont from '../../../components/BlackFont'
 import PageEspecial from '../../../layouts/PageEspecial'
 import { WithAuth } from '../../../HOCs/WithAuth'
-import style from '../../../styles/Simulacro.module.css'
+import style from '../../../styles/Smateria.module.css'
 
 
 function Simulacro() {
@@ -47,22 +47,22 @@ function Simulacro() {
 
     function back() {
         router.query.Index > 1
-            ? router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(router.query.Index) - 1}`)
+            ? router.push(`/Simulacro/${routermateria}/${parseInt(router.query.Index) - 1}`)
             : ''
         setSelect(null)
     }
     function next() {
         router.query.Index < simulacro.length
-            ? router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(router.query.Index) + 1}`)
+            ? router.push(`/Simulacro/${router.query.Smateria}/${parseInt(router.query.Index) + 1}`)
             : ''
         setSelect(null)
     }
     function finish() {
-        router.push(`/Simulacro/${router.query.Simulacro}/Result`)
+        router.push(`/Simulacro/${router.query.Smateria}/Result`)
     }
     function nav(i) {
 
-        router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(i) + 1}`)
+        router.push(`/Simulacro/${router.query.Smateria}/${parseInt(i) + 1}`)
 
         setSelect(null)
     }
@@ -73,7 +73,7 @@ function Simulacro() {
 
         fisherYatesShuffle(array)
         userDB.university !== null && userDB.university !== undefined
-            ? getEspecificData(userDB.university, router.query.Simulacro, userDB.subjects[router.query.Simulacro.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
+            ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
             : ''
 
 
@@ -86,7 +86,7 @@ function Simulacro() {
                         <>
                             <div className={style.blackAsksContainer}>
                             <BlackFont>
-                                <Timer time={userDB.subjects[router.query.Simulacro.toLowerCase()].config.time} style={style.timer} />
+                                <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
                                 <span className={style.asksCount}>Item: {router.query.Index}/{simulacro.length}</span>
                                 <div className={style.asksBar}>
                                     {simulacro.map((item, index) =>
