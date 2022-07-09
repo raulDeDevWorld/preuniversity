@@ -1,5 +1,5 @@
 .header {
-  position: absolute;
+  position: fixed;
   background-color: black;
   width: 100vw;
   height: 70px;
@@ -7,13 +7,13 @@
 .logo { 
   position: absolute;
   height: 40px;
-  margin: 15px;
+  margin: 15px 10px;
   z-index: 100;
 }
 .robot {
   position: absolute;
-  top: -5px;
-  right: 0px;
+  top: -6px;
+  right: -7px;
   height: 85px;
   width: 94px;
   object-fit: cover;
