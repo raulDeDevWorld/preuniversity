@@ -13,21 +13,26 @@ export default function Navbar () {
   return (
     <header>
     <div className={style.navbar}>
-        <img src="/logo-dark.svg" className={style.logo} alt="logo" />
-         <div className={style.menu} onClick={handleMenu}>
+        <img src="/LogoMasterWhite.svg" className={style.logo} alt="logo" />
+         {/* <div className={style.menu} onClick={handleMenu}>
             <span className={style.span}></span>
             <span className={style.span}></span>
             <span className={style.span}></span>
-        </div>   
+        </div>    */}
+        <div className={style.menu} onClick={handleMenu}>
+            <span className={`${style.span} ${menu === true ? style.transformOne : ''}`}></span>
+            <span className={`${menu === false ? style.span : ''}`}></span>
+            <span className={`${style.span} ${menu === true ? style.transformTwo : ''}`}></span>
+        </div> 
     </div>   
-    <div className={style.directAcces}>
+    {/* <div className={style.directAcces}>
         <Link href="/Home">
           <a className={`${style.linkAD} ${pathname == "/Simulacro" ? style.active : ''}`}>Simulacro</a>
         </Link>
         <Link href="/Home">
           <a className={`${style.linkAD} ${pathname == "/Promedio" ? style.active : ''}`}>Promedio</a>
         </Link>
-    </div>
+    </div> */}
     <nav className={`${style.nav} ${menu === true ? style.top : ''}`}>
       <Link href="/Home">
         <a className={`${style.link} ${pathname == "/Home" ? style.active : ''}`}>Home</a>
