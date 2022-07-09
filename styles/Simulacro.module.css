@@ -15,6 +15,14 @@
     align-items: center;
     color: white;
 }
+.userDataContainer {
+    display: flex;
+    flex-direction: column;
+    /* centrado vertical */
+    justify-content: space-around;
+    /* centrado-horizontal */
+    align-items: center;
+}
 .subtitle {
     display: inline-block;
     margin: 8px;

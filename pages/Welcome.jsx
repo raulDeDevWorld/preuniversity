@@ -6,7 +6,7 @@ import { useUser } from '../context/Context.js'
 import { dataUser } from '../firebase/utils'
 import { useRouter } from 'next/router'
 import { WithAuth } from '../HOCs/WithAuth'
-import style from '../styles/Home.module.css'
+import style from '../styles/Welcome.module.css'
 import Error from '../components/Error'
 import BlackFont from '../components/BlackFont'
 

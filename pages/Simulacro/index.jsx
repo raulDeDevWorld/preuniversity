@@ -12,34 +12,34 @@ import style from '../../styles/Simulacro.module.css'
 
 
 
-function Play() { 
+function Play() {
     const { userDB, setUserSimulacro, simulacro } = useUser()
 
     const router = useRouter()
 
-    function next (materia) {
+    function next(materia) {
         manageSimulacro(materia, userDB.university, setUserSimulacro)
         router.push('/Simulacro')
     }
 
-    function back () {
+    function back() {
         router.back()
     }
- 
+
     console.log(simulacro)
     return (
         <>
-        <PageUserLayout>
-            {userDB === 'loading' && ''}
-           
-            { userDB !== null && userDB !== 'loading' &&
-                <div className={style.container}>
-                    {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
-                    {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
-                 
-                    <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
-                    <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Bienvenido': 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
-                    
+            <PageUserLayout>
+                {userDB === 'loading' && ''}
+
+                {userDB !== null && userDB !== 'loading' &&
+                    <div className={style.container}>
+                        <div className={style.userDataContainer}>
+                            {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
+                            {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
+                            <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                            <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
+                        </div>
                         <div className={style.blackButtonsContainer}>
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
@@ -56,14 +56,14 @@ function Play() {
 
                             </BlackFont>
                         </div>
-                    
-                    
-                    <PremiumC></PremiumC>
-                </div>
-            }
-    
-        </PageUserLayout>
- 
+
+
+                        <PremiumC></PremiumC>
+                    </div>
+                }
+
+            </PageUserLayout>
+
         </>
     )
 }
