@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     /* centrado vertical */
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* centrado-horizontal */
     align-items: center;
     color: white;
@@ -55,8 +55,6 @@
 .link {
     display: block;
     width: 100%;
-    min-width: 300px;
-    max-width: 360px;
 }
   
   

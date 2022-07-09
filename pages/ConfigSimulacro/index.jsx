@@ -1,7 +1,7 @@
 import Button from '../../components/Button'
 import PremiumC from '../../components/PremiumC'
 import { useRouter } from 'next/router'
-import PageLayout from '../../layouts/PageLayout'
+import PageUserLayout from '../../layouts/PageUserLayout'
 import { WithAuth } from '../../HOCs/WithAuth'
 import { useUser } from '../../context/Context.js'
 import { manageSimulacro } from '../../firebase/utils'
@@ -13,55 +13,56 @@ import style from '../../styles/Config.module.css'
 
 
 
-function ConfigSimulacro() { 
+function ConfigSimulacro() {
     const { userDB, setUserSimulacro } = useUser()
 
     const router = useRouter()
-    function next (materia) {
+    function next(materia) {
         manageSimulacro(materia, userDB.university, setUserSimulacro)
         router.push('/Simulacro')
     }
 
-    function back () {
+    function back() {
         router.back()
     }
- 
+
     return (
         <>
-        <PageLayout>
-            {userDB === 'loading' && ''}
-           
-            { userDB !== null && userDB !== 'loading' &&
-                <div className={style.container}>
-                    <span className={style.orange}>Config Mode</span>
-                    <img src={`/robot.png`} className={style.robot} alt="user photo" />
-                    <BlackFont>
-            <span className={style.title}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu simulacro aqui</span>
-            </BlackFont><br />                    
-                    
-                    <BlackFont> 
-                    <div className={style.buttonContainer}>
-                    {Object.keys(userDB.subjects).map((m, i)=>
+            <PageUserLayout>
+                {userDB === 'loading' && ''}
+                {userDB !== null && userDB !== 'loading' &&
+                    <div className={style.container}>
+                        <span className={style.orange}>Config Mode</span>
+                        <img src={`/robot.png`} className={style.robot} alt="user photo" />
 
-                            <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
-                                <a className={style.link}>
-                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                </a>
-                            
-                            </Link>
-                        
-                    )}
-                    <Button style='buttonSecondary'click={back}>Atras</Button>
+                        <div className={style.messageBlackContainer}>
+                            <BlackFont>
+                                <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
+                            </BlackFont>
+                        </div>
+                        <div className={style.buttonsBlackContainer}>
+                        <BlackFont>
+                            <div className={style.buttonsContainer}>
+                                {Object.keys(userDB.subjects).map((m, i) =>
+
+                                    <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
+                                        <a className={style.link}>
+                                            <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                        </a>
+
+                                    </Link>
+                                )}
+                                <Button style='buttonSecondary' click={back}>Atras</Button>
+                            </div>
+                        </BlackFont>
+                        </div>
+
+                        <PremiumC></PremiumC>
                     </div>
-                    
-                    </BlackFont> 
-                    
-                    <PremiumC></PremiumC>
-                </div>
-            }
-    
-        </PageLayout>
- 
+                }
+
+            </PageUserLayout>
+
         </>
     )
 }
