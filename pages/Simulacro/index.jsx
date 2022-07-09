@@ -8,7 +8,7 @@ import { manageSimulacro } from '../../firebase/utils'
 import Subtitle from '../../components/Subtitle'
 import BlackFont from '../../components/BlackFont'
 import Link from 'next/link'
-import style from '../../styles/Simulacro.module.css'
+import style from '../../styles/Home.module.css'
 
 
 
@@ -22,11 +22,6 @@ function Play() {
         router.push('/Simulacro')
     }
 
-    function back() {
-        router.back()
-    }
-
-    console.log(simulacro)
     return (
         <>
             <PageUserLayout>
@@ -44,14 +39,20 @@ function Play() {
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
                                     {Object.keys(userDB.subjects).map((m, i) =>
-
-                                        <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
-                                            <a className={style.link}>
-                                                <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                            </a>
-                                        </Link>
+                                        <>
+                                            <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
+                                                <a className={style.link}>
+                                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                                </a>
+                                            </Link>
+                                            <Link href={`Simulacro/${m.charAt(0).toUpperCase() + m.slice(1)}/1`} key={i} >
+                                                <a className={style.link}>
+                                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                                </a>
+                                            </Link>
+                                        </>
+                                        
                                     )}
-                                    <Button style='buttonSecondary' click={back}>Atras</Button>
                                 </div>
 
                             </BlackFont>

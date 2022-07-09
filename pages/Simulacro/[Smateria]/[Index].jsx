@@ -47,7 +47,7 @@ function Simulacro() {
 
     function back() {
         router.query.Index > 1
-            ? router.push(`/Simulacro/${routermateria}/${parseInt(router.query.Index) - 1}`)
+            ? router.push(`/Simulacro/${router.query.Smateria}/${parseInt(router.query.Index) - 1}`)
             : ''
         setSelect(null)
     }

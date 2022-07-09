@@ -8,15 +8,13 @@ import { handleSignOut } from '../firebase/utils.js'
 import Subtitle from '../components/Subtitle'
 import Error from '../components/Error'
 import BlackFont from '../components/BlackFont'
-import style from '../styles/Simulacro.module.css'
+import style from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
 
 
 function Home() {
     const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
     const router = useRouter()
-
-
     function practica() {
         userDB.premium !== true ? router.push('https://drive.google.com/drive/folders/1WEakUFwv8boTWwPfwvvXmp1UpfcJ9qpa?usp=sharing') :
             router.push('https://drive.google.com/file/d/1YbG3O2cjmmw732X-XvPDwUqCkJpX9Ifp/view?usp=sharing')
@@ -30,7 +28,6 @@ function Home() {
     function robot() {
         router.push('/Robot')
     }
-
     useEffect(() => {
         userDB === null ? router.push('/Register') : ''
     }, [userDB]);
@@ -57,7 +54,6 @@ function Home() {
                             </BlackFont>
                         </div><br />
                         <PremiumC></PremiumC>
-
                     </div>
                 }
             </PageUserLayout>
@@ -65,5 +61,4 @@ function Home() {
         </>
     )
 }
-
 export default WithAuth(Home)

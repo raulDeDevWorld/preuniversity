@@ -74,7 +74,6 @@ function Config() {
                                     <Button style='buttonBlackFont' click={data}>Datos de perfil</Button>
                                     <Button style='buttonBlackFont' click={reset}>Resetear progreso </Button>
                                     <Button style='buttonBlackFont' click={configSimulacro}>Play Config</Button>
-                                    <Button style='buttonSecondary' click={back}>Atras</Button>
                                 </div>
                             </BlackFont>
                         </div>

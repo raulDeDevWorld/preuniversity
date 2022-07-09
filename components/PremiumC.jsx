@@ -15,9 +15,9 @@ function PremiumC() {
             <BlackFont>
                 <div className={style.dataContainer}>
                     <span className={style.title}>Swoou Premium</span>
-                    <div className={style.cont}>
-                        <span className={style.subtitle}>{(`${userDB.premium}`).length > 16 ? 'Felicidades!!!' : ''}{userDB.premium === false ? 'hazlo simple' : ''}</span>
-                        <span className={style.subtitleTwo}>{(`${userDB.premium}`).length > 16 ? 'Eres PREMIUM' : ''}{userDB.premium === false ? 'hazte premium' : ''}</span>
+                    <div className={style.message}>
+                        <span className={style.textOne}>{(`${userDB.premium}`).length > 16 ? 'Felicidades!!!' : ''}{userDB.premium === false ? 'hazlo simple' : ''}</span>
+                        <span className={style.textTwo}>{(`${userDB.premium}`).length > 16 ? 'Eres PREMIUM' : ''}{userDB.premium === false ? 'hazte premium' : ''}</span>
                     </div>
                 </div>
             </BlackFont>

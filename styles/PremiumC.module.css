@@ -2,6 +2,7 @@
   position: relative;
   padding: 0px 15px;
   width: 100%;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -23,12 +24,12 @@
   margin: 0;
 }
 
-.cont {
+.message {
   position: relative;
-  height: 25px;
+  height: 15px;
 }
 
-.subtitle {
+.textOne {
   position: absolute;
   background-color: black;
   color: white;
@@ -42,7 +43,7 @@
 
 }
 
-.subtitleTwo {
+.textTwo {
   position: absolute;
   background-color: black;
   color: white;
@@ -68,30 +69,4 @@
   100% {
     z-index: 60;
   }
-}
-
-
-.icon {
-  height: 17px;
-  width: 100%;
-  display: flex;
-}
-
-.icon :nth-child(n) {
-  height: 12px;
-  width: 12px;
-  border-radius: 12px;
-  margin-right: 5px;
-}
-
-.icon :nth-child(1) {
-  background-color: red;
-}
-
-.icon :nth-child(2) {
-  background-color: yellow;
-}
-
-.icon :nth-child(3) {
-  background-color: rgb(153, 255, 0);
 }

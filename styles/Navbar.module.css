@@ -3,6 +3,7 @@
   position: fixed;
   background-color: black;
   width: 100vw;
+  min-width: 360px;
   height: 70px;
   z-index: 100;
   /* background-image: url(../public/vector.svg);

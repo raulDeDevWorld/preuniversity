@@ -48,10 +48,8 @@ function ConfigSimulacro() {
                                             <a className={style.link}>
                                                 <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
                                             </a>
-
                                         </Link>
                                     )}
-                                    <Button style='buttonSecondary' click={back}>Atras</Button>
                                 </div>
                             </BlackFont>
                         </div><br />
