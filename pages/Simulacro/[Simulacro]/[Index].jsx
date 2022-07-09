@@ -47,7 +47,7 @@ function Simulacro() {
 
     function back() {
         router.query.Index > 1
-            ? router.back()
+            ? router.push(`/Simulacro/${router.query.Simulacro}/${parseInt(router.query.Index) - 1}`)
             : ''
         setSelect(null)
     }
@@ -68,9 +68,6 @@ function Simulacro() {
     }
 
     simulacro && router.query.Index ? console.log(simulacro) : ''
-    // simulacro && router.query.Index? console.log(array) : ''
-    // simulacro && router.query.Index? console.log(simulacro[router.query.Index-1]) : ''
-
 
     useEffect(() => {
 
@@ -97,14 +94,11 @@ function Simulacro() {
                                     )}
                                 </div>
                                 <div className={style.asksContainer}>
-                            
-                                        <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
-                
+                                    <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
                                 </div>
 
                             </BlackFont>
                             </div>
-
                             <div className={style.blackAnswersContainer}>
                                 <BlackFont>
                                     <>
@@ -120,8 +114,6 @@ function Simulacro() {
 
                                 </BlackFont>
                             </div>
-
-
                         </>}
                 </div>
             }

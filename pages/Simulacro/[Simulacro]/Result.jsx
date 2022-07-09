@@ -3,21 +3,13 @@ import { useState, useEffect } from 'react'
 import { useUser } from '../../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../firebase/utils'
 import { useRouter } from 'next/router'
-import Error from '../../../components/Error'
-import Timer from '../../../components/Timer'
 import BlackFont from '../../../components/BlackFont'
 import PageEspecial from '../../../layouts/PageEspecial'
 import { WithAuth } from '../../../HOCs/WithAuth'
 import style from '../../../styles/Result.module.css'
 
-
 import { CircularProgressBar } from "@tomik23/react-circular-progress-bar";
 
-
-// import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
-// import 'react-circular-progressbar/dist/styles.css'
-// import RadialSeparators from '../../../components/RadialSeparators'
-// import ChangingProgressProvider from "../../../components/ChangingProgressProvider";
 
 
 function Simulacro() {
@@ -63,8 +55,7 @@ function Simulacro() {
         }, { success: 0, mistakes: 0, undefined: 0 })
         setPoints(data)
     }
-    // simulacro && router.query.Index? console.log(array) : ''
-    // simulacro && router.query.Index? console.log(simulacro[router.query.Index-1]) : ''
+
 
     console.log(points)
     useEffect(() => {
@@ -75,79 +66,69 @@ function Simulacro() {
             {userDB !== 'loading' &&
                 <div className={style.container}>
                     <div>
-                        <img src={`/robot.png`} className={style.perfil} alt="user photo" />
+                        <img src={`/robot.png`} className={style.robot} alt="user photo" />
                     </div>
+                    <div className={style.blackContainer}>
+                        <BlackFont>
+                            <div className={style.resultContainer}>
+                                <p className={`${style.review}`}>
+                                    Revisando...
+                                </p>
+                                <p className={`${style.resulText} ${points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? style.approved : style.reprobate}`}>
+                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? 'Aprobaste 😄' : 'Reprobaste 😅'}
+                                </p>
 
-                    <>
-                        <div>
-                            <BlackFont>
-                                <div className={style.containerData}>
-                                    <p className={`${style.review}`}>
-                                        Revisando...
-                                    </p>
-                                    <p className={`${style.paragraph} ${points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? style.green : style.red}`}>
-                                        {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 ? 'Aprobaste 😄' : 'Reprobaste 😅'}
-                                    </p>
-
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 51
-                                        ? <p className={style.message}>Animo, intentalo otra vez!!! <spam className={style.emogi}>😅</spam></p>
-                                        : ''}
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 70
-                                        ? <p className={style.message}>Bien, vamos x más!!! <spam className={style.emogi}>😅</spam></p>
-                                        : ''}
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 69 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 85
-                                        ? <p className={style.message}>Muy Bien, buen progreso!!! <spam className={style.emogi}>😀</spam></p>
-                                        : ''}
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 84 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 100
-                                        ? <p className={style.message}>Exelente, vamos super!!! <spam className={style.emogi}>😃</spam></p>
-                                        : ''}
-                                    {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) == 100
-                                        ? <p className={style.perfect}>Perfectooo, felicidades!!! <spam className={style.emogi}>😍</spam></p>
-                                        : ''}
-
-
-                                    <CircularProgressBar
-                                        colorCircle="#365b74"
-                                        fontColor="#00F0FF"
-                                        size="150"
-                                        fontSize="20px"
-                                        unit="pts"
-                                        linearGradient={[
-                                            '#8ff8ff',
-                                            '#00F0FF',
-                                        ]}
-                                        percent={points !== null ? Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) : 0}
-                                        round
-                                    />
-                                </div>
-                                {points !== null && <div>
-                                    <p className={`${style.blueText} ${style.materia}`}> Materia: {router.query.Simulacro}</p>
-                                    <p className={`${style.blueText} ${style.errores}`}> Errores: {points.mistakes} / {points.success + points.mistakes + points.undefined}
-                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
-                                            <div className={style.porcent} style={{ background: 'red', width: `${Math.round(points.mistakes * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
-                                            </div>
-
-                                        </div>
-                                    </p>
-                                    <p className={`${style.blueText} ${style.aciertos}`}> Aciertos: {points.success} / {points.success + points.mistakes + points.undefined}
-                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
-                                            <div className={style.porcent} style={{ background: 'rgb(0, 233, 0)', width: `${Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
+                                {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 51
+                                    ? <p className={style.message}>Animo, intentalo otra vez!!! <spam className={style.emogi}>😅</spam></p>
+                                    : ''}
+                                {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 50 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 70
+                                    ? <p className={style.message}>Bien, vamos x más!!! <spam className={style.emogi}>😅</spam></p>
+                                    : ''}
+                                {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 69 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 85
+                                    ? <p className={style.message}>Muy Bien, buen progreso!!! <spam className={style.emogi}>😀</spam></p>
+                                    : ''}
+                                {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) > 84 && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) < 100
+                                    ? <p className={style.message}>Exelente, vamos super!!! <spam className={style.emogi}>😃</spam></p>
+                                    : ''}
+                                {points !== null && Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) == 100
+                                    ? <p className={style.perfectMessage}>Perfectooo, felicidades!!! <spam className={style.emogi}>😍</spam></p>
+                                    : ''}
+                                <CircularProgressBar
+                                    colorCircle="#365b74"
+                                    fontColor="#00F0FF"
+                                    size="150"
+                                    fontSize="20px"
+                                    unit="pts"
+                                    linearGradient={[
+                                        '#8ff8ff',
+                                        '#00F0FF',
+                                    ]}
+                                    percent={points !== null ? Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined)) : 0}
+                                    round
+                                />
+                                {points !== null && <div className={style.detailResultContainer}>
+                                    <p className={`${style.detailText} ${style.materia}`}> Materia: {router.query.Simulacro}</p>
+                                    <p className={`${style.detailText} ${style.errores}`}> Errores: {points.mistakes} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressBarPorcent}>
+                                            <div className={style.porcentErrors} style={{ width: `${Math.round(points.mistakes * 100 / (points.success + points.mistakes + points.undefined))}%` }}>
                                             </div>
                                         </div>
                                     </p>
-                                    <p className={`${style.blueText} ${style.noRes}`}> No respondidos: {points.undefined} / {points.success + points.mistakes + points.undefined}
-                                        <div className={style.progressPorcent} onClick={() => manageVisibility(i)}>
-                                            <div className={style.porcent} style={{ background: 'rgba(255, 255, 255, 0.5)', width: `${Math.round(points.undefined * 100 / (points.success + points.mistakes + points.undefined))}%`, height: '10px' }}>
-                                            </div>
+                                    <p className={`${style.detailText} ${style.aciertos}`}> Aciertos: {points.success} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressBarPorcent}>
+                                            <div className={style.porcentSuccess} style={{ width: `${Math.round(points.success * 100 / (points.success + points.mistakes + points.undefined))}%` }}></div>
+                                        </div>
+                                    </p>
+                                    <p className={`${style.detailText} ${style.noRes}`}> No respondidos: {points.undefined} / {points.success + points.mistakes + points.undefined}
+                                        <div className={style.progressBarPorcent}>
+                                            <div className={style.porcentUndefined} style={{ width: `${Math.round(points.undefined * 100 / (points.success + points.mistakes + points.undefined))}%` }}></div>
                                         </div>
                                     </p>
                                 </div>}
-                                <p className={`${style.blueText} ${style.verRes}`}>Ver respuestas</p>
-                            </BlackFont>
-                        </div>
-
-
-                    </>
+                                <p className={`${style.detailText} ${style.verRes}`}>Ver respuestas</p>
+                            </div>
+                        </BlackFont>
+                    </div>
                 </div>
             }
         </PageEspecial>
