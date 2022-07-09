@@ -140,6 +140,10 @@
     justify-content: space-evenly;
     align-items: center;
 }
+.green {
+    background-color: #3FC500;
+    color: white;
+}
 .buttonFinishAnswer {
     color: #ffffff;
     background-color: red;
@@ -210,10 +214,7 @@
     background-color: red;
     color: white;
 }
-.green {
-    background-color: #3FC500;
-    color: white;
-}
+
 .textCont {
     position: relative;
     background-color: transparent;
