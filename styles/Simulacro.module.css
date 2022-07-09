@@ -27,14 +27,22 @@
     width: 90px;
     border-radius: 50px;
 }
-
-.buttonContainer {
-    height: 200px;
+.blackButtonsContainer {
+    position: relative;
+    padding: 0px 15px;
     width: 100%;
-    margin-top: 10px;
+    height: 40%;
+    min-height: 300px;
+    max-height: 500px;
+}
+.buttonsContainer {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    height: 90%;
+    width: 100%;
 }
 .link {
     display: block;

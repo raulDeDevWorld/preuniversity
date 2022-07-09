@@ -1,24 +1,31 @@
+.container {
+  position: relative;
+  padding: 0px 15px;
+  width: 100%;
+  cursor: pointer;
+}
 
-.box {
-    background-color: black;
-    border-radius: 10px;
-    justify-content: space-around;
-    width: 100%;
-    min-width: 300px;
-    max-width: 360px;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
+.dataContainer {
+  position: relative;
+  border-radius: 10px;
+  justify-content: space-around;
+  width: 100%;
+  min-width: 300px;
+  max-width: 360px;
+  cursor: pointer;
 }
+
 .title {
-    color: orange;
-    padding: 0;
-    margin: 0;
+  color: orange;
+  padding: 0;
+  margin: 0;
 }
+
 .cont {
-    position: relative;
-    height: 25px;
+  position: relative;
+  height: 25px;
 }
+
 .subtitle {
   position: absolute;
   background-color: black;
@@ -28,11 +35,12 @@
   margin: auto;
   animation-name: myAnimation;
   animation-duration: 6s;
-  animation-iteration-count: infinite; 
+  animation-iteration-count: infinite;
   animation-direction: alternate;
 
 }
- .subtitleTwo {
+
+.subtitleTwo {
   position: absolute;
   background-color: black;
   color: white;
@@ -41,11 +49,23 @@
   margin: auto;
   z-index: 50;
 }
+
 @keyframes myAnimation {
-	0% {z-index: 1;}
-        33% {z-index: 60;}
-        67% {z-index: 1;}
-        100% {z-index: 60;} 
+  0% {
+    z-index: 1;
+  }
+
+  33% {
+    z-index: 60;
+  }
+
+  67% {
+    z-index: 1;
+  }
+
+  100% {
+    z-index: 60;
+  }
 }
 
 
@@ -54,18 +74,22 @@
   width: 100%;
   display: flex;
 }
+
 .icon :nth-child(n) {
   height: 12px;
   width: 12px;
   border-radius: 12px;
   margin-right: 5px;
 }
+
 .icon :nth-child(1) {
   background-color: red;
 }
+
 .icon :nth-child(2) {
   background-color: yellow;
 }
+
 .icon :nth-child(3) {
   background-color: rgb(153, 255, 0);
 }
