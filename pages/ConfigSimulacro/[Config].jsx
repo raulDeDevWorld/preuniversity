@@ -1,7 +1,7 @@
 import Button from '../../components/Button'
 import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
-import PageUserLayout from '../../layouts/PageEspecial'
+import PageUserLayout from '../../layouts/PageUserLayout'
 import { useUser } from '../../context/Context.js'
 import { userDataUpdate, getData } from '../../firebase/utils'
 import { useRouter } from 'next/router'

@@ -1,10 +1,10 @@
 .container {
   position: relative;
   /* background-color: blue; */
-  padding-top: 90px;
+  padding-top: 270px;
   padding-bottom: 70px;
   height: 100%;
-  min-height: 640px;
+  min-height: 1000px;
   width: 100%;
   min-width: 360px;
   display: flex;
@@ -15,6 +15,7 @@
   align-items: center;
   color: white;
   font-size: 12px;
+  background-color: #15202B;
 }
 .config {
   color: orange;
