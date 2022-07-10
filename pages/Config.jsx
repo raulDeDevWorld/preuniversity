@@ -60,13 +60,11 @@ function Config() {
 
                 {userDB !== null && userDB !== 'loading' &&
                     <div className={style.container}>
-                        <span className={style.orange}>Config Mode</span>
-                        <img src="/robot.png" className={style.robot} alt="user photo" />
-                        <div className={style.messageBlackContainer}>
-                            <BlackFont>
-                                <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
-                            </BlackFont>
-                        </div>
+                        <div className={style.userDataContainer}>
+                            <span className={style.orange}>Config Mode</span>
+                            <img src="/robot.png" className={style.robot} alt="user photo" />
+                            <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
+                        </div><br />
                         <div className={style.buttonsBlackContainer}>
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
@@ -76,7 +74,7 @@ function Config() {
                                     <Button style='buttonBlackFont' click={configSimulacro}>Play Config</Button>
                                 </div>
                             </BlackFont>
-                        </div>
+                        </div><br />
 
                         <PremiumC></PremiumC>
                     </div>
