@@ -1,7 +1,7 @@
 import Button from '../../components/Button'
 import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
-import PageEspecial from '../../layouts/PageEspecial'
+import PageUserLayout from '../../layouts/PageEspecial'
 import { useUser } from '../../context/Context.js'
 import { userDataUpdate, getData } from '../../firebase/utils'
 import { useRouter } from 'next/router'
@@ -12,10 +12,6 @@ import style from '../../styles/PlayConfig.module.css'
 import { rob } from '../../utils/robot'
 import BlackFont from '../../components/BlackFont'
 import PremiumC from '../../components/PremiumC'
-
-
-
-
 
 function PlayConfig() {
     const { userDB, setUserData } = useUser()
@@ -49,19 +45,19 @@ function PlayConfig() {
 
     });
     return (
-        <PageEspecial>
+        <PageUserLayout>
             {userDB !== null && userDB !== 'loading' &&
                 <div className={style.container}>
                     <span className={style.config}>Config mode</span>
                     <img src={`/robot.png`} className={style.robot} alt="user photo" />
-                    <div className={style.messageBlackContainer}>
-                        <BlackFont>
-                            <span className={style.message}>{router.query.Config}</span>
-                        </BlackFont>
-                    </div>
+                   
+                            
+                       
+                
                     <div className={style.configBlackContainer}>
                         <BlackFont>
                             <div className={style.configContainer}>
+                                <span className={style.materia}>{router.query.Config.toUpperCase()}</span>
                                 <div className={style.message}>Tiempo</div>
                                 <div className={style.containerBoxSelect}>
                                     <div className={`${style.boxSelect} ${userDB.subjects[router.query.Config.toLowerCase()].config.time == 5 ? style.boxSelectNow : ''} ${time == 5 ? style.green : ''}`} onClick={() => setTime(5)}>5</div>
@@ -99,11 +95,11 @@ function PlayConfig() {
                             </div>
                             <Button style='successButton' click={save}>Finalizar</Button>
                         </BlackFont>
-                    </div>
+                    </div><br />
                     <PremiumC></PremiumC>
                 </div>
             }
-        </PageEspecial>
+        </PageUserLayout>
     )
 }
 export default WithAuth(PlayConfig)

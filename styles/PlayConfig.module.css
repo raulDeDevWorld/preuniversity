@@ -14,6 +14,7 @@
   /* centrado-horizontal */
   align-items: center;
   color: white;
+  font-size: 12px;
 }
 .config {
   color: orange;
@@ -45,20 +46,40 @@
   font-size: 12px;
 
 }
+
 .configBlackContainer {
   position: relative;
   padding: 0px 15px;
   width: 100%;
-  min-height: 430px;
+  min-height: 470px;
 }
 .configContainer {
   width: 90%;
+  max-width: 300px;
   position: relative;
   left: 0;
   right: 0;
   margin: auto;
 }
-
+.materia {
+  display: inline-block;
+  margin-bottom: 20px;
+  /* position: relative;
+  top: 14px;
+  right: 0px;
+  left: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  color: white;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #486bad3c;
+  border: 2px solid #486bad3c;
+  padding: 5px;
+  width: 100px;
+  border-radius: 5px;
+  text-align: center; */
+}
 .containerBoxSelect {
   justify-content: space-between;
   display: flex;
