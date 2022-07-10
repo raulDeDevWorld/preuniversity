@@ -43,6 +43,7 @@
     text-align: left;
     color: white;
     font-size: 1em;
+    font-weight: 400;
     background-color: #15202B;
     padding: 5px;
     width: 100px;
@@ -56,7 +57,7 @@
     right: 0;
     height: 10px;
     margin: 20px;
-    background-color: #31477098;
+    background-color: #15202B;
     color: white;
     top: 40px;
     border-right: 1px solid white;
@@ -82,7 +83,7 @@
 }
 .ask {
     font-size: 14px;
-    font-weight: 200;
+    font-weight: 400;
     text-align: center;
 }
 .move {
@@ -109,7 +110,7 @@
     text-align: left;
     color: white;
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 400;
     background-color: #3FC500;
     padding: 10px;
     width: 100px;
@@ -128,7 +129,7 @@
 .answerButtons {
     color: #00F0FF;
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 400;
     background-color: #15202B;
     border: 2px solid #486bad3c;
     width: 100%;
@@ -149,6 +150,7 @@
     background-color: red;
     border: 2px solid #486bad3c;
     font-size: 1em;
+    font-weight: 400;
     width: 100%;
     max-width: 500px;
     min-height: 50px;
