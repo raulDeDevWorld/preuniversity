@@ -1,12 +1,20 @@
 .container {
   position: relative;
+  /* background-color: blue; */
+  padding-top: 90px;
+  padding-bottom: 70px;
   height: 100%;
+  min-height: 640px;
   width: 100%;
+  min-width: 360px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  /* centrado vertical */
+  justify-content: space-evenly;
+  /* centrado-horizontal */
   align-items: center;
+  color: white;
+  font-size: 12px;
 }
 .list {
   height: 250px;

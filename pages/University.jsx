@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useUser, setUniversityData} from '../context/Context.js'
-import PageLayout from '../layouts/PageLayout'
+import PageUserLayout from '../layouts/PageUserLayout'
 import { WithAuth } from '../HOCs/WithAuth'
 import { userDataUpdate, getFac } from '../firebase/utils'
 import Subtitle from '../components/Subtitle'
@@ -43,7 +43,7 @@ function Facultad (props) {
         userDB.university ? getFac(userDB.university, setUniversityData): ''
     }, [userDB]);
     return (
-    <PageLayout className={style.container}>
+    <PageUserLayout className={style.container}>
         <div className={style.container}>
             <Subtitle>Elije tu facultad</Subtitle>
        
@@ -52,14 +52,15 @@ function Facultad (props) {
                 <ul className={style.list}>
                 {Object.keys(uniData.fac).map((f, i)=><li className={`${style.li} ${f == facDB ? style.active : ''}`} key={i} onClick={()=>setFacData(uniData.fac[f].facName, f)}>{uniData.fac[f].facName}</li>)}   
                 </ul> 
-            </BlackFont>
-            : ''}
-            <div className={style.buttonsContainer}>
+                <div className={style.buttonsContainer}>
                 <Button style={'buttonSecondary'} click={back}>atras</Button> 
                 <Button style={'buttonPrimary'} click={continuar}>continuar</Button>    
             </div>
+            </BlackFont>
+            : ''}
+           
         </div>
-    </PageLayout>
+    </PageUserLayout>
     )
 }
 

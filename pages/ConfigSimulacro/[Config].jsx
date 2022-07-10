@@ -91,9 +91,8 @@ function PlayConfig() {
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'aleatorio' ? style.boxSelectNow : ''} ${difficulty == 'aleatorio' ? style.green : ''}`} onClick={() => setDifficulty('aleatorio')}>Aleatorio</button>
                                     <div className={style.boxSelect}>{'500'}p</div>
                                 </div>
-
+                                <Button style='successButton' click={save}>Finalizar</Button>
                             </div>
-                            <Button style='successButton' click={save}>Finalizar</Button>
                         </BlackFont>
                     </div><br />
                     <PremiumC></PremiumC>

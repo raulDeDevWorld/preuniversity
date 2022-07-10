@@ -1,8 +1,7 @@
 .container {
     position: relative;
-    /* background-color: blue; */
     padding-top: 90px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
     height: 100%;
     min-height: 640px;
     width: 100%;
@@ -10,129 +9,226 @@
     display: flex;
     flex-direction: column;
     /* centrado vertical */
-      justify-content: space-around;
+    justify-content: space-evenly;
     /* centrado-horizontal */
     align-items: center;
     color: white;
-  }
-  .subtitle {
+    font-size: 12px;
+}
+
+.subtitle {
     display: inline-block;
     margin: 8px;
     color: orange;
-  
-  }
-  .perfil {
+
+}
+
+.perfil {
     margin: 10px;
     height: 90px;
     width: 90px;
     border-radius: 50px;
-  }
-  .avatarsContainer {
+}
+
+.avatarsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px 0;
     margin-top: 10px;
     height: auto;
-  }
-  .avatarb1 {
+}
+
+.avatarb1 {
     cursor: pointer;
     width: 85px;
     height: 85px;
-    margin: 2px 20px 2px 17px;
-  }
-  .avatarb2 {
+    align-self: end;
+    justify-self: center;
+
+}
+
+.avatarb2 {
     cursor: pointer;
-    width: 75px;
-    height: 75px;
-    margin: 2px 20px 2px 7px;
-  }
-  .avatarg1 {
-    cursor: pointer;
-    width: 65px;
-    height: 65px;
-    border-radius: 5px;
-    margin: 2px 20px 2px 20px;
-  }
-  .avatarg2 {
+    width: 76px;
+    height: 76px;
+    align-self: end;
+    justify-self: center;
+}
+
+.avatarg1 {
     cursor: pointer;
     width: 65px;
     height: 65px;
+    align-self: center;
+    justify-self: center;
     border-radius: 5px;
     margin: 2px 20px 2px 20px;
-  }
-  .buttonContainer {
+}
+
+.avatarg2 {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    align-self: center;
+    justify-self: center;
+    border-radius: 5px;
+    margin: 2px 20px 2px 20px;
+}
+
+.buttonsContainer {
     height: 200px;
     width: 100%;
     min-width: 300px;
     max-width: 360px;
     margin-top: 10px;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
-  }
-  .form {
+    align-items: center;
+}
+
+.form {
     margin-top: 10px;
     color: white;
-  }
-  .input {
+}
+
+.input {
     border: none;
     border-bottom: 1px solid black;
     width: 90%;
     background-color: transparent;
     margin-bottom: 7px;
     color: white;
-  }
-  .input ::placeholder { color:rgb(172, 172, 172); }
-  .input::-webkit-input-placeholder {  color:rgb(172, 172, 172); } /* WebKit */
-  .input::-moz-placeholder {  color:rgb(172, 172, 172); } /* Firefox 19+ */
-  .right {
-  animation: rotar 1.5s alternate;
-  filter: saturate(1.5);
-  outline: 1px dashed rgb(255, 123, 0);
-  border-radius: 5px;
-  }
-  .pdf {
+}
+
+.input::-moz-placeholder {
+    color: rgb(172, 172, 172);
+}
+
+.right {
+    animation: rotar 1.5s alternate;
+    filter: saturate(1.5);
+    outline: 1px dashed rgb(255, 123, 0);
+    border-radius: 5px;
+}
+
+.pdf {
     color: red;
-  }
-  .fontBlack {
+}
+
+.fontBlack {
     background-color: #000000;
     color: orange;
     width: 105%;
     margin-top: 20px;
     padding: 10px;
-  }
-  
-  .avatarb1:hover {
+}
+
+.avatarb1:hover {
     filter: saturate(1.5);
-  }
-  .avatarb2:hover {
+}
+
+.avatarb2:hover {
     filter: saturate(1.5);
-  }
-  .avatarg1:hover {
+}
+
+.avatarg1:hover {
     filter: saturate(1.5);
-  }
-  .avatarg2:hover {
+}
+
+.avatarg2:hover {
     filter: saturate(1.5);
-  }
-  .buttonsContainer{
+}
+
+.buttonContainer {
     display: flex;
-  }
-  .link {
+    flex-direction: column;
+    align-items: center;
+}
+
+.link {
     display: block;
     width: 100%;
     min-width: 300px;
     max-width: 360px;
-  }
-  @keyframes rotar{
-    0% {transform: rotate(0deg);}
-    20% {transform: rotate(10deg);}
-    40% {transform: rotate(-15deg);}
-    60% {transform: rotate(15deg);}
-    80% {transform: rotate(-10deg);}
-    100% {transform: rotate(0deg);}
-  }
-  
-  
-  
-  
-  
-  
-  
-  
+}
+
+@keyframes rotar {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-15deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+    }
+
+    80% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
