@@ -35,9 +35,7 @@ function Edu() {
                 {userDB && userDB.avatar && <>
                     <div className={style.userDataContainer}>
                         <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="avatar" />
-                        <div className={style.subtitle}>Muy bien {(`${userDB.name}`).split(' ')[0].toUpperCase()}</div>
-                        <div className={style.subtitle}>Donde te postularas</div>
-                    </div><br />
+                        <Subtitle> Muy bien {(`${userDB.name}`).split(' ')[0].toUpperCase()} <br /> Donde te postulara</Subtitle>                    </div><br />
                     <div className={style.blackButtonsContainer}>
                         <BlackFont>
                             <div className={style.buttonsContainer}>

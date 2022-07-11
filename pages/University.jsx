@@ -45,9 +45,9 @@ function Facultad(props) {
     return (
         <PageUserLayout className={style.container}>
             <div className={style.container}>
+                <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
                 <Subtitle>Elije tu facultad</Subtitle>
                 <div className={style.blackButtonsContainer}>
-
                     {uniData ?
                         <BlackFont>
                             <div className={style.buttonsContainer}>
