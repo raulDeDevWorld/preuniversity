@@ -14,8 +14,7 @@
   font-size: 12px;
   /* background-color: #15202B;
   background-color: #00D1FF; */
-  margin: 80px;
-
+  padding: 80px 0px;
 }
 .userDataContainer {
   display: flex;

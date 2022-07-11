@@ -1,7 +1,6 @@
 .container {
-    position: absolute;
+    position: relative;
     min-height: 100vh;
-    min-height: 640px;
     width: 100vw;
     min-width: 360px;
     background-color: #15202B;
