@@ -33,9 +33,10 @@
 }
 
 .robot {
+  margin: 10px;
   width: 250px;
   height: 110px;
-  object-fit: cover;
+  object-fit:cover;
   object-position: center;
 }
 
