@@ -1,10 +1,7 @@
 .container {
   position: relative;
   /* background-color: blue; */
-  padding-top: 270px;
-  padding-bottom: 70px;
-  height: 100%;
-  min-height: 1000px;
+  min-height: 100%;
   width: 100%;
   min-width: 360px;
   display: flex;
@@ -12,10 +9,21 @@
   /* centrado vertical */
   justify-content: center;
   /* centrado-horizontal */
-  align-items: center;
+  align-content: center;
   color: white;
   font-size: 12px;
-  background-color: #15202B;
+  /* background-color: #15202B;
+  background-color: #00D1FF; */
+  margin: 80px;
+
+}
+.userDataContainer {
+  display: flex;
+  flex-direction: column;
+  /* centrado vertical */
+  justify-content: space-around;
+  /* centrado-horizontal */
+  align-items: center;
 }
 .config {
   color: orange;
@@ -142,8 +150,8 @@
 
 }
 
-@media (min-width: 900px) { 
+/* @media (min-width: 900px) { 
   .container {
     margin-bottom: 35px;
   }
-}
+} */

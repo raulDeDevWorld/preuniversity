@@ -1,7 +1,7 @@
 import Button from '../../components/Button'
 import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
-import PageUserLayout from '../../layouts/PageUserLayout'
+import PageSimulacroLayout from '../../layouts/PageSimulacroLayout'
 import { useUser } from '../../context/Context.js'
 import { userDataUpdate, getData } from '../../firebase/utils'
 import { useRouter } from 'next/router'
@@ -45,15 +45,13 @@ function PlayConfig() {
 
     });
     return (
-        <PageUserLayout>
+        <PageSimulacroLayout>
             {userDB !== null && userDB !== 'loading' &&
                 <div className={style.container}>
-                    <span className={style.config}>Config mode</span>
-                    <img src={`/robot.png`} className={style.robot} alt="user photo" />
-                   
-                            
-                       
-                
+                    <div className={style.userDataContainer}>
+                        <span className={style.config}>Config mode</span>
+                        <img src={`/robot.png`} className={style.robot} alt="user photo" />
+                    </div><br />
                     <div className={style.configBlackContainer}>
                         <BlackFont>
                             <div className={style.configContainer}>
@@ -98,7 +96,7 @@ function PlayConfig() {
                     <PremiumC></PremiumC>
                 </div>
             }
-        </PageUserLayout>
+        </PageSimulacroLayout>
     )
 }
 export default WithAuth(PlayConfig)

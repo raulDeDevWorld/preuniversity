@@ -54,7 +54,7 @@ a {
  html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  background-color: #15202B;
+  /* background-color: #15202B; */
 }
 
 /* Sections
@@ -71,7 +71,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     overflow-x: hidden;
     font-size: 14px;
-  background-color: #15202B;
+  /* background-color: #15202B; */
 }
 
 /**
