@@ -45,12 +45,14 @@ function Facultad(props) {
     return (
         <PageUserLayout className={style.container}>
             <div className={style.container}>
-                <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
-                <Subtitle>Elije tu facultad</Subtitle>
-                <div className={style.blackButtonsContainer}>
+                <div className={style.userDataContainer}>
+                    <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                    <Subtitle>Elije tu facultad</Subtitle>
+                </div> <br />
+                <div className={style.blackCareersContainer}>
                     {uniData ?
                         <BlackFont>
-                            <div className={style.buttonsContainer}>
+                            <div className={style.careersContainer}>
                                 <ul className={style.list}>
                                     {Object.keys(uniData.fac).map((f, i) => <li className={`${style.li} ${f == facDB ? style.active : ''}`} key={i} onClick={() => setFacData(uniData.fac[f].facName, f)}>{uniData.fac[f].facName}</li>)}
                                 </ul>
@@ -59,12 +61,9 @@ function Facultad(props) {
                                     <Button style={'buttonPrimary'} click={continuar}>continuar</Button>
                                 </div>
                             </div>
-
                         </BlackFont>
                         : ''}
                 </div>
-
-
             </div>
         </PageUserLayout>
     )

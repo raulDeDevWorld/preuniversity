@@ -1,7 +1,7 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useUser, setUniversityData} from '../context/Context.js'
-import PageLayout from '../layouts/PageLayout'
+import { useUser, setUniversityData } from '../context/Context.js'
+import PageUserLayout from '../layouts/PageUserLayout'
 import { WithAuth } from '../HOCs/WithAuth'
 import { userDataUpdate, getFac } from '../firebase/utils'
 import Subtitle from '../components/Subtitle'
@@ -11,66 +11,73 @@ import style from '../styles/Facultad.module.css'
 import { firebaseConfig } from '../firebase/config.js'
 
 
-function Carrera () {
+function Carrera() {
 
     const router = useRouter()
-    const {userDB, uniData, setUniversityData, setUserData} = useUser()
+    const { userDB, uniData, setUniversityData, setUserData } = useUser()
     const [career, setCareer] = useState(null)
 
-    function continuar () {
-        if(career !== null){
+    function continuar() {
+        if (career !== null) {
             const materiasDB = uniData.fac[userDB.facDB].materias
-            const obj = materiasDB.reduce(function(target, key, index) {
+            const obj = materiasDB.reduce(function (target, key, index) {
                 target[key] = {
                     config: {
-                    time: 15,
-                    questions: 10,
-                    difficulty: 'aleatorio',
+                        time: 15,
+                        questions: 10,
+                        difficulty: 'aleatorio',
                     },
-                    progress: false       
-              }
+                    progress: false
+                }
                 return target;
-              }, {})
+            }, {})
 
             userDataUpdate({
                 subjects: obj
-            }, setUserData)  
+            }, setUserData)
             router.push('/Home')
-        } 
+        }
     }
 
-    function back () {
+    function back() {
         router.back()
     }
 
-    function setCareerData (c) {
+    function setCareerData(c) {
         setCareer(c)
-    
-	}
+
+    }
 
     console.log(uniData)
     console.log(userDB.facDB)
 
     useEffect(() => {
-        userDB.university ? getFac(userDB.university, setUniversityData): ''
+        userDB.university ? getFac(userDB.university, setUniversityData) : ''
     }, [userDB, career]);
     return (
-    <PageLayout>
-        {userDB.facDB && <div className={style.container}>
-            <Subtitle>Elije tu facultad</Subtitle>
-            {uniData && userDB? 
-                <BlackFont> 
-                    <ul className={style.list}>
-                        { uniData.fac[userDB.facDB].carreras.map((c, i) => <li className={`${style.li} ${c == career ? style.active : ''}`} key={i} onClick={() => setCareerData(c)}>{c}</li>) }
-                    </ul>
-                </BlackFont>
-            : ''}
-            <div className={style.buttonsContainer}>
-                <Button style={'buttonSecondary'} click={back}>atras</Button> 
-                <Button style={'buttonPrimary'} click={continuar}>continuar</Button>    
-            </div>
-        </div>}
-    </PageLayout>
+        <PageUserLayout>
+            {userDB.facDB && <div className={style.container}>
+                <div className={style.userDataContainer}>
+                    <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
+                    <Subtitle>Elije tu Carrera</Subtitle>
+                </div> <br />
+                <div className={style.blackCareersContainer}>
+                    {uniData && userDB ?
+                        <BlackFont>
+                            <div className={style.careersContainer}>
+                                <ul className={style.list}>
+                                    {uniData.fac[userDB.facDB].carreras.map((c, i) => <li className={`${style.li} ${c == career ? style.active : ''}`} key={i} onClick={() => setCareerData(c)}>{c}</li>)}
+                                </ul>
+                                <div className={style.buttonsContainer}>
+                                    <Button style={'buttonSecondary'} click={back}>atras</Button>
+                                    <Button style={'buttonPrimary'} click={continuar}>continuar</Button>
+                                </div>
+                            </div>
+                        </BlackFont>
+                        : ''}
+                </div>
+            </div>}
+        </PageUserLayout>
     )
 }
 
