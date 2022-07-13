@@ -32,8 +32,8 @@ function Simulacro() {
             : ''
         setSelect(null)
     }
-    function finish() {
-        router.push(`/Simulacro/${router.query.Simulacro}/Result`)
+    function seeAnswers() {
+        router.push(`/Simulacro/${router.query.Smateria}/Answers/1`)
     }
     function nav(i) {
 
@@ -125,7 +125,7 @@ function Simulacro() {
                                         </div>
                                     </p>
                                 </div>}
-                                <p className={`${style.detailText} ${style.verRes}`}>Ver respuestas</p>
+                                <p className={`${style.detailText} ${style.verRes}`} onClick={seeAnswers}>Ver respuestas</p>
                             </div>
                         </BlackFont>
                     </div>

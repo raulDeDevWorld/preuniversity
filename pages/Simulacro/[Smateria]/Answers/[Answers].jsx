@@ -1,18 +1,18 @@
 
 import { useState, useEffect } from 'react'
-import { useUser } from '../../../context/Context.js'
-import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../firebase/utils'
+import { useUser } from '../../../../context/Context.js'
+import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../../firebase/utils'
 import { useRouter } from 'next/router'
-import Error from '../../../components/Error'
-import Timer from '../../../components/Timer'
-import BlackFont from '../../../components/BlackFont'
-import PageEspecial from '../../../layouts/PageEspecial'
-import { WithAuth } from '../../../HOCs/WithAuth'
-import style from '../../../styles/Smateria.module.css'
+import Error from '../../../../components/Error'
+import Timer from '../../../../components/Timer'
+import BlackFont from '../../../../components/BlackFont'
+import PageEspecial from '../../../../layouts/PageEspecial'
+import { WithAuth } from '../../../../HOCs/WithAuth'
+import style from '../../../../styles/Smateria.module.css'
 
 
 function Simulacro() {
-    const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray} = useUser()
+    const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray} = useUser()
     const [select, setSelect] = useState(null)
     const [count, setCount] = useState(0)
 
@@ -23,7 +23,7 @@ function Simulacro() {
             var j = Math.floor(Math.random() * (i + 1)); //random index
             [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
         }
-        return setUserFisherArray(arr)
+        return setArray(arr)
     }
 
     function selectAnswer(answer) {
@@ -45,14 +45,14 @@ function Simulacro() {
     }
 
     function back() {
-        router.query.Index > 1
-            ? router.push(`/Simulacro/${router.query.Smateria}/${parseInt(router.query.Index) - 1}`)
+        router.query.Answers > 1
+            ? router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(router.query.Answers) - 1}`)
             : ''
         setSelect(null)
     }
     function next() {
-        router.query.Index < simulacro.length
-            ? router.push(`/Simulacro/${router.query.Smateria}/${parseInt(router.query.Index) + 1}`)
+        router.query.Answers < simulacro.length
+            ? router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(router.query.Answers) + 1}`)
             : ''
         setSelect(null)
     }
@@ -61,22 +61,22 @@ function Simulacro() {
     }
     function nav(i) {
 
-        router.push(`/Simulacro/${router.query.Smateria}/${parseInt(i) + 1}`)
+        router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(i) + 1}`)
 
         setSelect(null)
     }
 
-    simulacro && router.query.Index ? console.log(simulacro) : ''
-
+    simulacro ? console.log(simulacro) : ''
+    console.log(router.query)
     useEffect(() => {
 
-        fisherYatesShuffle(fisherArray)
-        userDB.university !== null && userDB.university !== undefined
-            ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
-            : ''
+        // fisherYatesShuffle(array)
+        // userDB.university !== null && userDB.university !== undefined
+        //     ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
+        //     : ''
 
 
-    }, [userDB.university, bank]);
+    }, [simulacro]);
     return (
         <PageEspecial>
             {userDB !== 'loading' &&
@@ -86,14 +86,14 @@ function Simulacro() {
                             <div className={style.blackAsksContainer}>
                                 <BlackFont>
                                     <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
-                                    <span className={style.asksCount}>Item: {router.query.Index}/{simulacro.length}</span>
+                                    <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
                                     <div className={style.asksBar}>
                                         {simulacro.map((item, index) =>
-                                            <div key={index} className={`${simulacro[index].userAnswer !== undefined ? style.answered : ''} ${router.query.Index == index + 1 ? style.focus : ''}`} onClick={() => nav(index)}></div>
+                                            <div key={index} className={`${simulacro[index].userAnswer !== undefined && simulacro[index].userAnswer == simulacro[index].respuesta ? style.green : ''} ${simulacro[index].userAnswer !== undefined && simulacro[index].userAnswer !== simulacro[index].respuesta ? style.red : ''} ${simulacro[index].userAnswer == undefined ? style.gray : ''} ${router.query.Answers == index + 1 ? style.focus : ''}`} onClick={() => nav(index)}></div>
                                         )}
                                     </div>
                                     <div className={style.asksContainer}>
-                                        <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
+                                        <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Answers - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
                                     </div>
                                 </BlackFont>
                             </div><br />
@@ -102,11 +102,21 @@ function Simulacro() {
                                     <>
                                         <span className={style.answersCount}>Resp: {count}/{simulacro.length}</span>
                                         <div className={style.answersContainer}>
-                                            <div className={`${style.answerButtons} ${select == fisherArray[0] || simulacro[router.query.Index - 1].userAnswer == fisherArray[0] ? style.green : ''}`} onClick={(e) => { selectAnswer(fisherArray[0]) }} > {simulacro[router.query.Index - 1][`${fisherArray[0]}`]} </div>
-                                            <div className={`${style.answerButtons} ${select == fisherArray[1] || simulacro[router.query.Index - 1].userAnswer == fisherArray[1] ? style.green : ''}`} onClick={(e) => { selectAnswer(fisherArray[1]) }} > {simulacro[router.query.Index - 1][`${fisherArray[1]}`]} </div>
-                                            <div className={`${style.answerButtons} ${select == fisherArray[2] || simulacro[router.query.Index - 1].userAnswer == fisherArray[2] ? style.green : ''}`} onClick={(e) => { selectAnswer(fisherArray[2]) }} > {simulacro[router.query.Index - 1][`${fisherArray[2]}`]} </div>
-                                            <div className={`${style.answerButtons} ${select == fisherArray[3] || simulacro[router.query.Index - 1].userAnswer == fisherArray[3] ? style.green : ''}`} onClick={(e) => { selectAnswer(fisherArray[3]) }} > {simulacro[router.query.Index - 1][`${fisherArray[3]}`]} </div>
+                                            <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[0]? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[0]? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[0]? style.gray : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[0]}`]} </div>
+                                            <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[1]? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[1]? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[1]? style.gray : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[1]}`]} </div>
+                                            <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[2]? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[2]? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[2]? style.gray : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[2]}`]} </div>
+                                            <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[3]? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[3]? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[3]? style.gray : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[3]}`]} </div>
                                             <button className={style.buttonFinishAnswer} onClick={finish}>Finalizar</button>
+                                        
+                                               
+                                {/* <div className={style.answersContainer}>
+                                    <div className={`${style.box} ${select !== null && select == array[0] && select !== simulacro[router.query.Index - 1].respuesta ? style.red : ''}  ${select !== null && array[0] == simulacro[router.query.Index - 1].respuesta ? style.green : ''}`} onClick={(e) => { selectAnswer(array[0]) }} > {simulacro[router.query.Index - 1][`${array[0]}`]} </div>
+                                    <div className={`${style.box} ${select !== null && select == array[1] && select !== simulacro[router.query.Index - 1].respuesta ? style.red : ''}  ${select !== null && array[1] == simulacro[router.query.Index - 1].respuesta ? style.green : ''}`} onClick={(e) => { selectAnswer(array[1]) }} > {simulacro[router.query.Index - 1][`${array[1]}`]} </div>
+                                    <div className={`${style.box} ${select !== null && select == array[2] && select !== simulacro[router.query.Index - 1].respuesta ? style.red : ''}  ${select !== null && array[2] == simulacro[router.query.Index - 1].respuesta ? style.green : ''}`} onClick={(e) => { selectAnswer(array[2]) }} > {simulacro[router.query.Index - 1][`${array[2]}`]} </div>
+                                    <div className={`${style.box} ${select !== null && select == array[3] && select !== simulacro[router.query.Index - 1].respuesta ? style.red : ''}  ${select !== null && array[3] == simulacro[router.query.Index - 1].respuesta ? style.green : ''}`} onClick={(e) => { selectAnswer(array[3]) }} > {simulacro[router.query.Index - 1][`${array[3]}`]} </div>
+                                    <button className={style.button} onClick={finish}>Finalizar</button>
+                                </div> */}
+                         
                                         </div>
                                     </>
 
@@ -120,8 +130,6 @@ function Simulacro() {
     )
 }
 export default WithAuth(Simulacro)
-
-
 
 
 
@@ -202,3 +210,5 @@ export default WithAuth(Simulacro)
                                     <button className={style.button} onClick={finish}>Finalizar</button>
                                 </div>
                             </BlackFont> */}
+
+

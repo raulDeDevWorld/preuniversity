@@ -81,9 +81,6 @@
     width: 100%;
     background-color: rgb(0, 233, 0);
 }
-.focus {
-    background-color: #00F0FF;
-}
 .asksContainer {
     display: flex;
     justify-content: space-between;
@@ -150,9 +147,23 @@
     justify-content: space-evenly;
     align-items: center;
 }
+.gray {
+    background-color: #6cafbb;
+    color: black;
+
+
+}
+.red {
+    color: #ffffff;
+    background-color: red;
+}
 .green {
     background-color: #3FC500;
     color: white;
+}
+.focus {
+    outline: 2px double #ffffff;
+    -moz-outline: 2px double #ffffff;
 }
 .buttonFinishAnswer {
     color: #ffffff;
