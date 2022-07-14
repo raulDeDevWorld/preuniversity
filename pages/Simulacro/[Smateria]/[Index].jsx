@@ -77,7 +77,7 @@ function Simulacro() {
         }, {})
 
         userDataUpdate({...oldObject, ...newObject}, setUserData, `${router.query.Smateria.toLowerCase()}/progress`)
-        // router.push(`/Simulacro/${router.query.Smateria}/Result`)
+        router.push(`/Simulacro/${router.query.Smateria}/Result`)
     }
     function nav(i) {
 
