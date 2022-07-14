@@ -190,11 +190,35 @@
 
 
 
+
+
+/* difficulty */
+.selectDifficulty {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+}
+
+.selectDifficulty :nth-child(n) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 12px;
+    color:rgba(255, 255, 255, 0.5)
+}
+
+
+
+
+
 /* 
-
-
-
-
 .perfil {
     margin: 10px;
     width: 250px;

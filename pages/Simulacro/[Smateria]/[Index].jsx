@@ -57,7 +57,27 @@ function Simulacro() {
         setSelect(null)
     }
     function finish() {
-        router.push(`/Simulacro/${router.query.Smateria}/Result`)
+        const oldObject = userDB.subjects[router.query.Smateria.toLowerCase()].progress
+        const newObject = simulacro.reduce((object, item, index)=>{
+            const newItemObject= {}
+            // exit === DB
+            const exist = userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[index].id]
+
+            const answer = simulacro[index].userAnswer === simulacro[index].respuesta 
+            const answerUndefined = simulacro[index].userAnswer
+            // console.log(exist.mistake + 1)
+            newItemObject[item.id] = {
+                difficulty: false,
+                mistakes: exist === undefined ? (answer === false && answerUndefined !== undefined ? 1 : 0) : (answer === false && answerUndefined !== undefined ? exist.mistakes + 1 : exist.mistakes),
+                success: exist === undefined ? (answer === true ? 1 : 0) : (answer === true ? exist.success + 1 : exist.success),
+                undefineds: exist === undefined ? (answerUndefined === undefined? 1 : 0) : (answerUndefined === undefined? exist.undefineds + 1 : exist.undefineds),
+            }
+
+            return {...object, ...newItemObject}
+        }, {})
+
+        userDataUpdate({...oldObject, ...newObject}, setUserData, `${router.query.Smateria.toLowerCase()}/progress`)
+        // router.push(`/Simulacro/${router.query.Smateria}/Result`)
     }
     function nav(i) {
 

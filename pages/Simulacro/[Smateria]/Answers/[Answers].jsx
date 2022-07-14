@@ -66,8 +66,8 @@ function Simulacro() {
         setSelect(null)
     }
 
-    simulacro ? console.log(simulacro) : ''
-    console.log(router.query)
+   console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress) 
+    console.log(simulacro  )
     useEffect(() => {
 
         // fisherYatesShuffle(array)
@@ -85,7 +85,12 @@ function Simulacro() {
                         <>
                             <div className={style.blackAsksContainer}>
                                 <BlackFont>
-                                    <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
+                                    <div className={style.selectDifficulty}>
+                                        <div>F</div>
+                                        <div>R</div>
+                                        <div>D</div>
+                                    </div>
+                                    {/* <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} /> */}
                                     <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
                                     <div className={style.asksBar}>
                                         {simulacro.map((item, index) =>
