@@ -14,33 +14,24 @@
     min-width: 140px;
     color: white;
     background-color: #16b0bb;
-    border: 2px solid #003450;
+    border: 2px solid #d6d6d6;
 }
 .buttonPrimary:hover {
-    color: #003450;
+    color: #000000;
     background-color: white;
     border: 2px solid #d6d6d6;
 }
 .buttonSecondary {
     width: 90%;
     min-width: 140px;
-    color: #003450;
+    color: #000000;
     background-color: white;
     border: 2px solid #d6d6d6;
 }
 .buttonSecondary:hover {
     color: white;
-    background-color: #003450;
-    border: 2px solid #003450;
-}
-.buttonSpecial {
-    position: absolute;
-    color: white;
-    background-color: rgba(0, 52, 80, .7);
-    background-image: url(../public/whatsapp.svg);
-    background-repeat: no-repeat;
-    background-position: 5px 3px;
-    background-size: 18px; 
+    background-color: #16b0bb;
+    border: 2px solid #d6d6d6;
 }
 .buttonBlackFont {
     width: 90%;
@@ -50,6 +41,11 @@
     font-weight: 400;
     background-color: #15202B;
     border: 2px solid #486bad3c;
+}
+.buttonBlackFont:hover {
+    color: white;
+    background-color: #16b0bb;
+    border: 2px solid #d6d6d6;
 }
 .buttonBlackFontColorWhite {
     width: 90%;
@@ -74,4 +70,13 @@
     color: #3FC500;
     background-color: #000000;
     border: 2px solid #3FC500;
+}
+.buttonSpecial {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 52, 80, .7);
+    background-image: url(../public/whatsapp.svg);
+    background-repeat: no-repeat;
+    background-position: 5px 3px;
+    background-size: 18px; 
 }

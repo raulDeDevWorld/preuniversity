@@ -15,9 +15,8 @@ import { useState, useEffect } from 'react'
 function Home() {
     const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
     const router = useRouter()
-    function practica() {
-        userDB.premium !== true ? router.push('https://drive.google.com/drive/folders/1WEakUFwv8boTWwPfwvvXmp1UpfcJ9qpa?usp=sharing') :
-            router.push('https://drive.google.com/file/d/1YbG3O2cjmmw732X-XvPDwUqCkJpX9Ifp/view?usp=sharing')
+    function Banco() {
+            router.push('/Banco')
     }
     function progress() {
         userDB.profesor == true ? router.push('/Progreso') : router.push('/Progress')
@@ -48,7 +47,7 @@ function Home() {
                                 <div className={style.buttonsContainer}>
                                     <Button style='buttonBlackFont' click={play}>Simulacro</Button>
                                     <Button style='buttonBlackFont' click={progress}>Progreso</Button>
-                                    <Button style='buttonBlackFont' click={practica}>Banco de P... <span className={style.pdf}>PDF</span></Button>
+                                    <Button style='buttonBlackFont' click={Banco}>Banco de P... <span className={style.pdf}>PDF</span></Button>
                                     <Button style='buttonBlackFont' click={robot}>Test De O.V</Button>
                                 </div>
                             </BlackFont>
