@@ -35,22 +35,19 @@ function Register() {
                 {userDB === 'loading' && ''}
                 {userDB === null &&
                     <div className={style.container}>
-
-                        <img src={user.photoURL} className={style.perfil} alt="user photo" />
+                        <img src={user.photoURL} className={style.perfil} alt="user photo" /><br />
                         <Subtitle> Bienvenido (a): <br /> {`${user.displayName.toUpperCase()}`}</Subtitle>
-                        <Paragraph>Elige tu avatar</Paragraph>
-
+                        <Paragraph>Elige tu avatar</Paragraph> <br />
                         <div className={style.avatarsContainer}>
                             <img src="/ab1.png" alt="avatar" className={`${style.avatarb1} ${avatar == 'ab1' ? style.right : ''}`} onClick={(e) => { avatarClick('ab1') }} />
                             <img src="/ab2.png" alt="avatar" className={`${style.avatarb2} ${avatar == 'ab2' ? style.right : ''}`} onClick={(e) => { avatarClick('ab2') }} />
                             <img src="/ag3.png" alt="avatar" className={`${style.avatarg1} ${avatar == 'ag3' ? style.right : ''}`} onClick={(e) => { avatarClick('ag3') }} />
                             <img src="/ag2.png" alt="avatar" className={`${style.avatarg2} ${avatar == 'ag2' ? style.right : ''}`} onClick={(e) => { avatarClick('ag2') }} />
-                        </div>
+                        </div><br />
                         <div className={style.buttonsContainer}>
                             <Button style='buttonSecondary' click={backOut}>Atras</Button>
                             <Button style='buttonPrimary' click={nextClick}>Continuar</Button>
                         </div>
-
                     </div>
                 }
             </PageUserLayout>
