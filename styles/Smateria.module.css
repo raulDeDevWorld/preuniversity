@@ -1,7 +1,7 @@
 .container {
     position: relative;
-    /* background-color: blue; */
-    padding-top: 90px;
+    background-color: rgb(0, 0, 0);
+    padding-top: 70px;
     padding-bottom: 50px;
     height: 100%;
     min-height: 640px;
@@ -17,8 +17,241 @@
     font-size: 14px;
     font-weight: 200;
 }
+.dataContainer {
+    position: relative;
+    /* background-color: red; */
+    width: 100%;
+    height: 80px;
+}
+
+.asksBar {
+    position: relative;
+    margin: 0 15px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: #15202B;
+    color: white;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.23);
+    border-radius: 5px;
+    display: flex;
+    z-index: 100000000;
+}
+.asksBar :nth-child(n) {
+    cursor: pointer;
+    border-left: 1px solid rgba(255, 255, 255, 0.122);
+    width: 100%;
+}
+.asksBar :nth-child(1) {
+    border-radius: 10px 0 0 10px ;
+}
+.asksBar :last-child {
+    border-radius: 0 10px 10px 0 ;
+}
+
+
+
+.counters {
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.asksCount {
+    position: relative;
+
+
+    text-align: left;
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+    background-color: #15202B;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+}
+.answersCount {
+
+    text-align: left;
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+    background-color: #3FC500;
+    padding: 10px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+}
 
 /* Container de preguntas  */
+.asksContainer {
+    position: relative;
+    padding: 0px 15px;
+    width: 100%;
+    height: 30%;
+    min-height: 150px;
+    max-height: 300px;
+    /* background-color: red; */
+}
+
+
+
+
+.answered {
+    position: relative;
+    border-left: 1px solid white;
+    font-size: 5px;
+    width: 100%;
+    background-color: rgb(0, 233, 0);
+}
+.asksContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.ask {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+.move {
+    cursor: pointer;
+    letter-spacing: -6px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    transition-property: all;
+    transition-duration: .3s;
+}
+/* Container de respuestas  */
+.blackAnswersContainer {
+    position: relative;
+    padding: 0px 15px;
+    width: 100%;
+    height: 70%;
+}
+
+.answersContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    width: 90%;
+}
+.answerButtons {
+    height: 100%;
+    margin-bottom: 5px;
+    color: #00F0FF;
+    font-size: 1em;
+    font-weight: 400;
+    background-color: #15202B;
+    border: 2px solid #486bad3c;
+    width: 100%;
+    min-height: 50px;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.gray {
+    background-color: #6cafbb;
+    color: black;
+
+
+}
+.red {
+    color: #ffffff;
+    background-color: red;
+}
+.green {
+    background-color: #3FC500;
+    color: white;
+}
+.focus {
+    outline: 2px double #ffffff;
+    -moz-outline: 2px double #ffffff;
+}
+.buttonFinishAnswer {
+    color: #ffffff;
+    background-color: red;
+    border: 2px solid #486bad3c;
+    font-size: 1em;
+    font-weight: 400;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    min-height: 50px;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* difficulty */
+.selectDifficulty {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+}
+
+.selectDifficulty :nth-child(n) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 12px;
+    color:rgba(255, 255, 255, 0.5)
+} 
+
+
+
+
+
+/* .container {
+    position: relative;
+
+    padding-top: 90px;
+    padding-bottom: 50px;
+    height: 100%;
+    min-height: 640px;
+    width: 100%;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+
+      justify-content: center;
+
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+
 .blackAsksContainer {
     position: relative;
     padding: 0px 15px;
@@ -100,7 +333,7 @@
     transition-property: all;
     transition-duration: .3s;
 }
-/* Container de respuestas  */
+
 .blackAnswersContainer {
     position: relative;
     padding: 0px 15px;
@@ -192,7 +425,7 @@
 
 
 
-/* difficulty */
+
 .selectDifficulty {
     position: absolute;
     top: 17px;
@@ -212,7 +445,7 @@
     border-radius: 20px;
     font-size: 12px;
     color:rgba(255, 255, 255, 0.5)
-}
+} */
 
 
 
