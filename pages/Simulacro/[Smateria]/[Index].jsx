@@ -111,14 +111,13 @@ function Simulacro() {
                                 </div>
                                 <div className={style.counters}>
                                     <span className={style.asksCount}>Item: {router.query.Index}/{simulacro.length}</span>
-
                                     <span className={style.answersCount}>Resp: {count}/{simulacro.length}</span>
                                 </div>
                             </div>
-                            <div className={style.asksContainer}>
-                                <div className={style.asksContainer}>
-                                    <span className={style.move} onClick={back}>{'<<'}</span><p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p><span className={style.move} onClick={next}>{'>>'}</span>
-                                </div>
+                            <div className={style.asksContainer}> 
+                                    <span className={style.move} onClick={back}>{'<|'}</span>
+                                    <p className={style.ask}>{simulacro[router.query.Index - 1].pregunta}</p>
+                                    <span className={style.move} onClick={next}>{'|>'}</span>
                             </div>
                             <div className={style.answersContainer}>
                                 <div className={`${style.answerButtons} ${select == fisherArray[0] || simulacro[router.query.Index - 1].userAnswer == fisherArray[0] ? style.green : ''}`} onClick={(e) => { selectAnswer(fisherArray[0]) }} > {simulacro[router.query.Index - 1][`${fisherArray[0]}`]} </div>
