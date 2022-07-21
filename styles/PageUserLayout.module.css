@@ -35,7 +35,7 @@
     box-sizing: border-box;
   
     width: 100%;
-    background-color: transparent;
+    background-color:#15202B;
     height: 40px;
     box-shadow: 0px 0px 1px white;
     color: white;
@@ -44,7 +44,7 @@
     align-items: center;
     font-size: 10px;
     text-align: center;
-    z-index: 10000;
+    z-index: 100000;
   }
   .button {
     position: absolute;

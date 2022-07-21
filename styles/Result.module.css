@@ -39,7 +39,7 @@
 .review {
     top: 19px;
     position: absolute;
-    color: #000000;
+    color: #15202B;
     text-align: center;
     font-size: 14px;
     animation-name: animationReview;
@@ -49,7 +49,7 @@
 }
 @keyframes animationReview {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     30% {
@@ -63,7 +63,7 @@
     }
 }
 .resulText {
-    color: black;
+    color: #15202B;
     margin: 5px;
     height: 20px;
     font-size: 0;
@@ -76,7 +76,7 @@
 }
 @keyframes animationApproved {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     50% {
@@ -96,7 +96,7 @@
 }
 @keyframes animationReprobate {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     50% {
@@ -110,7 +110,7 @@
 }
 .message {
     margin: 5px;
-    color: #000000;
+    color: #15202B;
     font-size: 16px;
     animation-name: animationMessage;
     animation-fill-mode: forwards;
@@ -119,7 +119,7 @@
 }
 @keyframes animationMessage {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     50% {
@@ -132,7 +132,7 @@
 }
 .perfectMessage {
     margin: 5px;
-    color: #000000;
+    color: #15202B;
     font-size: 16px;
     animation-name: animationPerfectMessage;
     animation-fill-mode: forwards;
@@ -141,7 +141,7 @@
 }
 @keyframes animationPerfectMessage {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     50% {
@@ -198,7 +198,7 @@
 .detailText {
     display: flex;
     justify-content: space-between;
-    color: #000000;
+    color: #15202B;
     text-align: left;
     font-size: 12px;
     margin: 12px 0;
@@ -224,7 +224,7 @@
 }
 @keyframes animationDetailText {
     0% {
-        color: black;
+        color: #15202B;
     }
 
     50% {
@@ -241,7 +241,7 @@
 .progressBarPorcent {
     width: 47%;
     height: 10px;
-    background-color: #000000;
+    background-color: #15202B;
     border-radius: 10px;
     overflow: hidden;
     animation-name: animationProgressBarPorcent;
@@ -252,7 +252,7 @@
 }
 @keyframes animationProgressBarPorcent  {
     0% {
-        background-color: black;
+        background-color: #15202B;
     }
 
     50% {
@@ -266,7 +266,7 @@
 .porcentErrors {
     height: 10px;
     border-radius: 10px;
-    background: black;
+    background: #15202B;
     animation-name: animationPorcentErrors;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -275,7 +275,7 @@
 }
 @keyframes animationPorcentErrors {
     0% {
-        background-color: black;
+        background-color: #15202B;
     }
 
     50% {
@@ -289,7 +289,7 @@
 .porcentSuccess {
     height: 10px;
     border-radius: 10px;
-    background: black;
+    background: #15202B;
     animation-name: animationPorcenSuccess;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -298,7 +298,7 @@
 }
 @keyframes animationPorcenSuccess  {
     0% {
-        background-color: black;
+        background-color: #15202B;
     }
 
     50% {
@@ -312,7 +312,7 @@
 .porcentUndefined {
     height: 10px;
     border-radius: 10px;
-    background: rgb(0, 0, 0);
+    background: #15202B;
     animation-name: animationPorcentUndefined;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -321,7 +321,7 @@
 }
 @keyframes animationPorcentUndefined  {
     0% {
-        background-color: black;
+        background-color: #15202B;
     }
 
     50% {
