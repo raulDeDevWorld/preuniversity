@@ -42,7 +42,7 @@
     background-color: #15202B;
     color: white;
 
-    border-right: 1px solid rgba(255, 255, 255, 0.23);
+    border: 1px solid rgba(255, 255, 255, 0.23);
     border-radius: 5px;
     display: flex;
     z-index: 100000000;
@@ -149,7 +149,7 @@
     width: 100%;
     min-height: 50px;
     margin-bottom: 3px;
-    border: 2px solid #486bad3c;
+    border: 2px solid #ffffff3c;
     border-radius: 10px;
 
     color: #00F0FF;
