@@ -67,18 +67,18 @@
     bottom: 0px;
     margin: auto;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px;
     text-align: left;
     padding: 0px 15px;
     background-color: rgba(0, 52, 80, .7);
     background-image: url(../public/whatsapp.svg);
     background-repeat: no-repeat;
-    background-position: 90px 3px;
-    background-size: 18px;
-    width: 120px;
-    height: 27px;
-    border: 2px solid #ffffff;
-    border-radius: 5px;    
+    background-position: 75px 3px;
+    background-size: 15px;
+    width: 100px;
+    height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 2px;    
     pointer-events: auto;
 }
 
