@@ -23,7 +23,7 @@
     top: 40px;
     right: 15px;
     font-size: 1em;
-    color: rgba(255, 255, 255, 0.5);
+    color: #ffffff3c;
     z-index: 10000000;
 }
 /* Data container */
@@ -42,14 +42,14 @@
     background-color: #15202B;
     color: white;
 
-    border: 1px solid rgba(255, 255, 255, 0.23);
+    border: 1px solid #ffffff3c;
     border-radius: 5px;
     display: flex;
     z-index: 100000000;
 }
 .asksBar :nth-child(n) {
     cursor: pointer;
-    border-left: 1px solid rgba(255, 255, 255, 0.122);
+    border-left: 1px solid #ffffff3c;
     width: 100%;
 }
 .asksBar :nth-child(1) {
