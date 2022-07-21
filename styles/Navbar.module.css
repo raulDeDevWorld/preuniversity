@@ -1,7 +1,7 @@
 
 .navbar {
   position: fixed;
-  background-color: black;
+  background-color: transparent;
   width: 100vw;
   min-width: 360px;
   height: 70px;
