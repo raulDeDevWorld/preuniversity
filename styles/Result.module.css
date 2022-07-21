@@ -201,6 +201,7 @@
     color: #000000;
     text-align: left;
     font-size: 12px;
+    margin: 12px 0;
     animation-name: animationDetailText;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;

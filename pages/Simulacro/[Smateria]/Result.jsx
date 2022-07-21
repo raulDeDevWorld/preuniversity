@@ -4,7 +4,7 @@ import { useUser } from '../../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../firebase/utils'
 import { useRouter } from 'next/router'
 import BlackFont from '../../../components/BlackFont'
-import PageEspecial from '../../../layouts/PageEspecial'
+import PageUserLayout from '../../../layouts/PageUserLayout'
 import { WithAuth } from '../../../HOCs/WithAuth'
 import style from '../../../styles/Result.module.css'
 
@@ -62,7 +62,7 @@ function Simulacro() {
         simulacro !== null ? revision() : ''
     }, []);
     return (
-        <PageEspecial>
+        <PageUserLayout>
             {userDB !== 'loading' &&
                 <div className={style.container}>
                     <div>
@@ -107,7 +107,7 @@ function Simulacro() {
                                     round
                                 />
                                 {points !== null && <div className={style.detailResultContainer}>
-                                    <p className={`${style.detailText} ${style.materia}`}> Materia: {router.query.Simulacro}</p>
+                                    <div className={`${style.detailText} ${style.materia}`}> Materia: {router.query.Simulacro}</div>
                                     <div className={`${style.detailText} ${style.errores}`}> Errores: {points.mistakes} / {points.success + points.mistakes + points.undefined}
                                         <div className={style.progressBarPorcent}>
                                             <div className={style.porcentErrors} style={{ width: `${Math.round(points.mistakes * 100 / (points.success + points.mistakes + points.undefined))}%` }}>
@@ -131,7 +131,7 @@ function Simulacro() {
                     </div>
                 </div>
             }
-        </PageEspecial>
+        </PageUserLayout>
     )
 }
 export default WithAuth(Simulacro)
