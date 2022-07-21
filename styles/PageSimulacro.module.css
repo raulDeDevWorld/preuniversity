@@ -41,24 +41,6 @@
     z-index: 100;    
     pointer-events: none;
 }
-.button {
-    position: absolute;
-    right: 10px;
-    bottom: 40px;
-    cursor: pointer;
-    font-size: 12px;
-    color: white;
-    padding: 5px 1px;
-    background-color: rgba(0, 52, 80, .7);
-    background-image: url(../public/whatsapp.svg);
-    background-repeat: no-repeat;
-    background-position: 5px 3px;
-    background-size: 18px;
-    width: 120px;
-    border: 2px solid #d6d6d6;
-    border-radius: 5px;    
-    pointer-events: auto;
-}
 
 
 .footer {
@@ -69,6 +51,7 @@
     width: 100%;
     background-color: black;
     height: 40px;
+    box-shadow: 0px 0px 1px white;
     color: white;
     display: flex;
     justify-content: space-evenly;
@@ -77,6 +60,28 @@
     text-align: center;
     z-index: 10000;
   }
+  .button {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0px;
+    margin: auto;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: left;
+    padding: 0px 15px;
+    background-color: rgba(0, 52, 80, .7);
+    background-image: url(../public/whatsapp.svg);
+    background-repeat: no-repeat;
+    background-position: 90px 3px;
+    background-size: 18px;
+    width: 120px;
+    height: 27px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;    
+    pointer-events: auto;
+}
+
 /* @media (max-height: 550px) { 
     .vector {
         position: absolute;

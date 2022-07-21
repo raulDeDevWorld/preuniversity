@@ -22,6 +22,7 @@
     position: relative;
     width: 100%;
     height: 80px;
+    margin-top: 10px;
 }
 
 .asksBar {
@@ -125,7 +126,7 @@
 }
 /* Container de respuestas  */
 .answersContainer {
-    height: 60%;
+    height: 55%;
     width: 100%;
     padding: 0 15px;
     margin-top: 20px;
