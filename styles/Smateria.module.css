@@ -23,7 +23,7 @@
     top: 40px;
     right: 15px;
     font-size: 1em;
-    color: #ffffff3c;
+    color: #ffffff80;
     z-index: 10000000;
 }
 /* Data container */
@@ -39,7 +39,7 @@
     right: 0;
     height: 10px;
     margin: 0 15px;
-    background-color: #15202B;
+    background-color: transparent;
     color: white;
 
     border: 1px solid #ffffff3c;
@@ -130,7 +130,7 @@
     cursor: pointer;
     letter-spacing: -1px;
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.5);
+    color: #ffffff80;
     transition-property: all;
     transition-duration: .3s;
 }
