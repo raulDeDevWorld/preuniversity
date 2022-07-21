@@ -52,6 +52,10 @@
     height: 90%;
     width: 100%;
 }
+.buttonsContainer :nth-child(n) {
+    height: 18%;
+    min-height: 30px;
+  }
 .link {
     display: block;
     width: 100%;
