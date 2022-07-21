@@ -2,6 +2,7 @@
     position: fixed;
     background-color: black;
     width: 100vw;
+    min-width: 360px;
     height: 70px;
     padding: 0px 15px;
     box-shadow: 0px 0px 1px white;
@@ -16,16 +17,9 @@
     height: 40px;
     z-index: 100;
 }
-
-.containerTimer {
-    flex-direction: column;
-    align-items: flex-end;
-    display: flex;
-}
-
 .icon {
+    margin-bottom: 17px;
     height: 17px;
-    width: 100%;
     display: flex;
 }
 
@@ -47,8 +41,4 @@
 .icon :nth-child(3) {
     background-color: rgb(153, 255, 0);
     margin-right: 0px;
-}
-.timer {
-    font-size: 1em;
-    color: rgba(255, 255, 255, 0.5);
 }

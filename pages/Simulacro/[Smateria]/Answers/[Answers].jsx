@@ -4,8 +4,6 @@ import { useUser } from '../../../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../../../components/Error'
-import Timer from '../../../../components/Timer'
-import BlackFont from '../../../../components/BlackFont'
 import PageSimulacro from '../../../../layouts/PageSimulacro'
 import { WithAuth } from '../../../../HOCs/WithAuth'
 import style from '../../../../styles/Smateria.module.css'
@@ -83,6 +81,7 @@ function Simulacro() {
                 <div className={style.container}>
                     {simulacro !== null &&
                         <>
+                            <span className={style.timer}>{`${userDB.subjects[router.query.Smateria.toLowerCase()].config.time}:00`}</span>
                             <div className={style.dataContainer}>
                                 <div className={style.asksBar}>
                                     {simulacro.map((item, index) =>
@@ -91,14 +90,13 @@ function Simulacro() {
                                 </div>
                                 <div className={style.counters}>
                                     <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
-                                    <span className={style.answersCount}>Resp: {count}/{simulacro.length}</span>
-                                </div>
-                                <div className={style.selectDifficulty}>
+                                    <div className={style.selectDifficulty}>
                                     <div>F</div>
                                     <div>R</div>
                                     <div>D</div>
                                 </div>
-                                
+                                    <span className={style.answersCount}>Resp: {count}/{simulacro.length}</span>
+                                </div>    
                             </div>
                             <div className={style.asksContainer}>
                                     <span className={style.move} onClick={back}>{'<|'}</span>

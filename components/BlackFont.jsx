@@ -1,5 +1,3 @@
-
-
 import style from '../styles/BlackFont.module.css'
 
 export default function BlackFont ({ children }) {

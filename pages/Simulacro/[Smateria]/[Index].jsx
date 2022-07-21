@@ -86,8 +86,8 @@ function Simulacro() {
         setSelect(null)
     }
 
-    simulacro && router.query.Index ? console.log(simulacro) : ''
-
+    // simulacro && router.query.Index ? console.log(simulacro) : ''
+    console.log(userDB)
     useEffect(() => {
 
         fisherYatesShuffle(fisherArray)
@@ -103,6 +103,7 @@ function Simulacro() {
                 <div className={style.container}>
                     {simulacro !== null &&
                         <>
+                        <Timer time={userDB.subjects[router.query.Smateria.toLowerCase()].config.time} style={style.timer} />
                             <div className={style.dataContainer}>
                                 <div className={style.asksBar}>
                                     {simulacro.map((item, index) =>

@@ -1,28 +1,24 @@
 import { useState } from 'react'
-import Timer from '/components/Timer'
 import style from '../styles/NavbarWithTimer.module.css'
 
-export default function NavbarWithTimer () {
-    const [menu, setMenu] = useState(false)
-    function handleMenu() {
-        setMenu(!menu)
-    }
-    return (
-        <header className={style.header}>
-            <img src="/LogoMasterWhite.svg" className={style.logo} alt="logo" />
-            <div className={style.containerTimer} onClick={handleMenu}>
-                <div className={style.icon}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <Timer time={24} style={style.timer} />
-            </div>
-        </header>
-    )
+export default function NavbarWithTimer() {
+  const [menu, setMenu] = useState(false)
+  function handleMenu() {
+    setMenu(!menu)
+  }
+  return (
+    <header className={style.header}>
+      <img src="/LogoMasterWhite.svg" className={style.logo} alt="logo" />
+      <div className={style.icon} onClick={handleMenu}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </header>
+  )
 }
 
-  
+
   
   
   
