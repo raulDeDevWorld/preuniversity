@@ -2,7 +2,7 @@ import Head from 'next/head'
 import NavbarWithTimer from '../components/NavbarWithTimer'
 import style from '../styles/PageSimulacro.module.css'
 
-export default function PageSimulacro ({ children }) {
+export default function PageSimulacro({ children }) {
   return (
     <>
       <Head>
@@ -17,16 +17,16 @@ export default function PageSimulacro ({ children }) {
       </Head>
 
       <div className={style.container}>
-        <NavbarWithTimer/>
+        <NavbarWithTimer />
         <main className={style.mainContainer}> {children} </main>
         {/* <div className={style.vector}>
           <button className={style.button}><a href="https://api.whatsapp.com/send?phone=+59173447725&text=buenas,%20me%20gustaria%20comunicarme%20con%20un%20%20operador(a)%20">Operador(a)</a></button>
         </div> */}
+        <footer className={style.footer}>
+          copyright 2022<br />swoou.com
+          <button className={style.button}><a href="https://api.whatsapp.com/send?phone=+59173447725&text=buenas,%20me%20gustaria%20comunicarme%20con%20un%20%20operador(a)%20">Operador(a)</a></button>
+        </footer>
       </div>
-      <footer className={style.footer}>
-        copyright 2022<br />swoou.com
-        <button className={style.button}><a href="https://api.whatsapp.com/send?phone=+59173447725&text=buenas,%20me%20gustaria%20comunicarme%20con%20un%20%20operador(a)%20">Operador(a)</a></button>
-      </footer>
     </>
   )
 }
