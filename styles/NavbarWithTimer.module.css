@@ -1,5 +1,5 @@
 .header {
-    position: fixed;
+    position: relative;
     background-color: black;
     width: 100vw;
     min-width: 360px;
