@@ -48,7 +48,7 @@
   right: 10px;
   height: 35px;
   padding: 10px 5px;
-  border: 1px solid white;
+  border: 1px solid #ffffff80;
   border-radius: 3px;
 
   display: flex;
@@ -63,7 +63,7 @@
   height: 1px;
   width: 30px;
   border-radius: 4px;
-  background-color: white;
+  background-color: #ffffff80;
 }
 .transformOne {
   transform: rotate(45deg) translateX(4px) translateY(4px);
