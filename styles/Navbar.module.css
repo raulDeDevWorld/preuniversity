@@ -158,7 +158,7 @@
 
  .header {
   min-width: 360px;
-  background-color: #15202B;
+  background-color: transparent;
 }
 
 .navbar {
@@ -167,7 +167,7 @@
   height: 70px;
   width: 100vw;
   min-width: 360px;
-  background-color: #15202B;
+  background-color: transparent;
   z-index: 100000;
 }
 
@@ -201,7 +201,7 @@
   height: 1px;
   width: 30px;
   border-radius: 4px;
-  background-color: white;
+  background-color: #ffffff80;
 }
 .transformOne {
   transform: rotate(45deg) translateX(4px) translateY(4px);
@@ -211,7 +211,7 @@
 }
 .nav {
   position: fixed;
-  top: 75px;
+  top: 70px;
   right: -100vw;
   width: 100%;
   min-height: 100vh;
@@ -222,6 +222,7 @@
   justify-content: center;
   transition: right .1s;
   background-color: #0e151c;
+  border-top: 1px solid #ffffff3c;
   box-shadow: 0px 0px 30px #ffffff15;
   color: white;
   font-size: 20px;
