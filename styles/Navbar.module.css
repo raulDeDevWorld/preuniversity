@@ -157,8 +157,13 @@
 
 
  .header {
+  position: fixed;
+  top: 0;
+  height: 70px;
+  width: 100vw;
   min-width: 360px;
   background-color: transparent;
+  z-index: 100000;
 }
 
 .navbar {
@@ -246,13 +251,13 @@
 }
 
 .link:hover {
-  color: #4393BE;
+  color: #00F0FF;
   border-left: 1px solid red;
   padding-left: 5px;
 }
 
 .active {
-  color: #4393BE;
+  color: #00F0FF;
   border-left: 1px solid red;
   padding-left: 5px;
 }
@@ -276,6 +281,11 @@
 
 
 @media (min-width: 1024px) {
+  .header {
+    border-bottom: 1px solid #ffffff3c;
+    background-color: #0e151c;
+   
+  }
 
   .nav {
       position: fixed;
@@ -297,6 +307,7 @@
       margin: 0;
       border-radius: 0px 0px 0px 0;
       background-color: transparent;
+      border-top: none;
       z-index: 10000000000;
   }
   .nav :nth-child(n) {
