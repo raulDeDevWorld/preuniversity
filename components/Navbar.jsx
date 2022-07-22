@@ -11,7 +11,7 @@ export default function Navbar () {
     setMenu(!menu)
   }
   return (
-    <header>
+    <header className={style.header}>
     <div className={style.navbar}>
         <img src="/LogoMasterWhite.svg" className={style.logo} alt="logo" />
          {/* <div className={style.menu} onClick={handleMenu}>
@@ -33,7 +33,7 @@ export default function Navbar () {
           <a className={`${style.linkAD} ${pathname == "/Promedio" ? style.active : ''}`}>Promedio</a>
         </Link>
     </div> */}
-    <nav className={`${style.nav} ${menu === true ? style.top : ''}`}>
+    <nav className={`${style.nav} ${menu === true ? style.visible : ''}`}>
       <Link href="/Home">
         <a className={`${style.link} ${pathname == "/Home" ? style.active : ''}`}>Home</a>
       </Link>
