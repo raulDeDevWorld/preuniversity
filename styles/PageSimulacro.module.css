@@ -44,21 +44,22 @@
 
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     box-sizing: border-box;
   
     width: 100%;
-    background-color: transparent;
+    background-color:#0e151c;
     height: 40px;
-    box-shadow: 0px 0px 1px white;
+    border-top: 1px solid #ffffff3c;
+    box-shadow: 0px 0px 30px #ffffff15;
     color: white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     font-size: 10px;
     text-align: center;
-    z-index: 100000000;
+    z-index: 100000;
   }
   .button {
     position: absolute;
