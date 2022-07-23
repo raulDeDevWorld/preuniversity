@@ -32,7 +32,7 @@
     max-height: 500px;
 }
 .formContainer {
-    padding: 0px 0 8px 0px;
+    padding: 12px 0 12px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -45,8 +45,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px 0;
-    margin-top: 10px;
     height: auto;
+    width: 90%;
 }
 
 .avatarb1 {

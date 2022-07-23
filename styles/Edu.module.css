@@ -51,12 +51,12 @@
 }
 
 .buttonsUniversityContainer {
-  margin-top: 20px;
+  padding: 12px 0 12px 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 
