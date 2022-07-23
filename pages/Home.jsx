@@ -40,7 +40,7 @@ function Home() {
                             {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
                             {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
                             <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
-                            <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.aName.split(' ')[0].toUpperCase()}`}</Subtitle>
+                            <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.name.split(' ')[0].toUpperCase()}`}</Subtitle>
                         </div><br />
                         <div className={style.blackButtonsContainer}>
                             <BlackFont>

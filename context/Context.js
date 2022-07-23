@@ -4,10 +4,12 @@ const UserContext = React.createContext()
 
 export function UserProvider ({ children }) {
 
+	// Data de un usuario proveido por FIREBASE AUTHENTICATION
 	const [user, setUser] = useState(undefined)
+	// Data de un usuario proveido por FIREBASE DATABASE
 	const [userDB, setUserDB] = useState('loading')
+	// Avatar seleccionado en el PROCESO DE REGISTRO de un usuario
 	const [avatar, setAvatar] = useState(null)
-	const [id, setId] = useState(null)
 	const [progress, setProgress] = useState([])
 	const [success, setSuccess] = useState(null)
 	const [uniData, setUniData] = useState(null)
@@ -15,6 +17,7 @@ export function UserProvider ({ children }) {
 	const [simulacro, setSimulacro] = useState(null)
 	const [time, setTime] = useState(true)
 	const [fisherArray, setFisherArray] = useState(['a', 'b', 'c', 'd'])
+	const [id, setId] = useState(null)
 
 	function setUniversityData (data) {
 		setUniData(data)

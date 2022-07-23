@@ -11,7 +11,6 @@ import Paragraph from '../components/Paragraph'
 import BlackFont from '../components/BlackFont'
 
 import style from '../styles/Register.module.css'
-import styleP from '../styles/Progress.module.css'
 import { useState } from 'react'
 
 
@@ -30,14 +29,15 @@ function Register() {
     }
 
     return (
-        <>
-            <PageUserLayout>
-                {userDB === 'loading' && ''}
-                {userDB === null &&
-                    <div className={style.container}>
-                        <img src={user.photoURL} className={style.perfil} alt="user photo" /><br />
-                        <Subtitle> Bienvenido (a): <br /> {`${user.displayName.toUpperCase()}`}</Subtitle>
-                        <Paragraph>Elige tu avatar</Paragraph> <br />
+        <PageUserLayout>
+            {success == false && <Error>Elija un avatar</Error>}
+            <div className={style.container}>
+                <img src={user.photoURL} className={style.perfil} alt="user photo" /><br />
+                <Subtitle> Bienvenido (a): <br /> {`${user.displayName.toUpperCase()}`}</Subtitle>
+                <Paragraph>Elige tu avatar</Paragraph> <br />
+                <div className={style.blackFormContainer}>
+                    <BlackFont>
+
                         <div className={style.avatarsContainer}>
                             <img src="/ab1.png" alt="avatar" className={`${style.avatarb1} ${avatar == 'ab1' ? style.right : ''}`} onClick={(e) => { avatarClick('ab1') }} />
                             <img src="/ab2.png" alt="avatar" className={`${style.avatarb2} ${avatar == 'ab2' ? style.right : ''}`} onClick={(e) => { avatarClick('ab2') }} />
@@ -48,11 +48,11 @@ function Register() {
                             <Button style='buttonSecondary' click={backOut}>Atras</Button>
                             <Button style='buttonPrimary' click={nextClick}>Continuar</Button>
                         </div>
-                    </div>
-                }
-            </PageUserLayout>
-            {success == false && <Error>Elija un avatar</Error>}
-        </>
+
+                    </BlackFont>
+                </div>
+            </div>
+        </PageUserLayout>
     )
 }
 

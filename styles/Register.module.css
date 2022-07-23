@@ -17,18 +17,20 @@
     font-size: 14px;
 }
 
-.subtitle {
-    display: inline-block;
-    margin: 8px;
-    color: orange;
-
-}
-
 .perfil {
     margin: 10px;
     height: 90px;
     width: 90px;
     border-radius: 50px;
+}
+
+.blackFormContainer {
+    position: relative;
+    padding: 0px 15px;
+    width: 100%;
+    min-height: 45%;
+    max-height: 500px;
+    /* background-color: red; */
 }
 
 .avatarsContainer {
@@ -48,12 +50,20 @@
 
 }
 
+.avatarb1:hover {
+    filter: saturate(1.5);
+}
+
 .avatarb2 {
     cursor: pointer;
     width: 76px;
     height: 76px;
     align-self: end;
     justify-self: center;
+}
+
+.avatarb2:hover {
+    filter: saturate(1.5);
 }
 
 .avatarg1 {
@@ -66,6 +76,10 @@
     margin: 2px 20px 2px 20px;
 }
 
+.avatarg1:hover {
+    filter: saturate(1.5);
+}
+
 .avatarg2 {
     cursor: pointer;
     width: 65px;
@@ -76,32 +90,8 @@
     margin: 2px 20px 2px 20px;
 }
 
-.buttonsContainer {
-    height: 50px;
-    width: 100%;
-    min-width: 300px;
-    max-width: 360px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.form {
-    margin-top: 10px;
-    color: white;
-}
-
-.input {
-    border: none;
-    border-bottom: 1px solid black;
-    width: 90%;
-    background-color: transparent;
-    margin-bottom: 7px;
-    color: white;
-}
-
-.input::-moz-placeholder {
-    color: rgb(172, 172, 172);
+.avatarg2:hover {
+    filter: saturate(1.5);
 }
 
 .right {
@@ -111,45 +101,17 @@
     border-radius: 5px;
 }
 
-.pdf {
-    color: red;
-}
-
-.fontBlack {
-    background-color: #000000;
-    color: orange;
-    width: 105%;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.avatarb1:hover {
-    filter: saturate(1.5);
-}
-
-.avatarb2:hover {
-    filter: saturate(1.5);
-}
-
-.avatarg1:hover {
-    filter: saturate(1.5);
-}
-
-.avatarg2:hover {
-    filter: saturate(1.5);
-}
-
-.buttonContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.link {
-    display: block;
+.buttonsContainer {
+    position: relative;
+    height: 50px;
     width: 100%;
     min-width: 300px;
-    max-width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttonsContainer :nth-child(n) {
+    width: 49%;
 }
 
 @keyframes rotar {
@@ -177,12 +139,6 @@
         transform: rotate(0deg);
     }
 }
-
-
-
-
-
-
 
 
 

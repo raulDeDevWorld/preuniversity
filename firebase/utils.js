@@ -14,6 +14,16 @@ const providerGoogle = new GoogleAuthProvider();
 
 //----------------------------------Authentication------------------------------------------
 
+function onAuth(setUserProfile, setUserData) {
+      return onAuthStateChanged(auth, (user) => {
+            if (user) {
+                  setUserProfile(user)
+                  getData(user.uid, setUserData)
+            } else {
+                  setUserProfile(user)
+            }
+      });
+}
 
 function withFacebook() {
       signInWithPopup(auth, providerFacebook)
@@ -84,59 +94,57 @@ function handleSignOut() {
 
 const db = getDatabase(app);
 const data = ref(db, '/users');
-const premiumCode = ref(db, '/premiumCode');
-const ids = ref(db, '/ids')
+// const premiumCode = ref(db, '/premiumCode');
+// const ids = ref(db, '/ids')
 
 
 
 
-function onAuth(setUserProfile, setUserData) {
-      return onAuthStateChanged(auth, (user) => {
-            if (user) {
-                  setUserProfile(user)
-                  getData(user.uid, setUserData)
-            } else {
-                  setUserProfile(user)
-            }
-      });
-}
-
-
-
+//Traemos toda la DATA de un usuario autentificado
 function getData(uid, setUserData) {
-      get(data).then((snapshot) => {
-            var b = snapshot.child(uid).exists();
-            if (b == true) {
-                  let obj = snapshot.val()
-                  setUserData(obj[uid])
-            } else {
-                  setUserData(null)
-            }
+      get(ref(db, `/users/${uid}`)).then((snapshot) => {
+            //Mandamos la data al CONTEXT "userDB"
+            setUserData(snapshot.val())
       }).catch((error) => {
             console.error(error);
       });
 }
 
-function dataUser(aName, school, cell, avatar) {
+//Registro de DATOS generales de un usuario
+function userDataRegister(object, router, url) {
       const name = auth.currentUser.displayName
       const uid = auth.currentUser.uid
 
-      set(ref(db, `users/${uid}`), {
-            name,
-            aName,
-            school,
-            cell,
-            avatar,
-            premium: false,
-            uid,
-      })
+      set(ref(db, `users/${uid}`), object)
             .then(() => {
-                  // Data saved successfully!
+                  router.push(url)
             })
             .catch((error) => {
                   // The write failed...
             });
 }
+
+
+// function userDataRegister( aName, school, cell, avatar) {
+//       const name = auth.currentUser.displayName
+//       const uid = auth.currentUser.uid
+
+//       set(ref(db, `users/${uid}`), {
+//             name,
+//             aName,
+//             school,
+//             cell,
+//             avatar,
+//             premium: false,
+//             uid,
+//       })
+//             .then(() => {
+//                   // Data saved successfully!
+//             })
+//             .catch((error) => {
+//                   // The write failed...
+//             });
+// }
 
 function userDataUpdate(object, setUserData, query) {
       const uid = auth.currentUser.uid
@@ -796,8 +804,25 @@ function spam() {
 
 
 
-export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, dataUser, getEspecificData }
+export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getEspecificData }
 
+
+
+//Consulta por un item dentro de un snapshot
+// function getData(uid, setUserData) {
+//       get(ref(db,`/users`)).then((snapshot) => {
+//              console.log(snapshot.val())
+//             var b = snapshot.child(uid).exists();
+//             if (b == true) {
+//                   let obj = snapshot.val()
+//                   setUserData(obj[uid])
+//             } else {
+//                   setUserData(null)
+//             }
+//       }).catch((error) => {
+//             console.error(error);
+//       });
+// }
 // function query(id, setTeacherId, userUid, name, setUserSuccess, setAlert ){
 //       ids.on('value', function(snapshot){  
 //             var b = snapshot.child(id).exists(); 

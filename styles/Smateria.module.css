@@ -230,19 +230,29 @@
     z-index: 1000000;
 }
 
-.selectDifficulty :nth-child(n) {
+.buttonDifficult {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20px;
     width: 20px;
+    background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     font-size: 12px;
     color:rgba(255, 255, 255, 0.5)
-} 
+}
 
-
+.buttonDifficultSelect {
+    background-color: #00F0FF;
+    border-color: #00F0FF;
+    color: #15202B;
+}
+.buttonDifficultActive {
+    background-color: #15202B;
+    border-color: #00F0FF;
+    color: #00F0FF;
+}
 
 
 

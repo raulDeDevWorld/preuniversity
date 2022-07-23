@@ -38,10 +38,12 @@ function Edu() {
                         <Subtitle> Muy bien {(`${userDB.name}`).split(' ')[0].toUpperCase()} <br /> Donde te postulara</Subtitle>                    </div><br />
                     <div className={style.blackButtonsContainer}>
                         <BlackFont>
-                            <div className={style.buttonsContainer}>
-                                <Button style={'buttonPrimary'} click={() => click('ESFM')}>ESFM</Button>
-                                <Button style={'buttonPrimary'} click={() => click('USFX')}>USFX</Button>
-                                <Button style={'buttonSecondary'} click={back}>atras</Button>
+                            <div className={style.buttonsUniversityContainer}>
+                                <Button style={'buttonSecondary'} click={() => click('ESFM')}>ESFM</Button>
+                                <Button style={'buttonSecondary'} click={() => click('USFX')}>USFX</Button>
+                                <Button style={'buttonSecondary'} click={() => click('UMSS')}>UMSS</Button>
+                                <Button style={'buttonSecondary'} click={() => click('UMSA')}>UMSA</Button>
+                                <Button style={'buttonSecondary'} click={() => click('UAGRM')}>UAGRM</Button>
                             </div>
                         </BlackFont>
 

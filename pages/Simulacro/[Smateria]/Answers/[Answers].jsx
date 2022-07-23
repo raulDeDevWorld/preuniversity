@@ -58,10 +58,12 @@ function Simulacro() {
         router.push(`/Simulacro/${router.query.Smateria}/Result`)
     }
     function nav(i) {
-
         router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(i) + 1}`)
-
         setSelect(null)
+    }
+    function changeDifficult (data) {
+        `${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`
+        console.log(simulacro[router.query.Answers - 1].id)
     }
 
     console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)
@@ -91,9 +93,9 @@ function Simulacro() {
                                 <div className={style.counters}>
                                     <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
                                     <div className={style.selectDifficulty}>
-                                    <div>F</div>
-                                    <div>R</div>
-                                    <div>D</div>
+                                    <button className={`${style.buttonDifficult} ${style.buttonDifficultSelect}`} onClick={()=>changeDifficult('f')}>F</button>
+                                    <button className={style.buttonDifficult} onClick={()=>changeDifficult('R')}>R</button>
+                                    <button className={style.buttonDifficult} onClick={()=>changeDifficult('D')}>D</button>
                                 </div>
                                     <span className={`${style.answersCount} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? style.greenBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? style.redBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? style.grayBorder : ''} `} >
                                         {`${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? 'BIEN 😍' : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? 'ERROR 😭' : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? 'VACIO 😅' : ''} `}

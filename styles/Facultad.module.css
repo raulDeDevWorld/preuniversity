@@ -41,9 +41,16 @@
 
 }
 .buttonsContainer {
+  position: relative;
+  height: 50px;
   width: 100%;
-  padding:  0 10px;
+  min-width: 300px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttonsContainer :nth-child(n) {
+  width: 49%;
 }
 .list {
 
