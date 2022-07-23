@@ -59,7 +59,7 @@ function Welcome() {
                     </div><br />
                     <div className={style.blackFormContainer}>
                         <BlackFont>
-                            <form className={style.form}>
+                            <form className={style.formContainer}>
                                 <label>
                                     Nombre y apellido:
                                     <input className={style.input} type="text" placeholder='Alex Choque' />
