@@ -279,8 +279,8 @@
 }
 .button:hover {
   color: white;
-  background-color: #16b0bb;
-  border: 2px solid #d6d6d6;
+  background-color: #205054;
+  border: 2px solid #16b0bb;
 }
 
 
@@ -296,7 +296,7 @@
   }
   .nav {
       position: fixed;
-      top: 22px;
+      top: 15px;
       right: 15px;
       bottom: auto;
       box-shadow: none;
