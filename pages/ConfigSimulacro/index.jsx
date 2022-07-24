@@ -35,7 +35,7 @@ function ConfigSimulacro() {
                         <div className={style.userDataContainer}>
                             <span className={style.orange}>Config Mode</span>
                             <img src={`/robot.png`} className={style.robot} alt="user photo" />
-                            <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
+                            <span className={style.message}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Hola,' : 'Bienvenida,'}  {`${userDB.name.split(' ')[0].toUpperCase()}`} personaliza tu cuenta aqui</span>
                         </div><br />
 
                         <div className={style.buttonsBlackContainer}>

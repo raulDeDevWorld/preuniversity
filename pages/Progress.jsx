@@ -60,12 +60,12 @@ function Progress() {
     return (
        
    <PageEspecial>
-        {userDB !== 'loading' && 
+        {userDB !== null && userDB !== 'loading' && 
             <>
             <div className={style.container}>
                 <img src={`/robot.png`} className={style.robot} alt="user photo" />
                 <div>
-                    <span className={style.title}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Hola,': 'hola,'}  {`${userDB.aName.split(' ')[0].toUpperCase()}`}</span> 
+                    <span className={style.title}> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar? 'Hola,': 'hola,'}  {`${userDB.name.split(' ')[0].toUpperCase()}`}</span> 
                     <span className={style.subtitle}>Monitorea tus progresos desde aqui</span>
                 </div>
             

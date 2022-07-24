@@ -63,7 +63,7 @@ function Robot() {
                     <div className={style.container}>
 
                         <img src="/robot.png" className={style.perfil} alt="user photo" />
-                        <p className={style.greeting}> Hola, {`${userDB.aName.split(' ')[0].toUpperCase()}`} dime en que te ayudo...</p>
+                        <p className={style.greeting}> Hola, {`${userDB.name.split(' ')[0].toUpperCase()}`} dime en que te ayudo...</p>
 
                         <div className={style.box}>
                             <button className={`${style.button} ${mode == 'multiplicacion' ? style.right : ''}`} onClick={multiplicacion}>Multiplicación</button>

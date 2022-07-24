@@ -85,14 +85,14 @@ function Progreso() {
     }
     useEffect(() => {
         getDataProgress()
-    }, [mode, userDB.students]);
+    }, [mode, userDB]);
     return (
         <PageEspecial>  
         <div className={style.main}>
-            {userDB !== 'loading' &&
+            {userDB != null && userDB !== 'loading' &&
                        <div className={style.container}>
                     <img src="/robot.png" className={style.perfil} alt="user photo" />
-                    <p className={style.greeting}> Hola, {`${userDB.aName.split(' ')[0].toUpperCase()}`} controla el progreso de tus alumnos desde aqui...</p>
+                    <p className={style.greeting}> Hola, {`${userDB.name.split(' ')[0].toUpperCase()}`} controla el progreso de tus alumnos desde aqui...</p>
                     <div className={style.containerMap}>
                     {progress !== null ? 
                     <>
