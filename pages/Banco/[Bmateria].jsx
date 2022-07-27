@@ -85,7 +85,7 @@ function Simulacro() {
 
     //     setSelect(null)
     // }
-
+    console.log(bank)
     useEffect(() => {
         if (userDB.university) {
             if (bank) {
@@ -119,7 +119,20 @@ function Simulacro() {
 
 
                     }
-                    {/* {simulacro !== null &&
+      
+                </div>
+            }
+            {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
+        </PageSimulacroLayout>
+    )
+}
+export default WithAuth(Simulacro)
+
+
+
+
+
+              {/* {simulacro !== null &&
                         <>
                             <div className={style.blackAsksContainer}>
                                 <BlackFont>
@@ -151,10 +164,3 @@ function Simulacro() {
                                 </BlackFont>
                             </div>
                         </>} */}
-                </div>
-            }
-            {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
-        </PageSimulacroLayout>
-    )
-}
-export default WithAuth(Simulacro)
