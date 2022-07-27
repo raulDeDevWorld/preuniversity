@@ -43,9 +43,21 @@
 .norespuesta {
     color: #ffffff80;
 }
+
+/* style image see */
 .seeRes {
+    height: 50px;
     width: 50px;
     position: fixed;
     bottom: 55px;
     right: 15px;
+    transition: all .5s;
+}
+.seeImgRes {
+    background-image: url(../public/seeRes.svg);
+    background-size: 100%;
+}
+.noSeeImgRes {
+    background-image: url(../public/noSeeRes.svg);
+    background-size: 50px;
 }

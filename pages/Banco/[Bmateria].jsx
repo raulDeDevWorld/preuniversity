@@ -121,7 +121,7 @@ function Simulacro() {
                             )}
                         </>
                     }
-                    <img src={`${seeRes == true ? '/seeRes.svg' : '/noSeeRes.svg' }`} className={style.seeRes} onClick={handlerSeeRes} alt="SeeRes" />
+                    <span className={ `${style.seeRes} ${seeRes == true ? style.seeImgRes : style.noSeeImgRes }`} onClick={handlerSeeRes}></span>
                 </div>
             }
             {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
