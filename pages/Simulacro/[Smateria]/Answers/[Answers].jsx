@@ -24,22 +24,10 @@ function Simulacro() {
         return setArray(arr)
     }
 
-    function selectAnswer(answer) {
-        setSelect(answer)
-        const updateSimulacro = simulacro.reduce((array, item, index) => {
-            const updateItem = index == router.query.Index - 1 ? { ...item, userAnswer: answer } : item
-            return [...array, updateItem]
-        }, [])
-        setUserSimulacro(updateSimulacro, null)
-        // const updateCount = simulacro.reduce((i, item) => {
-        //     console.log(item)
-        //     const updateItem = item.userAnswer !== null ? console.log('si') : console.log('no') 
-        //     return updateItem 
-        // }, 0)
-        // setCount(1)
-        // setTimeout(next, 1500)
-        simulacro[router.query.Index - 1].userAnswer == undefined ? setCount(count + 1) : ''
-
+    function changeDifficult (data) {
+        console.log(`${data}`)
+        const object = {difficulty : data}
+        userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`)
     }
 
     function back() {
@@ -61,14 +49,14 @@ function Simulacro() {
         router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(i) + 1}`)
         setSelect(null)
     }
-    function changeDifficult (data) {
-        `${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`
-        console.log(simulacro[router.query.Answers - 1].id)
-    }
+    // function changeDifficult (data) {
+    //     `${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`
+    //     console.log(simulacro[router.query.Answers - 1].id)
+    // }
 
-    console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)
+    // console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)
     console.log(simulacro)
-    useEffect(() => {
+ 
 
         // fisherYatesShuffle(array)
         // userDB.university !== null && userDB.university !== undefined
@@ -76,7 +64,7 @@ function Simulacro() {
         //     : ''
 
 
-    }, [simulacro]);
+  
     return (
         <PageSimulacro>
             {userDB !== 'loading' &&
@@ -93,9 +81,14 @@ function Simulacro() {
                                 <div className={style.counters}>
                                     <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
                                     <div className={style.selectDifficulty}>
-                                    <button className={`${style.buttonDifficult} ${style.buttonDifficultSelect}`} onClick={()=>changeDifficult('f')}>F</button>
-                                    <button className={style.buttonDifficult} onClick={()=>changeDifficult('R')}>R</button>
-                                    <button className={style.buttonDifficult} onClick={()=>changeDifficult('D')}>D</button>
+
+                                        {/* {console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)}
+                                        {console.log(simulacro[router.query.Answers - 1].id)} */}
+                                        {console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty)}
+
+                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'F' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('F')}>F</button>
+                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'R' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('R')}>R</button>
+                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'D' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('D')}>D</button>
                                 </div>
                                     <span className={`${style.answersCount} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? style.greenBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? style.redBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? style.grayBorder : ''} `} >
                                         {`${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? 'BIEN 😍' : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? 'ERROR 😭' : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? 'VACIO 😅' : ''} `}
