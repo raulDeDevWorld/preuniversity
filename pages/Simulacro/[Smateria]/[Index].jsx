@@ -67,7 +67,7 @@ function Simulacro() {
             const answerUndefined = simulacro[index].userAnswer
             // console.log(exist.mistake + 1)
             newItemObject[item.id] = {
-                difficulty: false,
+                difficulty: exist !== undefined ? exist.difficulty : false,
                 mistakes: exist === undefined ? (answer === false && answerUndefined !== undefined ? 1 : 0) : (answer === false && answerUndefined !== undefined ? exist.mistakes + 1 : exist.mistakes),
                 success: exist === undefined ? (answer === true ? 1 : 0) : (answer === true ? exist.success + 1 : exist.success),
                 undefineds: exist === undefined ? (answerUndefined === undefined ? 1 : 0) : (answerUndefined === undefined ? exist.undefineds + 1 : exist.undefineds),

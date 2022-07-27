@@ -55,7 +55,7 @@ function Simulacro() {
     // }
 
     // console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)
-    console.log(simulacro)
+    // console.log(simulacro)
  
 
         // fisherYatesShuffle(array)

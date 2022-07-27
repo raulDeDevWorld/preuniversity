@@ -30,7 +30,7 @@ export default function InitialLayout ({ children }) {
     </Head>
     <div className={style.container}>
       {/* <span className={style.msg}>{msg}</span>  */}
-      <img src="logo-hazlo-simple-two.svg" className={style.logo} alt="logo" />
+      <img src="/logo-hazlo-simple-two.svg" className={style.logo} alt="logo" />
       <main> { children } </main>
     </div>
 </>

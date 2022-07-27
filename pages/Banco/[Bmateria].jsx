@@ -14,10 +14,14 @@ import style from '../../styles/Bmateria.module.css'
 function Simulacro() {
     const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
     // const [select, setSelect] = useState(null)
-    // const [count, setCount] = useState(0)
+    const [seeRes, setSeeRes] = useState(false)
 
     const router = useRouter()
 
+
+    function handlerSeeRes () {
+        setSeeRes(!seeRes)
+    }
     // function fisherYatesShuffle(arr) {
     //     for (var i = arr.length - 1; i > 0; i--) {
     //         var j = Math.floor(Math.random() * (i + 1)); //random index
@@ -85,7 +89,7 @@ function Simulacro() {
 
     //     setSelect(null)
     // }
-    console.log(bank)
+    // console.log(bank)
     useEffect(() => {
         if (userDB.university) {
             if (bank) {
@@ -94,32 +98,30 @@ function Simulacro() {
                 updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
             }
         }
-    }, [userDB.university, bank])
+    }, [userDB.university, bank, seeRes])
 
     return (
         <PageSimulacroLayout>
-
-
             {userDB !== 'loading' &&
-
                 <div className={style.container}>
                     {bank && bank[router.query.Bmateria.toLowerCase()] &&
                         <>
                             {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
                                 <div key={index} className={style.itemBox}>
-                                    <li className={style.ask}><span className={style.number}>{index + 1}{')'}</span>{item.pregunta}</li><br />
-                                    <li className={style.options}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
-                                    <li className={style.options}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
-                                    <li className={style.options}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
-                                    <li className={style.options}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
-
+                                    <li className={style.ask}>
+                                        {console.log(item)}
+                                        {                                               /*Consultamos si un item (len1) existe en el progres && validamos que su valor no sea false*/}
+                                        <span className={style.number}>{`${index + 1}-${userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty != false ? userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty : 'I'})`}{ }</span>{item.pregunta}
+                                    </li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'a' ? style.norespuesta : ''}`}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'b' ? style.norespuesta : ''}`}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'c' ? style.norespuesta : ''}`}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'd' ? style.norespuesta : ''}`}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
                                 </div>
                             )}
                         </>
-
-
                     }
-      
+                    <img src={`${seeRes == true ? '/seeRes.svg' : '/noSeeRes.svg' }`} className={style.seeRes} onClick={handlerSeeRes} alt="SeeRes" />
                 </div>
             }
             {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
