@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { useUser } from '../../context/Context.js'
-import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../firebase/utils'
+import { setProgress, setErrors, userDataUpdate, updateBank } from '../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../components/Error'
 import Timer from '../../components/Timer'
@@ -12,7 +12,7 @@ import style from '../../styles/Bmateria.module.css'
 
 
 function Simulacro() {
-    const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray} = useUser()
+    const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
     // const [select, setSelect] = useState(null)
     // const [count, setCount] = useState(0)
 
@@ -86,43 +86,38 @@ function Simulacro() {
     //     setSelect(null)
     // }
 
-
-
     useEffect(() => {
+        if (userDB.university) {
+            if (bank) {
+                bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+            } else {
+                updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+            }
+        }
+    }, [userDB.university, bank])
 
-
-        userDB.university !== null && userDB.university !== undefined
-            ? getEspecificData(userDB.university, router.query.Bmateria, userDB.subjects[router.query.Bmateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
-            : ''
-
-
-    }, [userDB.university, bank]);
     return (
         <PageSimulacroLayout>
 
-            
+
             {userDB !== 'loading' &&
 
                 <div className={style.container}>
-                    
-                    {bank? 
-                    <>
-                    
-                    {console.log(bank[router.query.Bmateria.toLowerCase()][0].a)}
-                   {bank[router.query.Bmateria.toLowerCase()].map((item, index)=> 
-                   <div key={index} className={style.itemBox}>
-                        <li className={style.ask}><span className={style.number}>{index+1}{')'}</span>{item.pregunta}</li><br />
-                        <li className={style.options}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
-                        <li className={style.options}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
-                        <li className={style.options}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
-                        <li className={style.options}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
+                    {bank && bank[router.query.Bmateria.toLowerCase()] &&
+                        <>
+                            {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
+                                <div key={index} className={style.itemBox}>
+                                    <li className={style.ask}><span className={style.number}>{index + 1}{')'}</span>{item.pregunta}</li><br />
+                                    <li className={style.options}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
+                                    <li className={style.options}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
+                                    <li className={style.options}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
+                                    <li className={style.options}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
 
-                   </div>
-                        )}
-                    </>
-                        
-                    
-                    : ''
+                                </div>
+                            )}
+                        </>
+
+
                     }
                     {/* {simulacro !== null &&
                         <>

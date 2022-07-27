@@ -39,18 +39,13 @@ function Play() {
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
                                     {Object.keys(userDB.subjects).map((m, i) =>
-                                        <>
+                   
                                             <Link href={`Banco/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
                                                 <a className={style.link}>
                                                     <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
                                                 </a>
                                             </Link>
-                                            <Link href={`Banco/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
-                                                <a className={style.link}>
-                                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                                </a>
-                                            </Link>
-                                        </>
+                                     
                                         
                                     )}
                                 </div>

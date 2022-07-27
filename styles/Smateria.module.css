@@ -1,6 +1,7 @@
 .container {
     position: relative;
     background-color: transparent;
+    padding: 15px;
     padding-top: 70px;
     padding-bottom: 50px;
     height: 100%;
@@ -38,7 +39,6 @@
     left: 0;
     right: 0;
     height: 10px;
-    margin: 0 15px;
     background-color: transparent;
     color: white;
 
@@ -71,7 +71,7 @@
 }
 
 .counters {
-    margin: 15px;
+    margin: 15px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -114,7 +114,6 @@
     position: relative;
     width: 100%;
     height: 35%;
-    padding: 0px 15px;
 
     display: flex;
     justify-content: space-between;
@@ -138,7 +137,6 @@
 .answersContainer {
     height: 55%;
     width: 100%;
-    padding: 0 15px;
     margin-top: 20px;
 
     display: flex;
@@ -147,12 +145,13 @@
     align-items: center;
 }
 .answerButtons {
+    cursor: pointer;
     height: 100%;
     width: 100%;
     min-height: 50px;
     margin-bottom: 3px;
     border: 2px solid #ffffff3c;
-    border-radius: 10px;
+    border-radius: 5px;
 
     color: #00F0FF;
     font-size: 1em;
@@ -194,11 +193,12 @@
     color: #3FC500;
 }
 .buttonFinishAnswer {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     min-height: 50px;
     border: 2px solid #ffffff3c;
-    border-radius: 10px;
+    border-radius: 5px;
 
     font-size: 1em;
     font-weight: 400;
@@ -210,6 +210,31 @@
     align-items: center;
 }
 
+@media (min-width:1024px) {
+    .answersContainer {
+        height: 55%;
+        width: 100%;
+        margin-top: 20px;
+    
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px 50px;
+        justify-content: center;
+    }
+
+    .answersContainer :nth-child(5) {
+        grid-column: 1 / 3;
+        grid-row: 3;
+
+        width: 60%;
+        align-self: center;
+        justify-self: center;
+    }
+    /* .buttonFinishAnswer {
+        grid-column: 1 / 2;
+        grid-row: 1;
+    } */
+}
 
 
 

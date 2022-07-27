@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { useUser } from '../../../context/Context.js'
-import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../firebase/utils'
+import { setProgress, setErrors, userDataUpdate, getDataForSimulacro } from '../../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../../components/Error'
 import Timer from '../../../components/Timer'
@@ -92,7 +92,7 @@ function Simulacro() {
 
         fisherYatesShuffle(fisherArray)
         userDB.university !== null && userDB.university !== undefined
-            ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
+            ? getDataForSimulacro(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
             : ''
 
 

@@ -191,8 +191,11 @@ function manageSimulacro(materia, university, setUserSimulacro) {
       });
 }
 
+function getBank () {
 
-function UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+}
+
+function updateBank(university, materia, bank, setUserBank) {
       get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
             console.log('se esta ejecutando')
             let data = snapshot.val()
@@ -205,13 +208,13 @@ function UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, 
       });
 }
 
-function getEspecificData(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
 //Consulta si banco existe
       if (bank) {
       //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
-            bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
+            bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : UpdateBank(university, materia, bank, setUserBank)
       } else {
-            UpdateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
+            updateBank(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank)
       }
 }
 
@@ -804,7 +807,7 @@ function spam() {
 
 
 
-export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getEspecificData }
+export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank, getBank }
 
 
 
