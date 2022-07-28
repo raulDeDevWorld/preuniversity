@@ -46,8 +46,8 @@
 
 /* style image see */
 .seeRes {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     position: fixed;
     bottom: 55px;
     right: 15px;
@@ -55,9 +55,9 @@
 }
 .seeImgRes {
     background-image: url(../public/seeRes.svg);
-    background-size: 100%;
+    background-size: 40px;
 }
 .noSeeImgRes {
     background-image: url(../public/noSeeRes.svg);
-    background-size: 50px;
+    background-size: 40px;
 }
