@@ -6,7 +6,7 @@
 import PageLayout from '../layouts/PageLayout'
 // import { getCode } from '../firebase/utils'
 // import { useUser } from '../context/Context.js'
-// import { WithAuth } from '../HOCs/WithAuth'
+import { WithAuth } from '../HOCs/WithAuth'
 // import Success from '../components/Success'
 // import { useState, useEffect } from 'react'
 // import Error from '../components/Error'
