@@ -146,16 +146,22 @@ function userDataRegister(object, router, url) {
 //             });
 // }
 
-function userDataUpdate(object, setUserData, query) {
+function userDataUpdate(object, setUserData, query, setUserSuccess) {
       const uid = auth.currentUser.uid
 
       if (query) {
             update(ref(db, `users/${uid}/subjects/${query.toLowerCase()}`), object)
-            getData(uid, setUserData)
+            .then(()=>{
+                  setUserSuccess && setUserSuccess('save')
+                  getData(uid, setUserData)
+            })
             return
       }
-      update(ref(db, `users/${uid}`), object)
-      getData(uid, setUserData)
+      update(ref(db, `users/${uid}`), object).then(()=>setUserSuccess('save'))
+      .then(()=>{
+            setUserSuccess && setUserSuccess('save')
+            getData(uid, setUserData)
+      })
 }
 
 function getFac(university, setUniversityData) {

@@ -14,7 +14,7 @@ import BlackFont from '../../components/BlackFont'
 import PremiumC from '../../components/PremiumC'
 
 function PlayConfig() {
-    const { userDB, setUserData } = useUser()
+    const { userDB, setUserData,setUserSuccess, success } = useUser()
     const [mode, setMode] = useState('suma')
     const [time, setTime] = useState(null)
     const [questions, setQuestions] = useState(null)
@@ -26,7 +26,7 @@ function PlayConfig() {
     function back() {
         router.back()
     }
-    function save() {
+    function save () {
         const object = {
             config: {
                 time: time == null ? userDB.subjects[router.query.Config.toLowerCase()].config.time : time,
@@ -34,18 +34,16 @@ function PlayConfig() {
                 difficulty: difficulty == null ? userDB.subjects[router.query.Config.toLowerCase()].config.difficulty : difficulty,
             }
         }
-        userDataUpdate(object, setUserData, router.query.Config)
+        userDataUpdate(object, setUserData, router.query.Config, setUserSuccess)
         setTime(null)
         setQuestions(null)
         setDifficulty(null)
     }
+    console.log(success)
 
-
-    useEffect(() => {
-
-    });
     return (
         <PageSimulacroLayout>
+            {success == 'save' && <Success>Guardado</Success>}
             {userDB !== null && userDB !== 'loading' &&
                 <div className={style.container}>
                     <div className={style.userDataContainer}>

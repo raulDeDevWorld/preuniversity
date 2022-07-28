@@ -1,16 +1,20 @@
 .success {
     position: fixed;
+    top: 0;
     width: 100%;
     height: 70px;
     /* background-color: #1eff00; */
     background-color: black;
+    border-bottom: 1px solid transparent;
     color: #1eff00;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     text-align: center;
     transition-duration: .5s;
     animation-name: animationGreen;
-    animation-duration: 4s;
+    animation-duration: 6s;
     animation-delay: 0;
     z-index: 1000000000000;
     padding: 1px 0;
@@ -20,6 +24,7 @@
     position: fixed;
     width: 100%;
     height: 70px;
+    top: 0;
     /* background-color: red; */
     background-color: #15202B;
     border-bottom: 1px solid transparent;
@@ -30,7 +35,7 @@
     align-items: center;
 
     animation-name: animationRed;
-    animation-duration: 4s;
+    animation-duration: 6s;
     animation-delay: 0;
     z-index: 1000000000000;
     padding: 1px 0;
@@ -43,16 +48,8 @@
   }
   @keyframes animationGreen {
     0% {background-color: transparent; color: transparent}
-    20% {background-color: #0e151c; color: #1eff00;}
-    80% {background-color: #0e151c; color: #1eff00;}
-    100% {background-color: transparent; color: transparent}
+    20% {background-color: #0e151c; border-bottom: 1px solid #1eff00;; color: #1eff00;}
+    80% {background-color: #0e151c; border-bottom: 1px solid #1eff00;; color: #1eff00;}
+    100% {background-color: transparent; border-bottom: 1px solid transparent; color: transparent}
   }
 
-@media (max-height: 1024px) { 
-    .success {
-        height: 70px;
-    }
-    .error {
-        height: 70px;
-    }
-}

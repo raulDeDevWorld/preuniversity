@@ -53,11 +53,11 @@ function Config() {
     function x() {
         setMode(!mode)
     }
-
+  
     return (
         <>
             <PageUserLayout>
-
+            
                 {userDB !== null && userDB !== 'loading' &&
                     <div className={style.container}>
                         <div className={style.userDataContainer}>
