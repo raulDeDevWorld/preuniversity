@@ -1,41 +1,41 @@
-import Button from '../components/Button'
-import PremiumC from '../components/PremiumC'
-import { useRouter } from 'next/router'
-import PageLayout from '../layouts/PageLayout'
-import { WithAuth } from '../HOCs/WithAuth'
-import { useUser } from '../context/Context.js'
-import { avatarUpdate } from '../firebase/utils'
-import Error from '../components/Error'
-import Success from '../components/Success'
-import Paragraph from '../components/Paragraph'
-import style from '../styles/Config.module.css'
-import styleP from '../styles/Progress.module.css'
-import { useState } from 'react'
+// import Button from '../components/Button'
+// import PremiumC from '../components/PremiumC'
+// import { useRouter } from 'next/router'
+// import PageLayout from '../layouts/PageLayout'
+// import { WithAuth } from '../HOCs/WithAuth'
+// import { useUser } from '../context/Context.js'
+// import { avatarUpdate } from '../firebase/utils'
+// import Error from '../components/Error'
+// import Success from '../components/Success'
+// import Paragraph from '../components/Paragraph'
+// import style from '../styles/Config.module.css'
+// import styleP from '../styles/Progress.module.css'
+// import { useState } from 'react'
 
 
 function ConfigAvatar() { 
-    const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
-    const router = useRouter()
+    // const { setUserAvatar, avatar, user, userDB, success, setUserSuccess } = useUser()
+    // const router = useRouter()
 
-    function avatarClick(a) {
-        setUserAvatar(a)
-    }
-    function nextClick() {
-        if (avatar !== null) {
-            setUserSuccess(true)
-            avatarUpdate(avatar, userDB.profesor)
-        } else {
-            setUserSuccess(false)
-        } 
-    }
-    function back () {
-        router.back()
-    }
+    // function avatarClick(a) {
+    //     setUserAvatar(a)
+    // }
+    // function nextClick() {
+    //     if (avatar !== null) {
+    //         setUserSuccess(true)
+    //         avatarUpdate(avatar, userDB.profesor)
+    //     } else {
+    //         setUserSuccess(false)
+    //     } 
+    // }
+    // function back () {
+    //     router.back()
+    // }
    
     return (
         <>
         <PageLayout>
-            {userDB === 'loading' && ''}
+            {/* {userDB === 'loading' && ''}
             {userDB !== null && userDB !== 'loading' &&
                     <div className={style.container}>
                         <span className={style.orange}>Config Mode</span>
@@ -53,7 +53,7 @@ function ConfigAvatar() {
                     </div>
                 </div>
             }
-           
+            */}
     
 
         </PageLayout>
