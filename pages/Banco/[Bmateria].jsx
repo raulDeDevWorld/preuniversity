@@ -4,7 +4,7 @@ import { useUser } from '../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, updateBank } from '../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../components/Error'
-import Timer from '../../components/Timer'
+import Modal from '../../components/Modal'
 import BlackFont from '../../components/BlackFont'
 import PageSimulacroLayout from '../../layouts/PageSimulacroLayout'
 import { WithAuth } from '../../HOCs/WithAuth'
@@ -13,7 +13,7 @@ import style from '../../styles/Bmateria.module.css'
 
 function Simulacro() {
     const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
-    // const [select, setSelect] = useState(null)
+    const [modal, setModal] = useState(false)
     const [seeRes, setSeeRes] = useState(false)
 
     const router = useRouter()
@@ -90,6 +90,10 @@ function Simulacro() {
     //     setSelect(null)
     // }
     // console.log(bank)
+function modalHandler () {
+    setModal(!modal)
+}
+
     useEffect(() => {
         if (userDB.university) {
             if (bank) {
@@ -108,7 +112,7 @@ function Simulacro() {
                         <>
                             {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
                                 <div key={index} className={style.itemBox}>
-                                    <li className={style.ask}>
+                                    <li className={style.ask} onClick={modalHandler}>
                                         {console.log(item)}
                                         {                                               /*Consultamos si un item (len1) existe en el progres && validamos que su valor no sea false*/}
                                         <span className={style.number}>{`${index + 1}-${userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty != false ? userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty : 'I'})`}{ }</span>{item.pregunta}
@@ -124,7 +128,8 @@ function Simulacro() {
                     <span className={ `${style.seeRes} ${seeRes == true ? style.seeImgRes : style.noSeeImgRes }`} onClick={handlerSeeRes}></span>
                 </div>
             }
-            {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
+            {/* {success == false && <Error>Agotaste tu free mode: SUMA</Error>} */}
+            <Modal mode={modal} click={modalHandler}> khkj</Modal>
         </PageSimulacroLayout>
     )
 }

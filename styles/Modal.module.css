@@ -8,15 +8,15 @@
     right: 0;
     left: 0;
     margin: auto;
-    z-index: 100000000000;
-    background-color: rgba(0, 0, 0, 0.616);
+    z-index: 10000000000000;
+    background-color: rgba(0, 0, 0, 0.69);
 
 
 
   }
 
   .contBlue {
-    background-color: aliceblue;
+    background-color: #0e151c;
     position: absolute;
     max-width: 400px;
     top: 0;
