@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Navbar from '../components/Navbar'
-import style from '../styles/PageLayout.module.css'
+// import Head from 'next/head'
+// import Navbar from '../components/Navbar'
+// import style from '../styles/PageLayout.module.css'
 
 export default function PageLayout({ children }) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Swoou Preuniversity: Banco de preguntas y Simulacro para examenes de admision</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#000000" />
@@ -25,7 +25,7 @@ export default function PageLayout({ children }) {
       </div>
       <footer className={style.footer}>
         copyright 2022<br />swoou.com
-      </footer>
+      </footer> */}
     </>
   )
 }
