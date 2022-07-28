@@ -69,16 +69,12 @@
     background-color: #3FC500;
     border: 2px solid #3FC500;
 
-    transition-duration: .5s;
+    transition-duration: .3s;
 }
-.successButton:hover {
-    color: #3FC500;
-    background-color: #000000;
-    border: 2px solid #3FC500;
-}
+
 .successButton:active {
     color: #3FC500;
-    background-color: #000000;
+    background-color: #0e151c;
     border: 2px solid #3FC500;
 }
 .buttonSpecial {
