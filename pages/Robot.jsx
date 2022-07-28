@@ -8,4 +8,4 @@ function Robot() {
 
 
 }
-export default WithAuth(Robot)
+export default Robot
