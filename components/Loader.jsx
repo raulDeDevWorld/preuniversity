@@ -6,6 +6,7 @@ export default function Loader() {
             <div className={style.spinner}>
                 <div></div>
                 <div></div>
+                <div></div>
             </div>
         </div>
 
