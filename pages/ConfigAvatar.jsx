@@ -1,7 +1,7 @@
 // import Button from '../components/Button'
 // import PremiumC from '../components/PremiumC'
 // import { useRouter } from 'next/router'
-// import PageLayout from '../layouts/PageLayout'
+import PageUserLayout from '../layouts/PageUserLayout'
 // import { WithAuth } from '../HOCs/WithAuth'
 // import { useUser } from '../context/Context.js'
 // import { avatarUpdate } from '../firebase/utils'
@@ -34,7 +34,7 @@ function ConfigAvatar() {
    
     return (
         <>
-        <PageLayout>
+        <PageUserLayout>
             {/* {userDB === 'loading' && ''}
             {userDB !== null && userDB !== 'loading' &&
                     <div className={style.container}>
@@ -56,7 +56,7 @@ function ConfigAvatar() {
             */}
     
 
-        </PageLayout>
+        </PageUserLayout>
         {success ==true && <Success>Correcto</Success>}
         {success ==false && <Error>Elija un avatar</Error>}
         </>
