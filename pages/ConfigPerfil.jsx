@@ -4,7 +4,7 @@
 // import { useUser } from '../context/Context.js'
 // import { dataUser, setDataTeachers } from '../firebase/utils'
 // import { useRouter } from 'next/router'
-// import { WithAuth } from '../HOCs/WithAuth'
+import { WithAuth } from '../HOCs/WithAuth'
 // import Paragraph from '../components/Paragraph'
 // import Error from '../components/Error'
 // import Success from '../components/Success'

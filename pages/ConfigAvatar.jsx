@@ -2,7 +2,7 @@
 // import PremiumC from '../components/PremiumC'
 // import { useRouter } from 'next/router'
 import PageUserLayout from '../layouts/PageUserLayout'
-// import { WithAuth } from '../HOCs/WithAuth'
+import { WithAuth } from '../HOCs/WithAuth'
 // import { useUser } from '../context/Context.js'
 // import { avatarUpdate } from '../firebase/utils'
 // import Error from '../components/Error'
