@@ -33,7 +33,7 @@ function ConfigAvatar() {
     // }
    
     return (
-        <>
+
         <PageUserLayout>
             {/* {userDB === 'loading' && ''}
             {userDB !== null && userDB !== 'loading' &&
@@ -57,9 +57,7 @@ function ConfigAvatar() {
     
 
         </PageUserLayout>
-        {success ==true && <Success>Correcto</Success>}
-        {success ==false && <Error>Elija un avatar</Error>}
-        </>
+
     )
 }
 
