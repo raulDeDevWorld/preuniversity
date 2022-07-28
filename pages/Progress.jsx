@@ -4,7 +4,6 @@ import { WithAuth } from '../HOCs/WithAuth'
 import Success from '../components/Success'
 import Error from '../components/Error'
 import PageUserLayout from '../layouts/PageUserLayout'
-import { getIds, query } from '../firebase/utils'
 import style from '../styles/Progress.module.css'
 import Button from '../components/Button'
 import ProgressC from '../components/ProgressC'
@@ -16,43 +15,43 @@ import { useState, useEffect } from 'react'
 
 
 function Progress() {
-    const { user, userDB, id, setTeacherId, setUserSuccess, success } = useUser()
-    const [mode, setMode] = useState(false)
-    const [alert, setAlert] = useState(false)
-    const [idConfig, setIdConfig] = useState(null)
+    // const { user, userDB, id, setTeacherId, setUserSuccess, success } = useUser()
+    // const [mode, setMode] = useState(false)
+    // const [alert, setAlert] = useState(false)
+    // const [idConfig, setIdConfig] = useState(null)
 
 
-    const router = useRouter()
+    // const router = useRouter()
 
-    function x () {
-        setMode(!mode)
-    }
-    function y () {
-        setAlert(!alert)
-    }
-    function nextClick (e) {
-        e.preventDefault()
-        const idInput = e.target.form[0].value
-        setIdConfig(idInput)
-        query(idInput, setTeacherId, user.uid, userDB.aName, setUserSuccess, setAlert)
-    }
-    function sureClick (e) {
-        e.preventDefault()
-        getIds(idConfig, setTeacherId, user.uid, userDB.aName, setUserSuccess, true)
-        setAlert(false)
-    }
-    function backClick (e) {
-        e.preventDefault()
-        router.back()
-    }
-    console.log(userDB.id)
-    useEffect(() => {
-        success == true ? x() : ''
-    }, [success, alert]);
+    // function x () {
+    //     setMode(!mode)
+    // }
+    // function y () {
+    //     setAlert(!alert)
+    // }
+    // function nextClick (e) {
+    //     e.preventDefault()
+    //     const idInput = e.target.form[0].value
+    //     setIdConfig(idInput)
+    //     query(idInput, setTeacherId, user.uid, userDB.aName, setUserSuccess, setAlert)
+    // }
+    // function sureClick (e) {
+    //     e.preventDefault()
+    //     getIds(idConfig, setTeacherId, user.uid, userDB.aName, setUserSuccess, true)
+    //     setAlert(false)
+    // }
+    // function backClick (e) {
+    //     e.preventDefault()
+    //     router.back()
+    // }
+    // console.log(userDB.id)
+    // useEffect(() => {
+    //     success == true ? x() : ''
+    // }, [success, alert]);
     return (
        
    <PageUserLayout>
-        {userDB !== null && userDB !== 'loading' && 
+        {/* {userDB !== null && userDB !== 'loading' && 
             <>
             <div className={style.container}>
                 <img src={`/robot.png`} className={style.robot} alt="user photo" />
@@ -61,9 +60,9 @@ function Progress() {
                     <span className={style.subtitle}>Monitorea tus progresos desde aqui</span>
                 </div>
             
-                    <div className={style.gridContainer}>
+                    <div className={style.gridContainer}> */}
                     {/* {userDB.id ? <span className={`${style.subtitle} ${style.left} `}>Prof. Id: <span className={style.orange}>{userDB.id}</span></span> : <span className={style.subtitle}>Comparte tus progresos con tu profe.</span>}<br/> */}
-                    <div className={style.grid}>
+                    {/* <div className={style.grid}> */}
                         
                             {/* {Object.keys(userDB.subjects).map((m, i) =>)} */}
 
@@ -76,7 +75,7 @@ function Progress() {
 
 
                             
-                   
+{/*                    
                     
                         </div>
                     </div>                   
@@ -91,9 +90,9 @@ function Progress() {
             </div> 
  
           
-            </>}
+            </>} */}
    
-    <Modal mode={mode} click={x} text={`Ingresa el Id de tu profe...`}>
+    {/* <Modal mode={mode} click={x} text={`Ingresa el Id de tu profe...`}>
     <form className={style.form}>      
         <input className={style.modalInput} type="text" placeholder='alex73447725' />
         <button className={style.modalButton} onClick={nextClick}>ok</button>
@@ -106,7 +105,10 @@ function Progress() {
     </form>
     </Modal>
     {success ==true && <Success>Correcto</Success>}
-    {success ==false && <Error>Error</Error>}
+    {success ==false && <Error>Error</Error>} */}
+
+
+
     </PageUserLayout>
     )
 }
