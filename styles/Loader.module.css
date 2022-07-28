@@ -27,7 +27,7 @@
   width: 20px;
   border-radius: 20px;
 
-  animation: spinnerKeyframe .4s ease infinite;
+  animation: spinnerKeyframe .8s ease infinite;
 }
 /* .spinner div {
   position: absolute;

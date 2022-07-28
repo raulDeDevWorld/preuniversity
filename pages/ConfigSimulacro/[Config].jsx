@@ -3,19 +3,21 @@ import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
 import PageSimulacroLayout from '../../layouts/PageSimulacroLayout'
 import { useUser } from '../../context/Context.js'
-import { userDataUpdate, getData } from '../../firebase/utils'
+import { userDataUpdate, updateBank } from '../../firebase/utils'
 import { useRouter } from 'next/router'
 import { WithAuth } from '../../HOCs/WithAuth'
 import Error from '../../components/Error'
 import Success from '../../components/Success'
 import style from '../../styles/PlayConfig.module.css'
-import { rob } from '../../utils/robot'
 import BlackFont from '../../components/BlackFont'
 import PremiumC from '../../components/PremiumC'
+import { set } from 'lodash'
 
 function PlayConfig() {
-    const { userDB, setUserData,setUserSuccess, success } = useUser()
-    const [mode, setMode] = useState('suma')
+    const { userDB, setUserData,setUserSuccess, success, bank, setUserBank } = useUser()
+    const [arrF, setArrF] = useState(null)
+    const [arrR, setArrR] = useState(null)
+    const [arrD, setArrD] = useState(null)
     const [time, setTime] = useState(null)
     const [questions, setQuestions] = useState(null)
     const [difficulty, setDifficulty] = useState(null)
@@ -25,13 +27,29 @@ function PlayConfig() {
 
     function back() {
         router.back()
-    }
+    }  
     function save () {
+        const newTime = time == null ? userDB.subjects[router.query.Config.toLowerCase()].config.time : time
+        const newQuestions = questions == null ? userDB.subjects[router.query.Config.toLowerCase()].config.questions : questions
+        const newDifficulty = difficulty == null ? userDB.subjects[router.query.Config.toLowerCase()].config.difficulty : difficulty
+
+        if(newDifficulty == 'facil' && arrF.length < newQuestions){
+            setUserSuccess('insuficiente')
+            return
+        }
+        if(newDifficulty == 'regular' && arrF.length < newQuestions){
+            setUserSuccess('insuficiente')
+            return
+        }
+        if(newDifficulty == 'dificil' && arrF.length < newQuestions){
+            setUserSuccess('insuficiente')
+            return
+        }
         const object = {
             config: {
-                time: time == null ? userDB.subjects[router.query.Config.toLowerCase()].config.time : time,
-                questions: questions == null ? userDB.subjects[router.query.Config.toLowerCase()].config.questions : questions,
-                difficulty: difficulty == null ? userDB.subjects[router.query.Config.toLowerCase()].config.difficulty : difficulty,
+                time: newTime,
+                questions: newQuestions,
+                difficulty: newDifficulty,
             }
         }
         userDataUpdate(object, setUserData, router.query.Config, setUserSuccess)
@@ -39,12 +57,35 @@ function PlayConfig() {
         setQuestions(null)
         setDifficulty(null)
     }
-    console.log(success)
+    async function progressHandler () {
+        const progressObj = await userDB.subjects[router.query.Config.toLowerCase()].progress
+        const arrProgressObj = Object.values(progressObj)
 
+        const arrF = arrProgressObj.filter(item => item.difficulty == 'F')
+        const arrR = arrProgressObj.filter(item => item.difficulty == 'R')
+        const arrD = arrProgressObj.filter(item => item.difficulty == 'D')
+
+        setArrF(arrF)
+        setArrR(arrR)
+        setArrD(arrD)
+    }
+    
+    useEffect(() => {
+        if (userDB.university) {
+            if (bank) {
+                bank[router.query.Config.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Config, bank, setUserBank)
+            } else {
+                updateBank(userDB.university, router.query.Config, bank, setUserBank)
+            }
+            progressHandler()
+        }
+    }, [userDB.university, bank])
     return (
         <PageSimulacroLayout>
             {success == 'save' && <Success>Guardado</Success>}
-            {userDB !== null && userDB !== 'loading' &&
+            {success == 'insuficiente' && <Error>Cantidad de preguntas insuficientes</Error>}
+            
+            {userDB !== null && userDB !== 'loading' && bank && bank[router.query.Config.toLowerCase()] &&
                 <div className={style.container}>
                     <div className={style.userDataContainer}>
                         <span className={style.config}>Config mode</span>
@@ -73,19 +114,19 @@ function PlayConfig() {
                                 <div className={style.message}>Dificultad</div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'facil' ? style.boxSelectNow : ''} ${difficulty == 'facil' ? style.green : ''}`} onClick={() => setDifficulty('facil')}>Facil</button>
-                                    <div className={style.boxSelect}>5p</div>
+                                    <div className={style.boxSelect}>{arrF.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'regular' ? style.boxSelectNow : ''} ${difficulty == 'regular' ? style.green : ''}`} onClick={() => setDifficulty('regular')}>Regular</button>
-                                    <div className={style.boxSelect}>5p</div>
+                                    <div className={style.boxSelect}>{arrR.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'dificil' ? style.boxSelectNow : ''} ${difficulty == 'dificil' ? style.green : ''}`} onClick={() => setDifficulty('dificil')}>Dificil</button>
-                                    <div className={style.boxSelect}>5p</div>
+                                    <div className={style.boxSelect}>{arrD.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'aleatorio' ? style.boxSelectNow : ''} ${difficulty == 'aleatorio' ? style.green : ''}`} onClick={() => setDifficulty('aleatorio')}>Aleatorio</button>
-                                    <div className={style.boxSelect}>{'500'}p</div>
+                                    <div className={style.boxSelect}>{bank[router.query.Config.toLowerCase()].length}p</div>
                                 </div>
                                 <Button style='successButton' click={save}>Finalizar</Button>
                             </div>
