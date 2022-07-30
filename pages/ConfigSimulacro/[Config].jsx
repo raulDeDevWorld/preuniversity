@@ -114,15 +114,15 @@ function PlayConfig() {
                                 <div className={style.message}>Dificultad</div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'facil' ? style.boxSelectNow : ''} ${difficulty == 'facil' ? style.green : ''}`} onClick={() => setDifficulty('facil')}>Facil</button>
-                                    <div className={style.boxSelect}>{arrF.length}p</div>
+                                    <div className={style.boxSelect}>{arrF && arrF.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'regular' ? style.boxSelectNow : ''} ${difficulty == 'regular' ? style.green : ''}`} onClick={() => setDifficulty('regular')}>Regular</button>
-                                    <div className={style.boxSelect}>{arrR.length}p</div>
+                                    <div className={style.boxSelect}>{arrR && arrR.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'dificil' ? style.boxSelectNow : ''} ${difficulty == 'dificil' ? style.green : ''}`} onClick={() => setDifficulty('dificil')}>Dificil</button>
-                                    <div className={style.boxSelect}>{arrD.length}p</div>
+                                    <div className={style.boxSelect}>{arrD && arrD.length}p</div>
                                 </div>
                                 <div className={style.buttonsContainer}>
                                     <button className={`${style.button} ${userDB.subjects[router.query.Config.toLowerCase()].config.difficulty == 'aleatorio' ? style.boxSelectNow : ''} ${difficulty == 'aleatorio' ? style.green : ''}`} onClick={() => setDifficulty('aleatorio')}>Aleatorio</button>

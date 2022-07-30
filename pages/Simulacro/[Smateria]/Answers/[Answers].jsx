@@ -4,6 +4,8 @@ import { useUser } from '../../../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, getEspecificData } from '../../../../firebase/utils'
 import { useRouter } from 'next/router'
 import Error from '../../../../components/Error'
+import Success from '../../../../components/Success'
+
 import PageSimulacro from '../../../../layouts/PageSimulacro'
 import { WithAuth } from '../../../../HOCs/WithAuth'
 import style from '../../../../styles/Smateria.module.css'
@@ -24,10 +26,26 @@ function Simulacro() {
         return setArray(arr)
     }
 
-    function changeDifficult(data) {
-        console.log(`${data}`)
-        const object = { difficulty: data }
-        userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`)
+    // function changeDifficult(data) {
+    //     console.log(`${data}`)
+    //     const object = { difficulty: data }
+    //     userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`)
+    // }
+
+    function changeDifficult(difficulty) {
+        const object = { difficulty }
+
+        difficulty == 'F' && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success >= 3 && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].mistakes * 3 <= userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success
+            ? userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`, setUserSuccess)
+            : (difficulty == 'F' ? setUserSuccess('noF') : '')
+
+        difficulty == 'R' && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success >= 2 && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].mistakes * 2 <= userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success
+            ? userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`, setUserSuccess)
+            : (difficulty == 'R' ? setUserSuccess('noR') : '')
+
+        difficulty == 'D' && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id]
+            ? userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`, setUserSuccess)
+            : (difficulty == 'D' ? setUserSuccess('noD') : '')
     }
 
     function back() {
@@ -80,15 +98,10 @@ function Simulacro() {
                                 </div>
                                 <div className={style.counters}>
                                     <span className={style.asksCount}>Item: {router.query.Answers}/{simulacro.length}</span>
-                                    <div className={style.selectDifficulty}>
-
-                                        {/* {console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)}
-                                        {console.log(simulacro[router.query.Answers - 1].id)} */}
-                                        {console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty)}
-
-                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
-                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
-                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
+                                    <div className={style.selectDifficult}>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success >= 3 && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].mistakes * 3 <= userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success ? style.buttonDifficultActive : ''} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success >= 2 && userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].mistakes * 2 <= userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].success ? style.buttonDifficultActive : ''} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id] ? style.buttonDifficultActive : ''} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
                                     </div>
                                     <span className={`${style.answersCount} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? style.greenBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? style.redBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? style.grayBorder : ''} `} >
                                         {`${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? 'BIEN 😍' : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? 'ERROR 😭' : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? 'VACIO 😅' : ''} `}
@@ -110,7 +123,10 @@ function Simulacro() {
                         </>}
                 </div>
             }
-            {success == false && <Error>Agotaste tu free mode: SUMA</Error>}
+            {success == 'save' && <Success>Actualizando</Success>}
+            {success === 'noF' && <Error>Tus aciertos acumulados deben ser el doble de tus errores o tener 3 aciertos como minimo</Error>}
+            {success === 'noR' && <Error>Tus aciertos acumulados deben ser el doble de tus errores o tener 2 aciertos como minimo</Error>}
+            {success === 'noD' && <Error>Debes tener por lo menos un intento</Error>}
         </PageSimulacro>
     )
 }
