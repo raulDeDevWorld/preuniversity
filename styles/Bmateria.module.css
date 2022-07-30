@@ -61,3 +61,46 @@
     background-image: url(../public/noSeeRes.svg);
     background-size: 40px;
 }
+
+
+
+/* Item data */
+.itemData {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #00F0FF;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #00F0FF;
+}
+/* 
+.itemIndex {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid #ffffff3c;
+
+    color: #00F0FF;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: center;
+    
+    
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.itemIntentos {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid #ffffff3c;
+
+    color: #00F0FF;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: center;
+    
+    
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+} */

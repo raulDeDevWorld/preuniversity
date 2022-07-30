@@ -17,6 +17,7 @@ function Simulacro() {
     const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
     const [modal, setModal] = useState(false)
     const [dataProgress, setDataProgress] = useState(null)
+    const [dataIndex, setDataIndex] = useState(null)
     const [seeRes, setSeeRes] = useState(false)
 
     const router = useRouter()
@@ -26,9 +27,10 @@ function Simulacro() {
         setSeeRes(!seeRes)
     }
 
-    function modalHandler(item) {
+    function modalHandler(item, index) {
         setModal(!modal)
         setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id])
+        setDataIndex(index + 1)
     }
 
     console.log(dataProgress)
@@ -51,7 +53,7 @@ function Simulacro() {
                         <>
                             {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
                                 <div key={index} className={style.itemBox}>
-                                    <li className={style.ask} onClick={() => modalHandler(item)}>
+                                    <li className={style.ask} onClick={() => modalHandler(item, index)}>
                                         {                                               /*Consultamos si un item (len1) existe en el progres && validamos que su valor no sea false*/}
                                         <span className={style.number}>{`${index + 1}-${userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty != false ? userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty : 'I'})`}{ }</span>{item.pregunta}
                                     </li><br />
@@ -70,7 +72,10 @@ function Simulacro() {
             <Modal mode={modal} click={modalHandler}>
                 {dataProgress
                     ? <>
-                    <span>{`${dataProgress ? `Intentos:  ${dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}`: 'fds'}`}</span>
+                        <div className={style.itemData}>
+                                <span className={style.itemIndex}>Item: {dataIndex}</span>
+                                <span className={style.itemIntentos}>Intentos: {dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}</span>
+                        </div>
                         <span>Aciertos:</span>
                         <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
                         <span>Errores:</span>
