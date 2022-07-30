@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useUser } from '../context/Context.js'
 
 function ProgressBar({ bgcolor, completed }) {
+    const { userDB } = useUser()
 
     const [counter, setCounter] = useState(0)
 
@@ -40,7 +42,7 @@ function ProgressBar({ bgcolor, completed }) {
             clearInterval(sampleInterval);
         };
 
-    }, [counter]);
+    }, [userDB, counter]);
 
     return (
         <div style={containerStyles}>

@@ -35,9 +35,27 @@ function Simulacro() {
         setDataItem(item)
     }
 
-    function changeDifficult() {
+    function changeDifficult(difficulty) {
+        console.log(difficulty)
+        const object = { difficulty }
+
+
+        difficulty == 'F' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
+        : console.log('noF')
+
+        difficulty == 'R' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
+        : console.log('noR')
+
+        difficulty == 'D' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
+        : console.log('noD')
+        setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id])
 
     }
+
+    console.log(dataProgress)
 
     useEffect(() => {
         if (userDB.university) {
@@ -47,7 +65,7 @@ function Simulacro() {
                 updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
             }
         }
-    }, [userDB.university, bank, seeRes])
+    }, [userDB, dataProgress, userDB.university, bank, seeRes])
 
     return (
         <PageSimulacroLayout>
@@ -81,15 +99,14 @@ function Simulacro() {
                             <span className={style.itemIntentos}>Intentos: {dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0}</span>
                         </div>
                         <div className={style.selectDifficult}>
-                            {console.log(userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty)}
-                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
-                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
-                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
+                            <button className={`${style.buttonDifficult} ${dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
+                            <button className={`${style.buttonDifficult} ${dataProgress && dataProgress.success >= 2 && dataProgress.mistakes * 2 <= dataProgress.success ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
+                            <button className={`${style.buttonDifficult} ${dataProgress && dataProgress.mistakes * 3 <= dataProgress.success ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
                         </div>
                         <span>Aciertos:</span>
                         <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress ? dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
                         <span>Errores:</span>
-                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress ? dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
+                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress ? dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0  )} />
                         <span>No respondidos:</span>
                         <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress ? dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
                     </>}
