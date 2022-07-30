@@ -102,11 +102,11 @@ function Simulacro() {
                             <button className={`${style.buttonDifficult} ${dataProgress ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
                         </div>
                         <span>Aciertos:</span>
-                        <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress ? dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
+                        <ProgressBar bgcolor={'#3FC500'} counterData ={dataProgress ? dataProgress.success : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
                         <span>Errores:</span>
-                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress ? dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0  )} />
+                        <ProgressBar bgcolor={'red'} counterData ={dataProgress ? dataProgress.mistakes : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
                         <span>No respondidos:</span>
-                        <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress ? dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
+                        <ProgressBar bgcolor={'#365b74'} counterData ={dataProgress ? dataProgress.undefineds : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
                     </>}
             </Modal>
             {success == 'save' && <Success>Actualizando</Success>}
