@@ -17,6 +17,7 @@ function Simulacro() {
     const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
     const [modal, setModal] = useState(false)
     const [dataProgress, setDataProgress] = useState(null)
+    const [dataItem, setDataItem] = useState(null)
     const [dataIndex, setDataIndex] = useState(null)
     const [seeRes, setSeeRes] = useState(false)
 
@@ -31,9 +32,12 @@ function Simulacro() {
         setModal(!modal)
         setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id])
         setDataIndex(index + 1)
+        setDataItem(item)
     }
 
-    console.log(dataProgress)
+    function changeDifficult() {
+
+    }
 
     useEffect(() => {
         if (userDB.university) {
@@ -68,23 +72,27 @@ function Simulacro() {
                     <span className={`${style.seeRes} ${seeRes == true ? style.seeImgRes : style.noSeeImgRes}`} onClick={handlerSeeRes}></span>
                 </div>
             }
-            {/* {success == false && <Error>Agotaste tu free mode: SUMA</Error>} */}
+
             <Modal mode={modal} click={modalHandler}>
-                {dataProgress
-                    ? <>
+                {modal == true &&
+                    <>
                         <div className={style.itemData}>
-                                <span className={style.itemIndex}>Item: {dataIndex}</span>
-                                <span className={style.itemIntentos}>Intentos: {dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}</span>
+                            <span className={style.itemIndex}>Item: {dataIndex}</span>
+                            <span className={style.itemIntentos}>Intentos: {dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0}</span>
+                        </div>
+                        <div className={style.selectDifficult}>
+                            {console.log(userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty)}
+                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
+                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
+                            <button className={`${style.buttonDifficult} ${userDB.subjects && userDB.subjects[router.query.Bmateria.toLowerCase()].progress !== false && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id].difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
                         </div>
                         <span>Aciertos:</span>
-                        <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
+                        <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress ? dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
                         <span>Errores:</span>
-                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
+                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress ? dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
                         <span>No respondidos:</span>
-                        <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
-                    </>
-                    : ''}
-
+                        <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress ? dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
+                    </>}
             </Modal>
         </PageSimulacroLayout>
     )

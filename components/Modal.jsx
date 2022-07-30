@@ -11,7 +11,6 @@ export default function Progreso(props) {
                     <BlackFont>
                         <div className={style.blackModal}>
                             <span onClick={props.click} className={style.x}>X</span>
-                            
                             {props.children}
                         </div>
                     </BlackFont>

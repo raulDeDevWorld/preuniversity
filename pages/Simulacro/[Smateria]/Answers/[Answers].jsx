@@ -24,9 +24,9 @@ function Simulacro() {
         return setArray(arr)
     }
 
-    function changeDifficult (data) {
+    function changeDifficult(data) {
         console.log(`${data}`)
-        const object = {difficulty : data}
+        const object = { difficulty: data }
         userDataUpdate(object, setUserData, `/${router.query.Smateria.toLowerCase()}/progress/${simulacro[router.query.Answers - 1].id}`)
     }
 
@@ -56,15 +56,15 @@ function Simulacro() {
 
     // console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress)
     // console.log(simulacro)
- 
-
-        // fisherYatesShuffle(array)
-        // userDB.university !== null && userDB.university !== undefined
-        //     ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
-        //     : ''
 
 
-  
+    // fisherYatesShuffle(array)
+    // userDB.university !== null && userDB.university !== undefined
+    //     ? getEspecificData(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
+    //     : ''
+
+
+
     return (
         <PageSimulacro>
             {userDB !== 'loading' &&
@@ -86,20 +86,20 @@ function Simulacro() {
                                         {console.log(simulacro[router.query.Answers - 1].id)} */}
                                         {console.log(userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty)}
 
-                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'F' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('F')}>F</button>
-                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'R' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('R')}>R</button>
-                                    <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'D' ? style.buttonDifficultSelect: ''}`} onClick={()=>changeDifficult('D')}>D</button>
-                                </div>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'F' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('F')}>F</button>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
+                                        <button className={`${style.buttonDifficult} ${userDB.subjects[router.query.Smateria.toLowerCase()].progress[simulacro[router.query.Answers - 1].id].difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
+                                    </div>
                                     <span className={`${style.answersCount} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? style.greenBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? style.redBorder : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? style.grayBorder : ''} `} >
                                         {`${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer == simulacro[router.query.Answers - 1].respuesta ? 'BIEN 😍' : ''} ${simulacro[router.query.Answers - 1].userAnswer !== undefined && simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta ? 'ERROR 😭' : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined ? 'VACIO 😅' : ''} `}
                                     </span>
-                                </div>    
+                                </div>
                             </div>
                             <div className={style.asksContainer}>
-                                    <span className={style.move} onClick={back}>{'<|'}</span>
-                                    <p className={style.ask}>{simulacro[router.query.Answers - 1].pregunta}</p>
-                                    <span className={style.move} onClick={next}>{'|>'}</span>
-                                </div>
+                                <span className={style.move} onClick={back}>{'<|'}</span>
+                                <p className={style.ask}>{simulacro[router.query.Answers - 1].pregunta}</p>
+                                <span className={style.move} onClick={next}>{'|>'}</span>
+                            </div>
                             <div className={style.answersContainer}>
                                 <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[0] ? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[0] ? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[0] ? style.grayButton : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[0]}`]} </div>
                                 <div className={`${style.answerButtons} ${simulacro[router.query.Answers - 1].respuesta == fisherArray[1] ? style.green : ''} ${simulacro[router.query.Answers - 1].userAnswer !== simulacro[router.query.Answers - 1].respuesta && simulacro[router.query.Answers - 1].userAnswer == fisherArray[1] ? style.red : ''} ${simulacro[router.query.Answers - 1].userAnswer == undefined && simulacro[router.query.Answers - 1].respuesta !== fisherArray[1] ? style.grayButton : ''} `}> {simulacro[router.query.Answers - 1][`${fisherArray[1]}`]} </div>

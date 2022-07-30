@@ -73,6 +73,24 @@
     padding-bottom: 5px;
     border-bottom: 1px solid #00F0FF;
 }
+
+
+
+.selectDifficult {
+    width: 100%;
+    text-align: end;
+}
+.buttonDifficult {
+    background-color: rgb(130, 130, 130);
+    border: 1px solid rgb(130, 130, 130);
+    border-radius: 2px;
+    margin-left: 5px;
+}
+.buttonDifficultSelect {
+    background-color: transparent;
+    border: 1px solid #00F0FF;
+    color: #00F0FF;
+}
 /* 
 .itemIndex {
     position: relative;
