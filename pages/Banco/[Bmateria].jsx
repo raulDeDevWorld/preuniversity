@@ -67,9 +67,10 @@ function Simulacro() {
                 </div>
             }
             {/* {success == false && <Error>Agotaste tu free mode: SUMA</Error>} */}
-            <Modal mode={modal} click={modalHandler} text={`${dataProgress ? `Intentos:  ${dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}`: 'fds'}`}>
+            <Modal mode={modal} click={modalHandler}>
                 {dataProgress
                     ? <>
+                    <span>{`${dataProgress ? `Intentos:  ${dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}`: 'fds'}`}</span>
                         <span>Aciertos:</span>
                         <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
                         <span>Errores:</span>
