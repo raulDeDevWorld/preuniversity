@@ -45,11 +45,11 @@ function Simulacro() {
         ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
         : (difficulty == 'F' ? setUserSuccess('noF') :'')
 
-        difficulty == 'R' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
+        difficulty == 'R' && dataProgress && dataProgress.success >= 2 && dataProgress.mistakes * 2 <= dataProgress.success 
         ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
         : (difficulty == 'R' ? setUserSuccess('noR') :'')
 
-        difficulty == 'D' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
+        difficulty == 'D' && dataProgress != undefined 
         ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
         : (difficulty == 'D' ? setUserSuccess('noD') :'')
 
