@@ -2,26 +2,94 @@
 import { useState, useEffect } from 'react'
 import { useUser } from '../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, updateBank } from '../../firebase/utils'
+
 import { useRouter } from 'next/router'
-import Error from '../../components/Error'
+import ProgressBar from '../../components/ProgressBar'
 import Modal from '../../components/Modal'
 import BlackFont from '../../components/BlackFont'
 import PageSimulacroLayout from '../../layouts/PageSimulacroLayout'
 import { WithAuth } from '../../HOCs/WithAuth'
 import style from '../../styles/Bmateria.module.css'
+import { set } from 'lodash'
 
 
 function Simulacro() {
     const { userDB, setUserSuccess, success, setUserData, simulacro, setUserSimulacro, bank, setUserBank, fisherArray, setUserFisherArray } = useUser()
     const [modal, setModal] = useState(false)
+    const [dataProgress, setDataProgress] = useState(null)
     const [seeRes, setSeeRes] = useState(false)
 
     const router = useRouter()
 
 
-    function handlerSeeRes () {
+    function handlerSeeRes() {
         setSeeRes(!seeRes)
     }
+
+    function modalHandler(item) {
+        setModal(!modal)
+        setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id])
+    }
+
+    console.log(dataProgress)
+
+    useEffect(() => {
+        if (userDB.university) {
+            if (bank) {
+                bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+            } else {
+                updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+            }
+        }
+    }, [userDB.university, bank, seeRes])
+
+    return (
+        <PageSimulacroLayout>
+            {userDB !== 'loading' &&
+                <div className={style.container}>
+                    {bank && bank[router.query.Bmateria.toLowerCase()] &&
+                        <>
+                            {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
+                                <div key={index} className={style.itemBox}>
+                                    <li className={style.ask} onClick={() => modalHandler(item)}>
+                                        {                                               /*Consultamos si un item (len1) existe en el progres && validamos que su valor no sea false*/}
+                                        <span className={style.number}>{`${index + 1}-${userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty != false ? userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty : 'I'})`}{ }</span>{item.pregunta}
+                                    </li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'a' ? style.norespuesta : ''}`}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'b' ? style.norespuesta : ''}`}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'c' ? style.norespuesta : ''}`}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
+                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'd' ? style.norespuesta : ''}`}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
+                                </div>
+                            )}
+                        </>
+                    }
+                    <span className={`${style.seeRes} ${seeRes == true ? style.seeImgRes : style.noSeeImgRes}`} onClick={handlerSeeRes}></span>
+                </div>
+            }
+            {/* {success == false && <Error>Agotaste tu free mode: SUMA</Error>} */}
+            <Modal mode={modal} click={modalHandler} text={`${dataProgress ? `Intentos:  ${dataProgress.success + dataProgress.mistakes + dataProgress.undefineds}`: 'fds'}`}>
+                {dataProgress
+                    ? <>
+                        <span>Aciertos:</span>
+                        <ProgressBar bgcolor={'#3FC500'} completed={Math.round(dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
+                        <span>Errores:</span>
+                        <ProgressBar bgcolor={'red'} completed={Math.round(dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
+                        <span>No respondidos:</span>
+                        <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds))} />
+                    </>
+                    : ''}
+
+            </Modal>
+        </PageSimulacroLayout>
+    )
+}
+export default WithAuth(Simulacro)
+
+
+
+
+
+
     // function fisherYatesShuffle(arr) {
     //     for (var i = arr.length - 1; i > 0; i--) {
     //         var j = Math.floor(Math.random() * (i + 1)); //random index
@@ -90,50 +158,9 @@ function Simulacro() {
     //     setSelect(null)
     // }
     // console.log(bank)
-function modalHandler () {
-    setModal(!modal)
-}
 
-    useEffect(() => {
-        if (userDB.university) {
-            if (bank) {
-                bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
-            } else {
-                updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
-            }
-        }
-    }, [userDB.university, bank, seeRes])
 
-    return (
-        <PageSimulacroLayout>
-            {userDB !== 'loading' &&
-                <div className={style.container}>
-                    {bank && bank[router.query.Bmateria.toLowerCase()] &&
-                        <>
-                            {bank[router.query.Bmateria.toLowerCase()].map((item, index) =>
-                                <div key={index} className={style.itemBox}>
-                                    <li className={style.ask} onClick={modalHandler}>
-                                        {console.log(item)}
-                                        {                                               /*Consultamos si un item (len1) existe en el progres && validamos que su valor no sea false*/}
-                                        <span className={style.number}>{`${index + 1}-${userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id] && userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty != false ? userDB.subjects[router.query.Bmateria.toLowerCase()].progress[item.id].difficulty : 'I'})`}{ }</span>{item.pregunta}
-                                    </li><br />
-                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'a' ? style.norespuesta : ''}`}><span className={style.number}>{'a)'}</span>{item.a}</li><br />
-                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'b' ? style.norespuesta : ''}`}><span className={style.number}>{'b)'}</span>{item.b}</li><br />
-                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'c' ? style.norespuesta : ''}`}><span className={style.number}>{'c)'}</span>{item.c}</li><br />
-                                    <li className={`${style.options} ${seeRes == true && item.respuesta !== 'd' ? style.norespuesta : ''}`}><span className={style.number}>{'d)'}</span>{item.d}</li><br />
-                                </div>
-                            )}
-                        </>
-                    }
-                    <span className={ `${style.seeRes} ${seeRes == true ? style.seeImgRes : style.noSeeImgRes }`} onClick={handlerSeeRes}></span>
-                </div>
-            }
-            {/* {success == false && <Error>Agotaste tu free mode: SUMA</Error>} */}
-            <Modal mode={modal} click={modalHandler}> khkj</Modal>
-        </PageSimulacroLayout>
-    )
-}
-export default WithAuth(Simulacro)
+
 
 
 
