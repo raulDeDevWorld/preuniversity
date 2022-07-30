@@ -4,7 +4,6 @@ import { useUser } from '../context/Context.js'
 function ProgressBar({ bgcolor, counterData, porcentageData }) {
     const { userDB } = useUser()
 
-    const [porcentage, setPorcentage] = useState(0)
     const [counter, setCounter] = useState(0)
 
 
@@ -19,7 +18,7 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
 
     const fillerStyles = {
         height: '100%',
-        width: `${porcentage}%`,
+        width: `${counter * 100 / porcentageData}%`,
         backgroundColor: bgcolor,
         borderRadius: 'inherit',
         textAlign: 'right',
@@ -35,18 +34,16 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
         let counterInterval = setInterval(() => {
             if (counter < counterData) {
                 setCounter(counter + 1);
-                setPorcentage(counter * 100 / porcentageData);
             } else {
                 clearInterval(counterInterval);
             }
-        }, 50);
+        }, 35);
 
         return () => {
             clearInterval(counterInterval);
         };
 
-    }, [userDB, counter || porcentage]);
-
+    }, [userDB, counter]);
     return (
         <div style={containerStyles}>
             <div style={fillerStyles}>
