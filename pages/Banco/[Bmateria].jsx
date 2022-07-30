@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react'
 import { useUser } from '../../context/Context.js'
 import { setProgress, setErrors, userDataUpdate, updateBank } from '../../firebase/utils'
-
+import Error from '../../components/Error'
+import Success from '../../components/Success'
 import { useRouter } from 'next/router'
 import ProgressBar from '../../components/ProgressBar'
 import Modal from '../../components/Modal'
@@ -41,17 +42,17 @@ function Simulacro() {
 
 
         difficulty == 'F' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
-        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
-        : console.log('noF')
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
+        : (difficulty == 'F' ? setUserSuccess('noF') :'')
 
         difficulty == 'R' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
-        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
-        : console.log('noR')
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
+        : (difficulty == 'R' ? setUserSuccess('noR') :'')
 
         difficulty == 'D' && dataProgress && dataProgress.success >= 3 && dataProgress.mistakes * 3 <= dataProgress.success 
-        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`)
-        : console.log('noD')
-        setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id])
+        ? userDataUpdate(object, setUserData, `/${router.query.Bmateria.toLowerCase()}/progress/${dataItem.id}`, setUserSuccess)
+        : (difficulty == 'D' ? setUserSuccess('noD') :'')
+
 
     }
 
@@ -65,6 +66,7 @@ function Simulacro() {
                 updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
             }
         }
+        dataItem? setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id]) :''
     }, [userDB, dataProgress, userDB.university, bank, seeRes])
 
     return (
@@ -111,6 +113,10 @@ function Simulacro() {
                         <ProgressBar bgcolor={'#365b74'} completed={Math.round(dataProgress ? dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds) : 0)} />
                     </>}
             </Modal>
+            {success == 'save' && <Success>Actualizando</Success>}
+            {success === 'noF' && <Error>Tus aciertos deben ser el doble de tus errores o tener 3 aciertos como minimo</Error>}
+            {success === 'noR' && <Error>Tus aciertos deben ser el doble de tus errores o tener 2 aciertos como minimo</Error>}
+            {success === 'noD' && <Error>Debes tener por lo menos un intento</Error>}
         </PageSimulacroLayout>
     )
 }
