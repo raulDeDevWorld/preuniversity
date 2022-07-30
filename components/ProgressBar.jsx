@@ -39,7 +39,7 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
             } else {
                 clearInterval(counterInterval);
             }
-        }, 25);
+        }, 50);
 
         return () => {
             clearInterval(counterInterval);
