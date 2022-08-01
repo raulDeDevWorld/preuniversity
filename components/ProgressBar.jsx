@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUser } from '../context/Context.js'
 
-function ProgressBar({ bgcolor, counterData, porcentageData }) {
+function ProgressBar({ bgcolor, completed }) {
     const { userDB } = useUser()
 
     const [counter, setCounter] = useState(0)
@@ -18,7 +18,7 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
 
     const fillerStyles = {
         height: '100%',
-        width: `${counter * 100 / porcentageData}%`,
+        width: `${counter}%`,
         backgroundColor: bgcolor,
         borderRadius: 'inherit',
         textAlign: 'right',
@@ -32,12 +32,12 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
 
     useEffect(() => {
         let counterInterval = setInterval(() => {
-            if (counter < counterData) {
+            if (counter < completed) {
                 setCounter(counter + 1);
             } else {
                 clearInterval(counterInterval);
             }
-        }, 35);
+        }, 10);
 
         return () => {
             clearInterval(counterInterval);
@@ -47,7 +47,7 @@ function ProgressBar({ bgcolor, counterData, porcentageData }) {
     return (
         <div style={containerStyles}>
             <div style={fillerStyles}>
-                <span style={labelStyles}>{`${counter}`}</span>
+                <span style={labelStyles}>{`${counter}%`}</span>
             </div>
         </div>
     );

@@ -1,18 +1,39 @@
 
 .container {
-  position: absolute;
+  position: relative;
+  /* background-color: blue; */
+  padding-top: 90px;
+  padding-bottom: 70px;
+  height: 100%;
+  min-height: 640px;
   width: 100%;
-  min-height: 100vh;
+  min-width: 360px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* centrado vertical */
+  justify-content: center;
+  /* centrado-horizontal */
   align-items: center;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left bottom;
-  color: black
+  color: white;
+  font-size: 14px;
 }
+
+.presentation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+}
+
+
+
+
+
+
+
+
+
 
 .robot {
   width: 250px;

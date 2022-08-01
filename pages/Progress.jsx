@@ -3,7 +3,9 @@ import { useUser } from '../context/Context.js'
 import { WithAuth } from '../HOCs/WithAuth'
 import Success from '../components/Success'
 import Error from '../components/Error'
+import { getAllBank } from '../firebase/utils'
 import PageUserLayout from '../layouts/PageUserLayout'
+import { CircularProgressBar } from '@tomik23/react-circular-progress-bar';
 import style from '../styles/Progress.module.css'
 import Button from '../components/Button'
 import ProgressC from '../components/ProgressC'
@@ -15,43 +17,132 @@ import { useState, useEffect } from 'react'
 
 
 function Progress() {
-    // const { user, userDB, id, setTeacherId, setUserSuccess, success } = useUser()
+    const { user, userDB, id, setTeacherId, setUserSuccess, success } = useUser()
     // const [mode, setMode] = useState(false)
-    // const [alert, setAlert] = useState(false)
-    // const [idConfig, setIdConfig] = useState(null)
+    // array de progresos
+    const [progress, setProgress] = useState(null)
 
+    // summing up progress
+    function getProgressData(arrProgressUserDB) {
 
-    // const router = useRouter()
+        const dataProgress = arrProgressUserDB.reduce((mainObject, mainItem) => {
+            const newObject = {}
 
-    // function x () {
-    //     setMode(!mode)
-    // }
-    // function y () {
-    //     setAlert(!alert)
-    // }
-    // function nextClick (e) {
-    //     e.preventDefault()
-    //     const idInput = e.target.form[0].value
-    //     setIdConfig(idInput)
-    //     query(idInput, setTeacherId, user.uid, userDB.aName, setUserSuccess, setAlert)
-    // }
-    // function sureClick (e) {
-    //     e.preventDefault()
-    //     getIds(idConfig, setTeacherId, user.uid, userDB.aName, setUserSuccess, true)
-    //     setAlert(false)
-    // }
-    // function backClick (e) {
-    //     e.preventDefault()
-    //     router.back()
-    // }
-    // console.log(userDB.id)
-    // useEffect(() => {
-    //     success == true ? x() : ''
-    // }, [success, alert]);
+            const mainItemValue = Object.values(mainItem[1].progress).reduce((obj, item) => {
+                const newObj = {
+                    faciles: item.difficulty == 'F' ? obj.faciles + 1 : obj.faciles,
+                    regulares: item.difficulty == 'R' ? obj.regulares + 1 : obj.regulares,
+                    dificiles: item.difficulty == 'D' ? obj.dificiles + 1 : obj.dificiles,
+                    indefinidos: item.difficulty == false ? obj.indefinidos + 1 : obj.indefinidos,
+                }
+                return { ...obj, ...newObj }
+
+            }, { faciles: 0, regulares: 0, dificiles: 0, indefinidos: 0, })
+
+            newObject[mainItem[0]] = mainItemValue
+            return { ...mainObject, ...newObject }
+
+        }, {})
+        // summary of progress in object
+        setProgress(dataProgress)
+
+    }
+
+    function getSpecificProgress(req) {
+        const data = Object.values(progress).reduce((obj, item) => {
+            const newObj = {
+                specificCount: obj.specificCount + item[req],
+                headCount: obj.headCount + item.faciles + item.regulares + item.dificiles + item.indefinidos
+            }
+            return {...obj, ...newObj}
+        }, { specificCount: 0, headCount: 0 })
+        return data
+    }
+
+    progress != null ? console.log(getSpecificProgress('dificiles').specificCount) :''
+
+    // console.log(progress)
+    useEffect(() => {
+        if (userDB.subjects != null && userDB.subjects != undefined) {
+            // array de progresos
+            const arrProgressUserDB = Object.entries(userDB.subjects)
+            getProgressData(arrProgressUserDB)
+        }
+    }, [userDB,]);
+
     return (
-       
-   <PageUserLayout>
-        {/* {userDB !== null && userDB !== 'loading' && 
+
+        <PageUserLayout>
+            {userDB !== null && userDB !== 'loading' &&
+                <div className={style.container}>
+
+                    <div className={style.presentation}>
+                        <span>Monitorea tus progresos</span>
+                        <img src={`/robot.png`} className={style.robot} alt="user photo" />
+                    </div>
+
+
+
+                    <div>
+                        <CircularProgressBar
+                            colorCircle="#365b74"
+                            fontColor="#00F0FF"
+                            size={150}
+                            fontSize="20px"
+                            unit="%"
+                            linearGradient={[
+                                '#8ff8ff',
+                                '#00F0FF',
+                            ]}
+                            percent={progress != null ? Math.round(getSpecificProgress('dificiles').specificCount * 100 / getSpecificProgress('dificiles').headCount) : 0}
+                            round
+                        />
+                        <div>
+                        Faciles:
+                        <span></span>
+                        </div>
+                        <span>Faciles: {progress != null ? getSpecificProgress('dificiles').specificCount : 0} <br /> </span>
+                    </div>
+
+
+
+
+
+                    <div>
+
+                    </div>
+                </div>
+
+            }
+
+
+        </PageUserLayout>
+    )
+}
+
+export default WithAuth(Progress)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* {userDB !== null && userDB !== 'loading' && 
             <>
             <div className={style.container}>
                 <img src={`/robot.png`} className={style.robot} alt="user photo" />
@@ -107,10 +198,3 @@ function Progress() {
     {success ==true && <Success>Correcto</Success>}
     {success ==false && <Error>Error</Error>} */}
 
-
-
-    </PageUserLayout>
-    )
-}
-
-export default WithAuth(Progress)

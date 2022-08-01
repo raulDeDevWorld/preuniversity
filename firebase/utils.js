@@ -197,7 +197,7 @@ function manageSimulacro(materia, university, setUserSimulacro) {
       });
 }
 
-function getBank () {
+function getAllBank (userDB) {
 
 }
 
@@ -813,7 +813,7 @@ function spam() {
 
 
 
-export { manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank, getBank }
+export { getAllBank, manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
 
 
 

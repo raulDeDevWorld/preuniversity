@@ -101,12 +101,12 @@ function Simulacro() {
                             <button className={`${style.buttonDifficult} ${dataProgress && dataProgress.success >= 2 && dataProgress.mistakes * 2 <= dataProgress.success ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'R' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('R')}>R</button>
                             <button className={`${style.buttonDifficult} ${dataProgress ? style.buttonDifficultActive :''} ${dataProgress && dataProgress.difficulty == 'D' ? style.buttonDifficultSelect : ''}`} onClick={() => changeDifficult('D')}>D</button>
                         </div>
-                        <span>Aciertos:</span>
-                        <ProgressBar bgcolor={'#3FC500'} counterData ={dataProgress ? dataProgress.success : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
-                        <span>Errores:</span>
-                        <ProgressBar bgcolor={'red'} counterData ={dataProgress ? dataProgress.mistakes : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
-                        <span>No respondidos:</span>
-                        <ProgressBar bgcolor={'#365b74'} counterData ={dataProgress ? dataProgress.undefineds : ''} porcentageData={ dataProgress ? dataProgress.success + dataProgress.mistakes + dataProgress.undefineds : 0} />
+                        <span>Aciertos: {dataProgress ? dataProgress.success : ''}</span>
+                        <ProgressBar bgcolor={'#3FC500'} completed={ dataProgress ? Math.round(dataProgress.success * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds)) : 0} />
+                        <span>Errores: {dataProgress ? dataProgress.mistakes : ''}</span>
+                        <ProgressBar bgcolor={'red'} completed={ dataProgress ? Math.round(dataProgress.mistakes * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds)) : 0} />
+                        <span>No respondidos: {dataProgress ? dataProgress.undefineds : ''} </span>
+                        <ProgressBar bgcolor={'#365b74'} completed={ dataProgress ? Math.round(dataProgress.undefineds * 100 / (dataProgress.success + dataProgress.mistakes + dataProgress.undefineds)) : 0} />
                     </>}
             </Modal>
             {success == 'save' && <Success>Actualizando</Success>}
