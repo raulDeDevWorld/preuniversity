@@ -52,7 +52,7 @@ function Simulacro() {
         : (difficulty == 'D' ? setUserSuccess('noD') :'')
     }
 
-    console.log(dataProgress)
+    console.log(bank)
 
     useEffect(() => {
         if (userDB.university) {

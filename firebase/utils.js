@@ -197,9 +197,40 @@ function manageSimulacro(materia, university, setUserSimulacro) {
       });
 }
 
-function getAllBank (userDB) {
+async function getAllBank(university, subjects, bank, setUserBank) {
+      const arrSubjects = Object.keys(subjects)
 
+      const bankSubjects = await arrSubjects.reduce(async (mainObject, item)=>{
+
+            const oneBankSubjects = await get(ref(db, `${university.toLowerCase()}/Banco/${item}`)).then((snapshot) => {
+                              console.log('se esta ejecutando')
+                              let data = snapshot.val()
+                              const obj = {}
+                              obj[item.toLowerCase()] = data
+                              // console.log(bank)
+                              return obj
+            
+                        }).catch((error) => {
+                              console.error(error);
+                        })
+
+                        return {...await mainObject, ...oneBankSubjects}       
+
+      }, {})
+      setUserBank(bankSubjects)
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function updateBank(university, materia, bank, setUserBank) {
       get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {

@@ -17,10 +17,10 @@ function Play() {
 
     const router = useRouter()
 
-    function next(materia) {
-        manageSimulacro(materia, userDB.university, setUserSimulacro)
-        router.push('/Simulacro')
-    }
+    // function next(materia) {
+    //     manageSimulacro(materia, userDB.university, setUserSimulacro)
+    //     router.push('/Simulacro')
+    // }
 
     return (
         <>

@@ -17,7 +17,7 @@ import { useState, useEffect } from 'react'
 
 
 function Progress() {
-    const { user, userDB, id, setTeacherId, setUserSuccess, success } = useUser()
+    const { user, userDB, id, setTeacherId, setUserSuccess, success, bank, setUserBank } = useUser()
     // const [mode, setMode] = useState(false)
     // array de progresos
     const [progress, setProgress] = useState(null)
@@ -54,24 +54,35 @@ function Progress() {
                 specificCount: obj.specificCount + item[req],
                 headCount: obj.headCount + item.faciles + item.regulares + item.dificiles + item.indefinidos
             }
-            return {...obj, ...newObj}
+            return { ...obj, ...newObj }
         }, { specificCount: 0, headCount: 0 })
         return data
     }
 
-    progress != null ? console.log(getSpecificProgress('dificiles').specificCount) :''
 
-    // console.log(progress)
+    function getAllBankLength() {
+        if (bank) {
+            const bankLength = Object.values(bank).reduce((num, item) => {
+                const newNum = item.length + num
+                return newNum
+            }, 0)
+            return bankLength
+        } else {
+            return 1
+        }
+
+    }
+
     useEffect(() => {
         if (userDB.subjects != null && userDB.subjects != undefined) {
             // array de progresos
             const arrProgressUserDB = Object.entries(userDB.subjects)
             getProgressData(arrProgressUserDB)
+            getAllBank(userDB.university, userDB.subjects, bank, setUserBank)
         }
-    }, [userDB,]);
-
+    }, [userDB]);
+    console.log(bank)
     return (
-
         <PageUserLayout>
             {userDB !== null && userDB !== 'loading' &&
                 <div className={style.container}>
@@ -94,12 +105,12 @@ function Progress() {
                                 '#8ff8ff',
                                 '#00F0FF',
                             ]}
-                            percent={progress != null ? Math.round(getSpecificProgress('dificiles').specificCount * 100 / getSpecificProgress('dificiles').headCount) : 0}
+                            percent={progress != null && bank != null ? Math.round(getSpecificProgress('dificiles').specificCount * 100 / getAllBankLength()) : 0}
                             round
                         />
                         <div>
-                        Faciles:
-                        <span></span>
+                            Faciles:
+                            <span></span>
                         </div>
                         <span>Faciles: {progress != null ? getSpecificProgress('dificiles').specificCount : 0} <br /> </span>
                     </div>
