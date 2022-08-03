@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { useUser } from '../../context/Context.js'
-import { setProgress, setErrors, userDataUpdate, updateBank } from '../../firebase/utils'
+import { setProgress, setErrors, userDataUpdate, updateBank, getAllBank } from '../../firebase/utils'
 import Error from '../../components/Error'
 import Success from '../../components/Success'
 import { useRouter } from 'next/router'
@@ -54,16 +54,31 @@ function Simulacro() {
 
     console.log(bank)
 
+
     useEffect(() => {
         if (userDB.university) {
             if (bank) {
-                bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+                bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : console.log('no exist')
             } else {
-                updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+                getAllBank(userDB.university, userDB.subjects, setUserBank)   
             }
         }
         dataItem? setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id]) :''
     }, [userDB, dataProgress, userDB.university, bank, seeRes])
+
+
+
+
+    // useEffect(() => {
+    //     if (userDB.university) {
+    //         if (bank) {
+    //             bank[router.query.Bmateria.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+    //         } else {
+    //             updateBank(userDB.university, router.query.Bmateria, bank, setUserBank)
+    //         }
+    //     }
+    //     dataItem? setDataProgress(userDB.subjects[router.query.Bmateria.toLowerCase()].progress[dataItem.id]) :''
+    // }, [userDB, dataProgress, userDB.university, bank, seeRes])
 
     return (
         <PageSimulacroLayout>

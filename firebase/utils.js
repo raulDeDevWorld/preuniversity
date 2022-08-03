@@ -180,24 +180,24 @@ function getFac(university, setUniversityData) {
 }
 
 
+//----------------------antiguo
+// function manageSimulacro(materia, university, setUserSimulacro) {
+//       const uid = auth.currentUser.uid
 
-function manageSimulacro(materia, university, setUserSimulacro) {
-      const uid = auth.currentUser.uid
+//       get(ref(db, `/${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
+//             if (snapshot.exists()) {
+//                   let object = snapshot.val()
+//                   // setUserData(obj[user.uid])
+//                   setUserSimulacro(object)
+//             } else {
+//                   setUserData(null)
+//             }
+//       }).catch((error) => {
+//             console.error(error);
+//       });
+// }
 
-      get(ref(db, `/${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
-            if (snapshot.exists()) {
-                  let object = snapshot.val()
-                  // setUserData(obj[user.uid])
-                  setUserSimulacro(object)
-            } else {
-                  setUserData(null)
-            }
-      }).catch((error) => {
-            console.error(error);
-      });
-}
-
-async function getAllBank(university, subjects, bank, setUserBank) {
+async function getAllBank(university, subjects, setUserBank) {
       const arrSubjects = Object.keys(subjects)
 
       const bankSubjects = await arrSubjects.reduce(async (mainObject, item)=>{
@@ -222,16 +222,6 @@ async function getAllBank(university, subjects, bank, setUserBank) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 function updateBank(university, materia, bank, setUserBank) {
       get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
             console.log('se esta ejecutando')
@@ -245,15 +235,30 @@ function updateBank(university, materia, bank, setUserBank) {
       });
 }
 
-function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
-//Consulta si banco existe
-      if (bank) {
-      //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
-            bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : updateBank(university, materia, bank, setUserBank)
-      } else {
-            updateBank(university, materia, bank, setUserBank)
+
+
+
+function getDataForSimulacro(university, subjects, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+      //Consulta si banco existe
+            if (bank) {
+            //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
+                  bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : console.log('no exist')
+            } else {
+                  getAllBank(university, subjects, setUserBank) 
+            }
       }
-}
+
+
+// -------------------antiguo
+// function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+// //Consulta si banco existe
+//       if (bank) {
+//       //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
+//             bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : updateBank(university, materia, bank, setUserBank)
+//       } else {
+//             updateBank(university, materia, bank, setUserBank)
+//       }
+// }
 
 
 
@@ -825,7 +830,7 @@ function spam() {
 
 
 
-export { getAllBank, manageSimulacro, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
+export { getAllBank, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
 
 
 

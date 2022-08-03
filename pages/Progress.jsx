@@ -81,7 +81,7 @@ function Progress() {
             // array de progresos
             const arrProgressUserDB = Object.entries(userDB.subjects)
             getProgressData(arrProgressUserDB)
-            getAllBank(userDB.university, userDB.subjects, bank, setUserBank)
+            getAllBank(userDB.university, userDB.subjects, setUserBank)
         }
     }, [userDB]);
 
@@ -185,7 +185,7 @@ function Progress() {
                             }
                         </div>
                     </div>
-                    
+
                 </div>
             }
         </PageSimulacroLayout>

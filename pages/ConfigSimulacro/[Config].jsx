@@ -3,7 +3,7 @@ import Subtitle from '../../components/Subtitle'
 import { useState, useEffect } from 'react'
 import PageSimulacroLayout from '../../layouts/PageSimulacroLayout'
 import { useUser } from '../../context/Context.js'
-import { userDataUpdate, updateBank } from '../../firebase/utils'
+import { userDataUpdate, updateBank, getAllBank } from '../../firebase/utils'
 import { useRouter } from 'next/router'
 import { WithAuth } from '../../HOCs/WithAuth'
 import Error from '../../components/Error'
@@ -73,9 +73,9 @@ function PlayConfig() {
     useEffect(() => {
         if (userDB.university) {
             if (bank) {
-                bank[router.query.Config.toLowerCase()] ? console.log('exist') : updateBank(userDB.university, router.query.Config, bank, setUserBank)
+                bank[router.query.Config.toLowerCase()] ? console.log('exist') : console.log('no exist')
             } else {
-                updateBank(userDB.university, router.query.Config, bank, setUserBank)
+                getAllBank(userDB.university, userDB.subjects, setUserBank)   
             }
             progressHandler()
         }

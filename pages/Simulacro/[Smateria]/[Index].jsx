@@ -87,16 +87,14 @@ function Simulacro() {
     }
 
     // simulacro && router.query.Index ? console.log(simulacro) : ''
-    console.log(userDB)
-    useEffect(() => {
 
+    useEffect(() => {
         fisherYatesShuffle(fisherArray)
         userDB.university !== null && userDB.university !== undefined
-            ? getDataForSimulacro(userDB.university, router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
+            ? getDataForSimulacro(userDB.university, userDB.subjects , router.query.Smateria, userDB.subjects[router.query.Smateria.toLowerCase()].config.questions, simulacro, setUserSimulacro, bank, setUserBank)
             : ''
-
-
     }, [userDB.university, bank]);
+
     return (
         <PageSimulacro>
             {userDB !== 'loading' &&
