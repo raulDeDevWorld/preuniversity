@@ -4,6 +4,8 @@
   /* background-color: blue; */
   padding-top: 90px;
   padding-bottom: 70px;
+  padding-left: 15px;
+  padding-right: 15px;
   height: 100%;
   min-height: 640px;
   width: 100%;
@@ -26,15 +28,6 @@
 
 }
 
-
-
-
-
-
-
-
-
-
 .robot {
   width: 250px;
   height: 130px;
@@ -42,6 +35,23 @@
   object-position: top;
   margin: 15px;
   margin-top: 10px;
+}
+
+.progress {
+  width: 100%;
+}
+.overallProgress {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.specificProgress {
+  text-align: left;
+}
+.specificProgressItem {
+  margin: 20px 0;
+  text-align: left;
 }
 .title {
   display: block;

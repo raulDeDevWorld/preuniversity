@@ -4,10 +4,12 @@ import { WithAuth } from '../HOCs/WithAuth'
 import Success from '../components/Success'
 import Error from '../components/Error'
 import { getAllBank } from '../firebase/utils'
-import PageUserLayout from '../layouts/PageUserLayout'
+import PageSimulacroLayout from '../layouts/PageSimulacroLayout'
 import { CircularProgressBar } from '@tomik23/react-circular-progress-bar';
 import style from '../styles/Progress.module.css'
 import Button from '../components/Button'
+import ProgressBar from '../components/ProgressBar'
+
 import ProgressC from '../components/ProgressC'
 import Modal from '../components/Modal'
 import { useState, useEffect } from 'react'
@@ -48,7 +50,8 @@ function Progress() {
 
     }
 
-    function getSpecificProgress(req) {
+    function getSpecificProgress(req, progress) {
+        //iteranos los valores del sumary of progress
         const data = Object.values(progress).reduce((obj, item) => {
             const newObj = {
                 specificCount: obj.specificCount + item[req],
@@ -68,7 +71,7 @@ function Progress() {
             }, 0)
             return bankLength
         } else {
-            return 1
+            return setUserBank(null)
         }
 
     }
@@ -81,9 +84,10 @@ function Progress() {
             getAllBank(userDB.university, userDB.subjects, bank, setUserBank)
         }
     }, [userDB]);
-    console.log(bank)
+
+    // console.log(userDB.subjects)  
     return (
-        <PageUserLayout>
+        <PageSimulacroLayout>
             {userDB !== null && userDB !== 'loading' &&
                 <div className={style.container}>
 
@@ -94,29 +98,103 @@ function Progress() {
 
 
 
-                    <div>
-                        <CircularProgressBar
-                            colorCircle="#365b74"
-                            fontColor="#00F0FF"
-                            size={150}
-                            fontSize="20px"
-                            unit="%"
-                            linearGradient={[
-                                '#8ff8ff',
-                                '#00F0FF',
-                            ]}
-                            percent={progress != null && bank != null ? Math.round(getSpecificProgress('dificiles').specificCount * 100 / getAllBankLength()) : 0}
-                            round
-                        />
-                        <div>
-                            Faciles:
-                            <span></span>
+                    <div className={style.progress}>
+                        <div className={style.overallProgress}>
+                            <CircularProgressBar
+                                colorCircle="#365b74"
+                                fontColor="#00F0FF"
+                                size={150}
+                                fontSize="20px"
+                                unit="%"
+                                linearGradient={[
+                                    '#8ff8ff',
+                                    '#00F0FF',
+                                ]}
+                                percent={progress != null && bank != null ? Math.round(getSpecificProgress('faciles', progress).specificCount * 100 / getAllBankLength()) : 0}
+                                round
+                            />
+
+                            <span>Faciles: {progress != null ? getSpecificProgress('faciles', progress).specificCount : 0} <br /> </span>
+
                         </div>
-                        <span>Faciles: {progress != null ? getSpecificProgress('dificiles').specificCount : 0} <br /> </span>
+                        <div className={style.specificProgress}>
+                            {
+                                Object.keys(userDB.subjects).map((item, index) => {
+                                    return (<div className={style.specificProgressItem} key={index}>
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('faciles', { [item]: progress[item] }).specificCount}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                    </div>)
+                                })
+                            }
+                        </div>
                     </div>
 
 
 
+
+
+                    <div className={style.progress}>
+                        <div className={style.overallProgress}>
+                        <span>Regulares: {progress != null ? getSpecificProgress('regulares', progress).specificCount : 0} <br /> </span>
+
+                            <CircularProgressBar
+                                colorCircle="#365b74"
+                                fontColor="#00F0FF"
+                                size={150}
+                                fontSize="20px"
+                                unit="%"
+                                linearGradient={[
+                                    '#8ff8ff',
+                                    '#00F0FF',
+                                ]}
+                                percent={progress != null && bank != null ? Math.round(getSpecificProgress('regulares', progress).specificCount * 100 / getAllBankLength()) : 0}
+                                round
+                            />
+                        </div>
+                        <div className={style.specificProgress}>
+                            {
+                                Object.keys(userDB.subjects).map((item, index) => {
+                                    return (<div className={style.specificProgressItem} key={index}>
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('regulares', { [item]: progress[item] }).specificCount}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                    </div>)
+                                })
+                            }
+                        </div>
+                    </div>
+
+
+
+                    <div className={style.progress}>
+                        <div className={style.overallProgress}>
+                            <CircularProgressBar
+                                colorCircle="#365b74"
+                                fontColor="#00F0FF"
+                                size={150}
+                                fontSize="20px"
+                                unit="%"
+                                linearGradient={[
+                                    '#8ff8ff',
+                                    '#00F0FF',
+                                ]}
+                                percent={progress != null && bank != null ? Math.round(getSpecificProgress('dificiles', progress).specificCount * 100 / getAllBankLength()) : 0}
+                                round
+                            />
+
+                            <span>Dificiles: {progress != null ? getSpecificProgress('dificiles', progress).specificCount : 0} <br /> </span>
+
+                        </div>
+                        <div className={style.specificProgress}>
+                            {
+                                Object.keys(userDB.subjects).map((item, index) => {
+                                    return (<div className={style.specificProgressItem} key={index}>
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('dificiles', { [item]: progress[item] }).specificCount}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                    </div>)
+                                })
+                            }
+                        </div>
+                    </div>
 
 
                     <div>
@@ -127,7 +205,7 @@ function Progress() {
             }
 
 
-        </PageUserLayout>
+</PageSimulacroLayout>
     )
 }
 
