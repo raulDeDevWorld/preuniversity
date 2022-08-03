@@ -43,7 +43,7 @@ function ProgressBar({ bgcolor, completed }) {
             clearInterval(counterInterval);
         };
 
-    }, [userDB, counter]);
+    }, [userDB, counter, completed]);
     return (
         <div style={containerStyles}>
             <div style={fillerStyles}>

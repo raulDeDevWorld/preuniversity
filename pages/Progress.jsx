@@ -92,7 +92,7 @@ function Progress() {
                 <div className={style.container}>
 
                     <div className={style.presentation}>
-                        <span>Monitorea tus progresos</span>
+                        <span>MONITOREA TUS PROGRESOS</span>
                         <img src={`/robot.png`} className={style.robot} alt="user photo" />
                     </div>
 
@@ -114,15 +114,15 @@ function Progress() {
                                 round
                             />
 
-                            <span>Faciles: {progress != null ? getSpecificProgress('faciles', progress).specificCount : 0} <br /> </span>
+                            <span>Faciles: {progress != null ? getSpecificProgress('faciles', progress).specificCount : 0} de {bank != null ? getAllBankLength() : ''}<br /> </span>
 
                         </div>
                         <div className={style.specificProgress}>
                             {
                                 Object.keys(userDB.subjects).map((item, index) => {
                                     return (<div className={style.specificProgressItem} key={index}>
-                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('faciles', { [item]: progress[item] }).specificCount}</span>
-                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('faciles', { [item]: progress[item] }).specificCount} de {bank && bank[item].length}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={progress != null && bank != null ? Math.round(getSpecificProgress('faciles', { [item]: progress[item] }).specificCount * 100 / bank[item].length) : 0} />
                                     </div>)
                                 })
                             }
@@ -131,11 +131,10 @@ function Progress() {
 
 
 
-
-
                     <div className={style.progress}>
+
                         <div className={style.overallProgress}>
-                        <span>Regulares: {progress != null ? getSpecificProgress('regulares', progress).specificCount : 0} <br /> </span>
+                        <span>Regulares: {progress != null ? getSpecificProgress('regulares', progress).specificCount : 0} de {bank != null ? getAllBankLength() : ''}<br /> </span>
 
                             <CircularProgressBar
                                 colorCircle="#365b74"
@@ -155,13 +154,15 @@ function Progress() {
                             {
                                 Object.keys(userDB.subjects).map((item, index) => {
                                     return (<div className={style.specificProgressItem} key={index}>
-                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('regulares', { [item]: progress[item] }).specificCount}</span>
-                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('regulares', { [item]: progress[item] }).specificCount} de {bank && bank[item].length}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={progress != null && bank != null ? Math.round(getSpecificProgress('regulares', { [item]: progress[item] }).specificCount * 100 / bank[item].length) : 0} />
                                     </div>)
                                 })
                             }
                         </div>
                     </div>
+
+
 
 
 
@@ -181,15 +182,15 @@ function Progress() {
                                 round
                             />
 
-                            <span>Dificiles: {progress != null ? getSpecificProgress('dificiles', progress).specificCount : 0} <br /> </span>
+                            <span>Dificiles: {progress != null ? getSpecificProgress('dificiles', progress).specificCount : 0} de {bank != null ? getAllBankLength() : ''}<br /> </span>
 
                         </div>
                         <div className={style.specificProgress}>
                             {
                                 Object.keys(userDB.subjects).map((item, index) => {
                                     return (<div className={style.specificProgressItem} key={index}>
-                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('dificiles', { [item]: progress[item] }).specificCount}</span>
-                                        <ProgressBar bgcolor={'#365b74'} completed={10} />
+                                        <span>{item.split(' ')[0].charAt(0).toUpperCase()+(item).split(' ')[0].slice(1)}: {progress != null && getSpecificProgress('dificiles', { [item]: progress[item] }).specificCount} de {bank && bank[item].length}</span>
+                                        <ProgressBar bgcolor={'#365b74'} completed={progress != null && bank != null ? Math.round(getSpecificProgress('dificiles', { [item]: progress[item] }).specificCount * 100 / bank[item].length) : 0} />
                                     </div>)
                                 })
                             }
@@ -197,9 +198,9 @@ function Progress() {
                     </div>
 
 
-                    <div>
 
-                    </div>
+
+                
                 </div>
 
             }
