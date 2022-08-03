@@ -207,7 +207,7 @@ async function getAllBank(university, subjects, bank, setUserBank) {
                               let data = snapshot.val()
                               const obj = {}
                               obj[item.toLowerCase()] = data
-                              // console.log(bank)
+                              console.log(obj)
                               return obj
             
                         }).catch((error) => {
@@ -258,11 +258,10 @@ function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSi
 
 
 
-
 function spam() {
       for (let index = 0; index < 1; index++) {
-            update(ref(db, `usfx/Banco/matematicas/`), {
-                  0: {
+            update(ref(db, `usfx/Banco/`),  {fisica : [
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -271,7 +270,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len1'
                   },
-                  1: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -280,7 +279,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len2'
                   },
-                  2: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -289,7 +288,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len3'
                   },
-                  3: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -298,7 +297,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len4'
                   },
-                  4: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -307,7 +306,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len5'
                   },
-                  5: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -316,7 +315,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len6'
                   },
-                  6: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -325,7 +324,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len7'
                   },
-                  7: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -334,7 +333,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len8'
                   },
-                  8: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -343,7 +342,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len9'
                   },
-                  9: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -352,7 +351,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len10'
                   },
-                  10: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -361,7 +360,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len11'
                   },
-                  11: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -370,7 +369,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len12'
                   },
-                  12: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -379,7 +378,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len13'
                   },
-                  13: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -388,7 +387,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len14'
                   },
-                  14: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -397,7 +396,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len15'
                   },
-                  15: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -406,7 +405,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len16'
                   },
-                  16: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -415,7 +414,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len17'
                   },
-                  17: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -424,7 +423,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len18'
                   },
-                  18: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -433,7 +432,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len19'
                   },
-                  19: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -442,7 +441,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len20'
                   },
-                  20: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -451,7 +450,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len21'
                   },
-                  21: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -460,7 +459,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len22'
                   },
-                  22: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -469,7 +468,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len23'
                   },
-                  23: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -478,7 +477,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len24'
                   },
-                  24: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -487,7 +486,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len25'
                   },
-                  25: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -496,7 +495,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len26'
                   },
-                  26: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -505,7 +504,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len27'
                   },
-                  27: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -514,7 +513,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len28'
                   },
-                  28: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -523,7 +522,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len29'
                   },
-                  29: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -532,7 +531,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len30'
                   },
-                  30: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -541,7 +540,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len31'
                   },
-                  31: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -550,7 +549,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len32'
                   },
-                  32: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -559,7 +558,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len33'
                   },
-                  33: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -568,7 +567,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len34'
                   },
-                  34: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -577,7 +576,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len35'
                   },
-                  35: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -585,8 +584,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len36'
-                  },
-                  36: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -594,8 +592,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len37'
-                  },
-                  37: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -603,8 +600,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len38'
-                  },
-                  38: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -612,8 +608,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len39'
-                  },
-                  39: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -621,8 +616,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len40'
-                  },
-                  40: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -630,8 +624,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len41'
-                  },
-                  41: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -639,8 +632,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len42'
-                  },
-                  42: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -648,8 +640,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len43'
-                  },
-                  43: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -657,8 +648,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len44'
-                  },
-                  44: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -666,8 +656,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len45'
-                  },
-                  45: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -675,8 +664,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len46'
-                  },
-                  46: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -685,7 +673,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len47'
                   },
-                  47: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -694,7 +682,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len48'
                   },
-                  48: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -703,7 +691,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len49'
                   },
-                  49: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -712,16 +700,17 @@ function spam() {
                         d: 'Lejos',
                         id: 'len50'
                   },
-                  50: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
                         b: 'ada',
                         c: 'correr',
                         d: 'hambre',
-                        id: 'len51'
+                        id: 'len5'
                   },
-                  51: {
+
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -729,8 +718,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len52'
-                  },
-                  52: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -738,8 +726,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len53'
-                  },
-                  53: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -747,8 +734,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len54'
-                  },
-                  54: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -756,8 +742,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len55'
-                  },
-                  55: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -765,8 +750,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len56'
-                  },
-                  56: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -774,8 +758,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len57'
-                  },
-                  57: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -783,8 +766,7 @@ function spam() {
                         c: 'Ver',
                         d: 'Lejos',
                         id: 'len58'
-                  },
-                  58: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -792,8 +774,7 @@ function spam() {
                         c: 'correr',
                         d: 'hambre',
                         id: 'len59'
-                  },
-                  59: {
+                  }, {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -802,7 +783,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len60'
                   },
-                  60: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -811,7 +792,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len61'
                   },
-                  61: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -820,7 +801,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len62'
                   },
-                  62: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un verbo? MATE',
                         respuesta: 'c',
                         a: 'niño',
@@ -829,7 +810,7 @@ function spam() {
                         d: 'hambre',
                         id: 'len63'
                   },
-                  63: {
+                  {
                         pregunta: 'Cual de las siguientes opciones es un sustantivo MATE',
                         respuesta: 'b',
                         a: 'Feliz',
@@ -838,7 +819,7 @@ function spam() {
                         d: 'Lejos',
                         id: 'len64'
                   },
-            })
+            ]})
       }
 }
 

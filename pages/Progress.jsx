@@ -85,7 +85,7 @@ function Progress() {
         }
     }, [userDB]);
 
-    // console.log(userDB.subjects)  
+    console.log(bank)  
     return (
         <PageSimulacroLayout>
             {userDB !== null && userDB !== 'loading' &&

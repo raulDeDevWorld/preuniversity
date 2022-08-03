@@ -42,18 +42,13 @@ function ConfigSimulacro() {
                             <BlackFont>
                                 <div className={style.buttonsContainer}>
                                     {Object.keys(userDB.subjects).map((m, i) =>
-                                        <>
-                                            <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
-                                                <a className={style.link}>
-                                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                                </a>
-                                            </Link>
-                                            <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
-                                                <a className={style.link}>
-                                                    <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
-                                                </a>
-                                            </Link>
-                                        </>
+
+                                        <Link href="ConfigSimulacro/[Config]" as={`ConfigSimulacro/${m.charAt(0).toUpperCase() + m.slice(1)}`} key={i} >
+                                            <a className={style.link}>
+                                                <Button style='buttonBlackFont'>{m.charAt(0).toUpperCase() + m.slice(1)}</Button>
+                                            </a>
+                                        </Link>
+
 
                                     )}
                                 </div>
