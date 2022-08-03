@@ -96,8 +96,6 @@ function Progress() {
                         <img src={`/robot.png`} className={style.robot} alt="user photo" />
                     </div>
 
-
-
                     <div className={style.progress}>
                         <div className={style.overallProgress}>
                             <CircularProgressBar
@@ -114,7 +112,7 @@ function Progress() {
                                 round
                             />
 
-                            <span>Faciles: {progress != null ? getSpecificProgress('faciles', progress).specificCount : 0} de {bank != null ? getAllBankLength() : ''}<br /> </span>
+                            <span >Faciles: {progress != null ? getSpecificProgress('faciles', progress).specificCount : 0} de {bank != null ? getAllBankLength() : ''}<br /> </span>
 
                         </div>
                         <div className={style.specificProgress}>
