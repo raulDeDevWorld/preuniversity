@@ -36,7 +36,7 @@
   color: #00F0FF;
 }
 .presentation :nth-child(1) {
-  border-left:  1px solid white;
+  border-left:  1px solid red;
   padding-left: 10px;
 }
 
@@ -62,7 +62,7 @@
   color: #00F0FF;
 }
 .overallProgress span{
-  border-left:  1px solid white;
+  border-left:  1px solid red;
   padding-left: 10px;
 }
 .specificProgress {
