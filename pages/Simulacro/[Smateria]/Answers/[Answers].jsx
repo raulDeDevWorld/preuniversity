@@ -61,7 +61,7 @@ function Simulacro() {
         setSelect(null)
     }
     function finish() {
-        router.push(`/Simulacro/${router.query.Smateria}/Result`)
+        router.push(`/Home/`)
     }
     function nav(i) {
         router.push(`/Simulacro/${router.query.Smateria}/Answers/${parseInt(i) + 1}`)
