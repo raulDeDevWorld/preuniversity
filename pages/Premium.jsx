@@ -46,8 +46,8 @@ function Premium() {
 
                 <ul className={style.list}>
                     <li className={style.li}>Simulaco ilimitado <img src='/right.svg' className={style.right} alt='rigth'></img></li>
-                    <li className={style.li}>Robot ilimitado <img src='/right.svg' className={style.right} alt='rigth'></img></li>
-                    <li className={style.li}>Cuadernillo de practica pdf <img src='/right.svg' className={style.right} alt='rigth'></img></li>
+                    <li className={style.li}>Banco de preguntas <img src='/right.svg' className={style.right} alt='rigth'></img></li>
+                    <li className={style.li}>Funcionalidad Offline <img src='/right.svg' className={style.right} alt='rigth'></img></li>
                     <li className={style.li}>No publicidad <img src='/right.svg' className={style.right} alt='rigth'></img></li>
                     <li className={style.li}>Soporte Tecnico <img src='/right.svg' className={style.right} alt='rigth'></img></li>
                 </ul>
@@ -65,12 +65,6 @@ function Premium() {
                         </div>
                     </>
                 }
-
-
-
-
-
-
             </div>
         </PageUserLayout>
     )
