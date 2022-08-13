@@ -1,116 +1,70 @@
 .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  /* background-color: blue; */
+  padding-top: 90px;
+  padding-bottom: 70px;
+  height: 100%;
+  min-height: 640px;
+  width: 100%;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  /* centrado vertical */
+  justify-content: space-around;
+  /* centrado-horizontal */
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
 
-}
-.tiket {
-    position: absolute;
-    left: -10px;
-    top: 10px;
-    background-image: url(../public/tiket.png);
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: 0;
-    background-size: 80px;
-    height: 80px;
-    width: 80px;
-    font-size: 12px;
-    display: flex;
-    padding: 13px;
-    align-items: center;
-    z-index: 100;
-    color: red;
-  }
 
-  .tiketTwo {
-    position: absolute;
-    left: -10px;
-    top: 217px;
-    background-image: url(../public/tiket.png);
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: 0;
-    background-size: 80px;
-    height: 80px;
-    width: 80px;
-    font-size: 12px;
-    display: flex;
-    padding: 8px;
-    align-items: center;
-    z-index: 100000;
-    color: red;
-  }
-  
-.box {
-    background-color: black;
-    border-radius: 10px;
-}
-.title {
-    color: orange;
-    padding: 0;
-    margin: 0;
-}
-.subtitle {
-    color: white;
-    padding: 0;
-    margin: 0;
-}
 .list {
-    list-style: none;
-    padding: 0 25px;
-    margin-top: 20px;
+  list-style: none;
+  padding: 0 25px;
+  margin-top: 20px;
 }
+
 .li {
-    text-align: left;
+  margin-top: 5px;
+  text-align: left;
 }
-.right {
-  padding-left: 8px;
-}
-.form {
-    width: 100%;
-    text-align: center;
-
-}
-.input {
-    border: none;
-    border-bottom: 1px solid black;
-    width: 90%;
-    background-color: white;
-    margin-top: 10px;
-    text-align: center;
-    height: 18px;
-    border-radius: 3px;
-    margin-bottom: 15px;
-  }
- 
-  .code {
-    display: inline-block;
-    font-size: 14px;
-    width: 90%;
-    background-color: #003450;
-    color: orange;
-    margin-top: 10px;
-    text-align: center;
-    height: 18px;
-    border-radius: 3px;
-    margin-bottom: 15px;
-  }
 
 
-.spaceDiv {
-    margin-top: 10px;
+
+
+
+.buttonContent {
+  display: flex;
+  justify-content: space-between;
 }
+
+.buttonContent :nth-child(1) {
+  width: 50%;
+  padding: 10px 0;
+  color: #3FC500;
+
+}
+
+.buttonContent :nth-child(2) {
+  width: 50%;
+  padding: 10px 0;
+  background-color: #3FC500;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .enlace {
- 
-    color: #003450;
-    font-size: 10px;
-    text-decoration: underline;
-    margin-top: 15px;
-    cursor: pointer;
+  color: white;
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 
@@ -118,8 +72,36 @@
 
 
 
+.form {
+  width: 100%;
+  text-align: center;
 
+}
 
+.input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 90%;
+  background-color: white;
+  margin-top: 10px;
+  text-align: center;
+  height: 18px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.code {
+  display: inline-block;
+  font-size: 14px;
+  width: 90%;
+  background-color: #003450;
+  color: orange;
+  margin-top: 10px;
+  text-align: center;
+  height: 18px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
 
 .modalContainer {
     position: absolute;

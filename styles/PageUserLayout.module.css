@@ -79,24 +79,4 @@
 
 
 
-/* @media (max-height: 550px) { 
-    .vector {
-        position: absolute;
-        z-index: 0;
-    }
-}
-@media (min-height: 360px) { 
-    .mainContainer {
-        height: 430px;
-    }
-}
 
-@media (min-width: 900px) {
-    .container {
-        min-height: 800px;
-    } 
-    .mainContainer {
-        min-height: 800px;
-    }
-}
- */
