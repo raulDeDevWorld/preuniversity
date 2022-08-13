@@ -37,8 +37,7 @@ function Premium() {
     function enlace() {
         router.push("/Policy")
     }
-    useEffect(() => {
-    }, [userDB]);
+
     return (
 
         <PageUserLayout>
@@ -74,8 +73,6 @@ function Premium() {
             </div>
             <Modal mode={mode} click={x} text={'Ingresa tu codigo de activación'}>
                 <form className={style.form}>
-
-
                     <img src="/robot.png" className={style.modalBoot} alt="user photo" />
                     <p className={style.modalText}>El codigo de activacion solo funciona una vez</p>
                     <input className={style.input} type="text" placeholder='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' />
