@@ -67,8 +67,20 @@
 }
 
 
+.codeInfoContainer :nth-child(n) {
+  display: block;
+  margin-top: 20px;
+}
 
-
+.codeInfoContainer :nth-child(1) {
+  color: white;
+}
+.codeInfoContainer :nth-child(2) {
+  color: #00F0FF;
+}
+.codeInfoContainer :nth-child(3) {
+  color: white;
+}
 
 
 .form {

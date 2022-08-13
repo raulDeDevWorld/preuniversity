@@ -17,14 +17,14 @@ import style from '../styles/Premium.module.css'
 function Premium() {
     const router = useRouter()
     const [mode, setMode] = useState(false)
-    const { user, userDB, setUserSuccess, success } = useUser()
+    const { user, userDB, setUserData, setUserSuccess, success } = useUser()
     function x() {
         setMode(!mode)
     }
     function nextClick(e) {
         e.preventDefault()
         const code = e.target.form[0].value
-        getCode(code, user.uid, setUserSuccess, userDB.profesor)
+        getCode(code, user.uid, setUserSuccess, setUserData)
     }
     function backClick(e) {
         e.preventDefault()
@@ -57,9 +57,10 @@ function Premium() {
                     <li className={style.li}>Soporte Tecnico <img src='/right.svg' className={style.right} alt='rigth'></img></li>
                 </ul>
 
-                {userDB.premium === false &&
-                    <>
-                        <div className={style.buttonsContainer}>
+
+                <div className={style.buttonsContainer}>
+                    {userDB.premium === false ?
+                        <>
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Trimestre 27 BS</span><span>Adquirirlo ya</span></span></Button>
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Semestre 37 BS</span><span>Adquirirlo ya</span></span></Button>
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Año 47 BS</span><span>Adquirirlo ya</span></span></Button>
@@ -67,9 +68,15 @@ function Premium() {
                             <div>
                                 <a className={style.enlace} onClick={enlace}>Terminos y condiciones Swoou Premium</a> <br />
                             </div>
-                        </div>
-                    </>
-                }
+                        </>:
+                        <div className={style.codeInfoContainer}>
+                        <span className={style.span}> Premium Code:</span>
+                        <span className={style.span}>{userDB.premium}</span>
+                        <a className={style.enlace} onClick={enlace}>Terminos y condiciones Swoou Premium</a>
+                    </div>
+                    }
+                </div>
+
             </div>
             <Modal mode={mode} click={x} text={'Ingresa tu codigo de activación'}>
                 <form className={style.form}>
