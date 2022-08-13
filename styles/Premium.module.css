@@ -76,12 +76,23 @@
   text-align: center;
 
 }
-
+.modalBoot {
+  width: 250px;
+  height: 130px;
+  object-fit:cover;
+  object-position: top;
+}
+.modalText {
+  color: #00F0FF;
+}
 .input {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  padding: 15px;
+  border-radius: 5px;
   width: 90%;
-  background-color: white;
+  color:  rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   margin-top: 10px;
   text-align: center;
   height: 18px;

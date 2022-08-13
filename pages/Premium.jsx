@@ -11,7 +11,7 @@ import { WithAuth } from '../HOCs/WithAuth'
 // import Success from '../components/Success'
 import { useState, useEffect } from 'react'
 // import Error from '../components/Error'
-// import Modal from '../components/Modal'
+import Modal from '../components/Modal'
 import style from '../styles/Premium.module.css'
 
 function Premium() {
@@ -58,7 +58,7 @@ function Premium() {
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Trimestre 27 BS</span><span>Adquirirlo ya</span></span></Button>
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Semestre 37 BS</span><span>Adquirirlo ya</span></span></Button>
                             <Button style='buttonGetPremium' click={backClick}><span className={style.buttonContent}><span>Año 47 BS</span><span>Adquirirlo ya</span></span></Button>
-                            <Button style='buttonPrimary' click={backClick}>Ya cuento con un codigo Swoou Premium</Button>
+                            <Button style='buttonPrimary' click={x}>Ya cuento con un codigo Swoou Premium</Button>
                             <div>
                                 <a className={style.enlace} onClick={enlace}>Terminos y condiciones Swoou Premium</a> <br />
                             </div>
@@ -66,6 +66,16 @@ function Premium() {
                     </>
                 }
             </div>
+            <Modal mode={mode} click={x} text={'Ingresa tu codigo de activación'}>
+                <form className={style.form}>
+
+
+                <img src="/robot.png" className={style.modalBoot} alt="user photo" />
+<p className={style.modalText}>El codigo de activacion solo funciona una vez</p>
+                    <input className={style.input} type="text" placeholder='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' />
+                    <Button style='buttonPrimary' click={nextClick}>Continuar</Button>
+                </form>            
+            </Modal>
         </PageUserLayout>
     )
 }
