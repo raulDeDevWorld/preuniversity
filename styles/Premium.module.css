@@ -69,7 +69,7 @@
 
 .codeInfoContainer :nth-child(n) {
   display: block;
-  margin-top: 20px;
+  height: 35px;
 }
 
 .codeInfoContainer :nth-child(1) {
