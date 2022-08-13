@@ -3,14 +3,14 @@ import { useRouter } from 'next/router'
 import Button from '../components/Button'
 import PremiumC from '../components/PremiumC'
 // import PremiumPluss from '../components/PremiumPluss'
-// import { getCode } from '../firebase/utils'
+import { getCode } from '../firebase/utils'
 import { useUser } from '../context/Context.js'
 import PageUserLayout from '../layouts/PageUserLayout'
 
 import { WithAuth } from '../HOCs/WithAuth'
-// import Success from '../components/Success'
+import Success from '../components/Success'
 import { useState, useEffect } from 'react'
-// import Error from '../components/Error'
+import Error from '../components/Error'
 import Modal from '../components/Modal'
 import style from '../styles/Premium.module.css'
 
@@ -37,11 +37,17 @@ function Premium() {
     function enlace() {
         router.push("/Policy")
     }
-
+    useEffect(() => {
+    }, [userDB]);
     return (
 
         <PageUserLayout>
+            {success == true && <Success>Felicidades eres PREMIUM</Success>}
+            {success === 'NoInternet' && <Error>Esta funcion necesita conexion</Error>}
+            {success == 'NoExiste' && <Error>Codigo incorrecto</Error>}
+            {success === 'EnUso' && <Error>El codigo ya esta en uso</Error>}
             <div className={style.container}>
+
                 <PremiumC></PremiumC>
 
                 <ul className={style.list}>
@@ -70,11 +76,11 @@ function Premium() {
                 <form className={style.form}>
 
 
-                <img src="/robot.png" className={style.modalBoot} alt="user photo" />
-<p className={style.modalText}>El codigo de activacion solo funciona una vez</p>
+                    <img src="/robot.png" className={style.modalBoot} alt="user photo" />
+                    <p className={style.modalText}>El codigo de activacion solo funciona una vez</p>
                     <input className={style.input} type="text" placeholder='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' />
                     <Button style='buttonPrimary' click={nextClick}>Continuar</Button>
-                </form>            
+                </form>
             </Modal>
         </PageUserLayout>
     )
@@ -89,7 +95,7 @@ export default WithAuth(Premium)
 
 
 
-            {/* {userDB.premium !== null && <div className={style.container}>
+{/* {userDB.premium !== null && <div className={style.container}>
 
                     <PremiumC></PremiumC>
                     {userDB.premium === false && <div className={style.tiket}>9.70 BOB</div>}
@@ -125,8 +131,8 @@ export default WithAuth(Premium)
                         </div>}
                 </div>} */}
 
-     
-            {/* <Modal mode={mode} click={x} text={'Ingresa tu codigo de activación'}>
+
+{/* <Modal mode={mode} click={x} text={'Ingresa tu codigo de activación'}>
                 <form className={style.form}>
                     <input className={style.input} type="text" placeholder='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' />
                     <Button style='buttonSecondary' click={backClick}>Atras</Button><Button style='buttonPrimary' click={nextClick}>Continuar</Button>
@@ -134,5 +140,4 @@ export default WithAuth(Premium)
             </Modal>
             {success == true && <Success>Correcto</Success>}
             {success == false && <Error>Error</Error>} */}
-  
-        
+

@@ -15,7 +15,7 @@
     animation-name: animationGreen;
     animation-duration: 6s;
     animation-delay: 0;
-    z-index: 1000000000000;
+    z-index: 100000000;
     padding: 1px 0;
 
 }
@@ -36,7 +36,7 @@
     animation-name: animationRed;
     animation-duration: 6s;
     animation-delay: 0;
-    z-index: 1000000000000;
+    z-index: 100000000;
     padding: 1px 0;
 }
 @keyframes animationRed {

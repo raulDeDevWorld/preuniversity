@@ -14,7 +14,7 @@ import { firebaseConfig } from '../firebase/config.js'
 function Carrera() {
 
     const router = useRouter()
-    const { userDB, uniData, setUniversityData, setUserData } = useUser()
+    const { userDB, uniData, setUniversityData, setUserData, setUserSuccess } = useUser()
     const [career, setCareer] = useState(null)
 
     function continuar() {
@@ -34,7 +34,7 @@ function Carrera() {
 
             userDataUpdate({
                 subjects: obj
-            }, setUserData)
+            }, setUserData, null, setUserSuccess)
             router.push('/Home')
         }
     }

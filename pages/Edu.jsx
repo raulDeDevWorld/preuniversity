@@ -10,13 +10,13 @@ import style from '../styles/Edu.module.css'
 import BlackFont from '../components/BlackFont'
 
 function Edu() {
-    const { userDB, uniData, setUserData } = useUser()
+    const { userDB, uniData, setUserData, setUserSuccess } = useUser()
     const router = useRouter()
 
 
     function click(university) {
         const object = { university, }
-        userDataUpdate(object, setUserData)
+        userDataUpdate(object, setUserData, null, setUserSuccess)
         router.push(`/University`)
     }
 

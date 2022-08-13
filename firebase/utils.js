@@ -94,8 +94,7 @@ function handleSignOut() {
 
 const db = getDatabase(app);
 const data = ref(db, '/users');
-// const premiumCode = ref(db, '/premiumCode');
-// const ids = ref(db, '/ids')
+getDatabase(app)
 
 
 
@@ -157,7 +156,7 @@ function userDataUpdate(object, setUserData, query, setUserSuccess) {
             })
             return
       }
-      update(ref(db, `users/${uid}`), object).then(()=>setUserSuccess('save'))
+      update(ref(db, `users/${uid}`), object).then(()=> setUserSuccess('save'))
       .then(()=>{
             setUserSuccess && setUserSuccess('save')
             getData(uid, setUserData)
@@ -260,6 +259,110 @@ function getDataForSimulacro(university, subjects, materia, cantidad, simulacro,
 //       }
 // }
 
+
+
+//------------------------------Premium Config-------------------------------
+const mainRefDB = ref(getDatabase(app))
+
+function getCode(code, uid, setUserSuccess, account){
+      // premiumCode.once('value', function(snapshot){  
+      //       var b = snapshot.child(code).exists();                
+      //       if (b === true ){
+      //             var val = snapshot.child(code).val();
+      //             if(val == false) {
+      //                   const us = account == true ? 'teachers' : 'users' 
+      //                   db.ref(`/premiumCode/${code}`).set(true)
+      //                   db.ref(`/${us}/${uid}`).update({ premium: code, date: Date()})
+      //                   setUserSuccess(true)
+      //             }else{
+      //                   console.log('ya esta en uso')
+      //                   setUserSuccess(false)
+      //             }
+      //       } else {
+      //          console.log('no exist')
+      //          setUserSuccess(false)
+      //       }
+      // })
+      
+      get(ref(db, '/premiumCode')).then((snapshot) => {
+            const b = snapshot.child(`${code}`).exists()
+            console.log(code)
+            console.log(b)
+
+            if (b == true ){
+                  var val = snapshot.child(code).val();
+                  console.log(val)
+                  if(val == true) {
+                        update(ref(db, `/premiumCode/`), {[code] : false})
+                        update(ref(db, `/users/${uid}`), { premium: code, date: Date()})
+                        .then(()=>{
+                              setUserSuccess(true)
+                        })
+                  }else{
+                        setUserSuccess('EnUso')
+                  }
+            } else {
+               setUserSuccess('NoExiste')
+            }
+
+
+
+
+
+
+
+
+      //       if (snapshot.exists()) {
+      //         console.log(snapshot.val());
+      //       } else {
+      //         console.log("No data available");
+      //       }
+      //     }).catch((error) => {
+      //       console.error(error);
+       });
+
+
+      // return onValue(ref(db, '/premiumCode'), (snapshot) => {
+      //       // var b = snapshot.child(code).exists();   
+      //       // child(ref(db), 'posts')
+      //       console.log(snapshot.val())
+
+
+
+
+
+      //       // console.log(child(ref(db), snapshot.val())) 
+      //       // console.log(child(ref(db), `${snapshot.val()}`))               
+      //       // if (b === true ){
+      //       //       var val = snapshot.child(code).val();
+      //       //       if(val == false) {
+      //       //             const us = account == true ? 'teachers' : 'users' 
+      //       //             db.ref(`/premiumCode/${code}`).set(true)
+      //       //             db.ref(`/${us}/${uid}`).update({ premium: code, date: Date()})
+      //       //             setUserSuccess(true)
+      //       //       }else{
+      //       //             console.log('ya esta en uso')
+      //       //             setUserSuccess(false)
+      //       //       }
+      //       // } else {
+      //       //    console.log('no exist')
+      //       //    setUserSuccess(false)
+      //       // }
+
+
+
+      //     }, {
+      //       onlyOnce: true
+      //     });
+}
+
+// function newStudent (uid) {
+//       db.ref(`users/${uid}`).update({nw : false})
+// }
+
+// function setUuidFDB (newUuid) {
+//             db.ref(`premiumCode`).update(newUuid)
+// }
 
 
 
@@ -830,7 +933,7 @@ function spam() {
 
 
 
-export { getAllBank, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
+export { getCode, getAllBank, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
 
 
 
