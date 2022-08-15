@@ -11,7 +11,6 @@ const auth = getAuth();
 const providerFacebook = new FacebookAuthProvider();
 const providerGoogle = new GoogleAuthProvider();
 
-
 //----------------------------------Authentication------------------------------------------
 
 function onAuth(setUserProfile, setUserData) {
@@ -30,11 +29,9 @@ function withFacebook() {
             .then((result) => {
                   // The signed-in user info.
                   const user = result.user;
-
                   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
                   const credential = FacebookAuthProvider.credentialFromResult(result);
                   const accessToken = credential.accessToken;
-
                   // ...
             })
             .catch((error) => {
@@ -71,7 +68,6 @@ function withGoogle() {
             });
 }
 
-
 function handleSignOut() {
       auth.signOut().then(function () {
             // Sign-out successful.
@@ -80,24 +76,10 @@ function handleSignOut() {
       });
 }
 
-
-
-
-
-
-
-
 //-----------------------------------Realtime database--------------------------------------
 
-
-
-
 const db = getDatabase(app);
-const data = ref(db, '/users');
 getDatabase(app)
-
-
-
 
 //Traemos toda la DATA de un usuario autentificado
 function getData(uid, setUserData) {
@@ -123,28 +105,7 @@ function userDataRegister(object, router, url) {
             });
 }
 
-
-// function userDataRegister( aName, school, cell, avatar) {
-//       const name = auth.currentUser.displayName
-//       const uid = auth.currentUser.uid
-
-//       set(ref(db, `users/${uid}`), {
-//             name,
-//             aName,
-//             school,
-//             cell,
-//             avatar,
-//             premium: false,
-//             uid,
-//       })
-//             .then(() => {
-//                   // Data saved successfully!
-//             })
-//             .catch((error) => {
-//                   // The write failed...
-//             });
-// }
-
+//Actualizacion de DATOS de usuario
 function userDataUpdate(object, setUserData, query, setUserSuccess) {
       const uid = auth.currentUser.uid
 
@@ -163,6 +124,7 @@ function userDataUpdate(object, setUserData, query, setUserSuccess) {
             })
 }
 
+//Consulta de FACULTADES para el registro
 function getFac(university, setUniversityData) {
 
       get(ref(db, `/${university.toLowerCase()}`)).then((snapshot) => {
@@ -178,24 +140,7 @@ function getFac(university, setUniversityData) {
       });
 }
 
-
-//----------------------antiguo
-// function manageSimulacro(materia, university, setUserSimulacro) {
-//       const uid = auth.currentUser.uid
-
-//       get(ref(db, `/${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
-//             if (snapshot.exists()) {
-//                   let object = snapshot.val()
-//                   // setUserData(obj[user.uid])
-//                   setUserSimulacro(object)
-//             } else {
-//                   setUserData(null)
-//             }
-//       }).catch((error) => {
-//             console.error(error);
-//       });
-// }
-
+//Traemos todo el banco de preguntas
 async function getAllBank(university, subjects, setUserBank) {
       const arrSubjects = Object.keys(subjects)
 
@@ -219,24 +164,7 @@ async function getAllBank(university, subjects, setUserBank) {
       setUserBank(bankSubjects)
 }
 
-
-
-function updateBank(university, materia, bank, setUserBank) {
-      get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
-            console.log('se esta ejecutando')
-            let data = snapshot.val()
-            const obj = {}
-            obj[materia.toLowerCase()] = data
-            setUserBank({ ...bank, ...obj })
-
-      }).catch((error) => {
-            console.error(error);
-      });
-}
-
-
-
-
+//Seleccionamos las preguntas para el simulacro  
 function getDataForSimulacro(university, subjects, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
       //Consulta si banco existe
       if (bank) {
@@ -246,20 +174,6 @@ function getDataForSimulacro(university, subjects, materia, cantidad, simulacro,
             getAllBank(university, subjects, setUserBank)
       }
 }
-
-
-// -------------------antiguo
-// function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
-// //Consulta si banco existe
-//       if (bank) {
-//       //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
-//             bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : updateBank(university, materia, bank, setUserBank)
-//       } else {
-//             updateBank(university, materia, bank, setUserBank)
-//       }
-// }
-
-
 
 //------------------------------Premium Config-------------------------------
 const mainRefDB = ref(getDatabase(app))
@@ -289,9 +203,83 @@ function getCode(code, uid, setUserSuccess, setUserData) {
       });
 }
 
+export { getCode, getAllBank, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro }
 
 
 
+
+
+
+
+
+//---------------------------------IMPORTANTE
+// function updateBank(university, materia, bank, setUserBank) {
+//       get(ref(db, `${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
+//             console.log('se esta ejecutando')
+//             let data = snapshot.val()
+//             const obj = {}
+//             obj[materia.toLowerCase()] = data
+//             setUserBank({ ...bank, ...obj })
+
+//       }).catch((error) => {
+//             console.error(error);
+//       });
+// }
+
+
+
+
+
+
+// function userDataRegister( aName, school, cell, avatar) {
+//       const name = auth.currentUser.displayName
+//       const uid = auth.currentUser.uid
+
+//       set(ref(db, `users/${uid}`), {
+//             name,
+//             aName,
+//             school,
+//             cell,
+//             avatar,
+//             premium: false,
+//             uid,
+//       })
+//             .then(() => {
+//                   // Data saved successfully!
+//             })
+//             .catch((error) => {
+//                   // The write failed...
+//             });
+// }
+
+//----------------------antiguo
+// function manageSimulacro(materia, university, setUserSimulacro) {
+//       const uid = auth.currentUser.uid
+
+//       get(ref(db, `/${university.toLowerCase()}/Banco/${materia.toLowerCase()}`)).then((snapshot) => {
+//             if (snapshot.exists()) {
+//                   let object = snapshot.val()
+//                   // setUserData(obj[user.uid])
+//                   setUserSimulacro(object)
+//             } else {
+//                   setUserData(null)
+//             }
+//       }).catch((error) => {
+//             console.error(error);
+//       });
+// }
+
+
+// -------------------antiguo
+// function getDataForSimulacro(university, materia, cantidad, simulacro, setUserSimulacro, bank, setUserBank) {
+// //Consulta si banco existe
+//       if (bank) {
+//       //Consulta si la materia existe en el banco ? Se pasa todo el banco al context mas la cantidad de preguntas requeridas : Hacemos una peticion a la base de datos
+//             bank[materia.toLowerCase()] ? setUserSimulacro(bank[materia.toLowerCase()], cantidad) : updateBank(university, materia, bank, setUserBank)
+//       } else {
+//             updateBank(university, materia, bank, setUserBank)
+//       }
+// }
 
 function spam() {
       for (let index = 0; index < 1; index++) {
@@ -860,7 +848,6 @@ function spam() {
 
 
 
-export { getCode, getAllBank, userDataUpdate, getFac, onAuth, withFacebook, withGoogle, handleSignOut, userDataRegister, getDataForSimulacro, updateBank }
 
 
 

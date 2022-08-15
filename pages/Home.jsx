@@ -38,7 +38,7 @@ function Home() {
                     <div className={style.container}>
                         <div className={style.userDataContainer}>
                             {userDB.premium !== false && <span className={style.subtitle}> Premium</span>}
-                            {userDB.premium === false && <span className={style.subtitle}>Free mode</span>}
+                            {userDB.premium === false && <span className={style.subtitle}>Demo mode</span>}
                             <img src={`/${userDB.avatar}.png`} className={style.perfil} alt="user photo" />
                             <Subtitle> {'ab1' == userDB.avatar || 'ab2' == userDB.avatar ? 'Bienvenido' : 'Bienvenida'}: <br /> {`${userDB.name.split(' ')[0].toUpperCase()}`}</Subtitle>
                         </div><br />
