@@ -24,7 +24,7 @@ function Facultad(props) {
                 fac,
                 facDB,
             }
-            userDataUpdate(object, setUserData, null, setUserSuccess)
+            userDataUpdate(object, setUserData, setUserSuccess)
             router.push('/Carrera')
         }
     }

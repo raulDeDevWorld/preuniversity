@@ -16,7 +16,7 @@ function Edu() {
 
     function click(university) {
         const object = { university, }
-        userDataUpdate(object, setUserData, null, setUserSuccess)
+        userDataUpdate(object, setUserData, setUserSuccess)
         router.push(`/University`)
     }
 

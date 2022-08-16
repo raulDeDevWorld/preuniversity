@@ -34,7 +34,7 @@ function Carrera() {
 
             userDataUpdate({
                 subjects: obj
-            }, setUserData, null, setUserSuccess)
+            }, setUserData, setUserSuccess)
             router.push('/Home')
         }
     }
